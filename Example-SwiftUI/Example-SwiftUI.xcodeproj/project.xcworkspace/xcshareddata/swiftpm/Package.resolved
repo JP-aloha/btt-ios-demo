@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "http://github.com/JP-aloha/btt-swift-sdk.git",
       "state" : {
-        "branch" : "feature/cpu-memory-netstate-offline-hybrid",
-        "revision" : "3b4b97a4c95ebf9c641c4d3e7cad830199107664"
+        "branch" : "feature/privacy-manifest",
+        "revision" : "0aa83f78927acb2ffeef914462130a040a0cd9ac"
       }
     },
     {
