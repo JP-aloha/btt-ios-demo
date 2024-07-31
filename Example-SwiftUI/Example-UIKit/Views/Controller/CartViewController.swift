@@ -30,7 +30,7 @@ class CartViewController: UIViewController {
         btnSetup()
         getCart()
         resisterObserver()
-        btnCheckOut.accessibilityIdentifier = "add to cart"
+        btnCheckOut.accessibilityIdentifier = "checkout"
     }
     
     

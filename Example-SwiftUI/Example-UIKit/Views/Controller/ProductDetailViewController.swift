@@ -15,6 +15,7 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var productQty: UILabel!
     @IBOutlet weak var productDesc: UILabel!
     @IBOutlet weak var btnAddtoCart: UIButton!
+    @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var lblQty: UILabel!
     
     var vm: ProductDetailViewModel!
@@ -28,13 +29,28 @@ class ProductDetailViewController: UIViewController {
         let backButton = UIBarButtonItem()
         backButton.title = "Products"
         self.navigationItem.backBarButtonItem = backButton
+        
         btnAddtoCart.accessibilityIdentifier = "add to cart"
-        self.navigationItem.leftBarButtonItem?.accessibilityIdentifier = "back"
+        btnBack.accessibilityIdentifier = "back"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         vm.freeAllMemoryOnDisapear()
+    }
+    
+    @IBAction func didSelectBack(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func didClickStepper(_ sender: UIStepper) {

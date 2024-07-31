@@ -11,6 +11,7 @@ class OrderSuccessfulViewController: UIViewController {
 
     @IBOutlet weak var lblCheckoutId: UILabel!
     @IBOutlet weak var btnConitueShopping: UIButton!
+    @IBOutlet weak var btnBack: UIButton!
     
     var checkoutID: String!
     override func viewDidLoad() {
@@ -21,9 +22,22 @@ class OrderSuccessfulViewController: UIViewController {
         let backButton = UIBarButtonItem()
         backButton.title = "Cart"
         navigationItem.backBarButtonItem = backButton
-        self.navigationItem.leftBarButtonItem?.accessibilityIdentifier = "back"
-        
         btnConitueShopping.accessibilityIdentifier = "continue shopping"
+        btnBack.accessibilityIdentifier = "back"
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    @IBAction func didSelectBack(_ sender: UIButton) {
+        self.navigationController?.popToRootViewController(animated: true)
     }
 
     @IBAction func didSelectContiueShopiing(_ sender: UIButton) {
