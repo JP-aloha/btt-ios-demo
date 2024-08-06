@@ -210,6 +210,7 @@ struct SettingsView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .tint(.blue)
+                        .accessibilityIdentifier("btn_configuration_settings")
                         
                         Spacer()
                     }

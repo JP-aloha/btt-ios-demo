@@ -21,7 +21,7 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var lblAnrEnable : UILabel!
     @IBOutlet weak var lblScreenTrackEnable : UILabel!
     @IBOutlet weak var lblAnrStackTraceEnable : UILabel!
-    
+    @IBOutlet weak var btnConfigurationSettings : UIButton!
     
     private var tagUrl = "\(Secrets.siteID).btttag.com/btt.js"
     
@@ -38,6 +38,7 @@ class SettingsViewController: UIViewController {
         lblSdkLocation.text = "http://github.com/JP-aloha/btt-swift-sdk.git"
         lblSessionId.text = UserDefaults.standard.string(forKey: UserDefaultKeys.ConfigureSessionId) ?? "Auto Generated"
         lblSessionId.accessibilityIdentifier = "btt session id"
+        btnConfigurationSettings.accessibilityIdentifier = "btn_configuration_settings"
         // Do any additional setup after loading the view.
     }
     
@@ -95,9 +96,9 @@ class SettingsViewController: UIViewController {
     @IBAction func didSelectConfiguration(_ sender: Any?) {
         let storyboard = UIStoryboard(name:"Main", bundle: nil)
         
-        if let navigation = storyboard.instantiateViewController(identifier: "ConfigurationViewNav") as? UINavigationController, let vc = navigation.viewControllers.first as? ConfigurationViewController{
-            navigation.modalPresentationStyle = .fullScreen
-            self.present(navigation, animated: true)
+        if let vc = storyboard.instantiateViewController(identifier: "ConfigurationViewController") as? ConfigurationViewController{
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
         }
     }
     

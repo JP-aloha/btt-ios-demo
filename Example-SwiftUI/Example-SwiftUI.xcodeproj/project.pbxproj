@@ -15,6 +15,8 @@
 		512BD4ED2BCE68D9005E80E5 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512BD4EC2BCE68D9005E80E5 /* ConfigurationView.swift */; };
 		512BD4EF2BCE72A4005E80E5 /* ConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512BD4EE2BCE72A4005E80E5 /* ConfigurationModel.swift */; };
 		512BD4F02BCEC198005E80E5 /* ConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512BD4EE2BCE72A4005E80E5 /* ConfigurationModel.swift */; };
+		515641DA2C6255FC0095E586 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 515641D92C6255FC0095E586 /* BlueTriangle */; };
+		515641DC2C6256190095E586 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 515641DB2C6256190095E586 /* BlueTriangle */; };
 		5170A8BF2AA1E82D0091B65A /* MemoryTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8BE2AA1E82D0091B65A /* MemoryTestView.swift */; };
 		5170A8C12AA1F3B50091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
 		5170A8C22AA1F4090091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
@@ -25,8 +27,6 @@
 		5198A2992A9F7104003EFBEF /* MemoryAllocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5198A2982A9F7104003EFBEF /* MemoryAllocationTest.swift */; };
 		5198A29A2A9F7114003EFBEF /* MemoryAllocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5198A2982A9F7104003EFBEF /* MemoryAllocationTest.swift */; };
 		51A9CA4C2C3BCC6F004F86D8 /* SignalCrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9CA4B2C3BCC6F004F86D8 /* SignalCrashViewController.swift */; };
-		51B553752C53FFF00053D6D4 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 51B553742C53FFF00053D6D4 /* BlueTriangle */; };
-		51B553772C54000C0053D6D4 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 51B553762C54000C0053D6D4 /* BlueTriangle */; };
 		51B55E252BCD5E5100758C75 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B55E242BCD5E5100758C75 /* ConfigurationViewController.swift */; };
 		51CC8CEC2BED2DD00079EBD6 /* ConfigurationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8CEB2BED2DD00079EBD6 /* ConfigurationSetup.swift */; };
 		51CC8CED2BED2DD00079EBD6 /* ConfigurationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8CEB2BED2DD00079EBD6 /* ConfigurationSetup.swift */; };
@@ -234,7 +234,7 @@
 			files = (
 				84A03BEB2A49DE16000C8BD0 /* Service in Frameworks */,
 				84A03BED2A49DE16000C8BD0 /* IdentifiedCollections in Frameworks */,
-				51B553752C53FFF00053D6D4 /* BlueTriangle in Frameworks */,
+				515641DA2C6255FC0095E586 /* BlueTriangle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -244,7 +244,7 @@
 			files = (
 				C9E1141A291421F00031E874 /* IdentifiedCollections in Frameworks */,
 				C94BF015290AE2FC007E1C25 /* Service in Frameworks */,
-				51B553772C54000C0053D6D4 /* BlueTriangle in Frameworks */,
+				515641DC2C6256190095E586 /* BlueTriangle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -585,7 +585,7 @@
 			packageProductDependencies = (
 				84A03BEA2A49DE16000C8BD0 /* Service */,
 				84A03BEC2A49DE16000C8BD0 /* IdentifiedCollections */,
-				51B553742C53FFF00053D6D4 /* BlueTriangle */,
+				515641D92C6255FC0095E586 /* BlueTriangle */,
 			);
 			productName = "Example-UIKit";
 			productReference = 847CF43C2A4315D7001E9011 /* Example-UIKit.app */;
@@ -607,7 +607,7 @@
 			packageProductDependencies = (
 				C94BF014290AE2FC007E1C25 /* Service */,
 				C9E11419291421F00031E874 /* IdentifiedCollections */,
-				51B553762C54000C0053D6D4 /* BlueTriangle */,
+				515641DB2C6256190095E586 /* BlueTriangle */,
 			);
 			productName = "Example-SwiftUI";
 			productReference = C9F4A4122900DB6100BCDF3E /* Example-SwiftUI.app */;
@@ -687,7 +687,7 @@
 			mainGroup = C9F4A4092900DB6100BCDF3E;
 			packageReferences = (
 				C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
-				51B553732C53FFF00053D6D4 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */,
+				515641D82C6255FB0095E586 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */,
 			);
 			productRefGroup = C9F4A4132900DB6100BCDF3E /* Products */;
 			projectDirPath = "";
@@ -1296,12 +1296,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		51B553732C53FFF00053D6D4 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */ = {
+		515641D82C6255FB0095E586 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/blue-triangle-tech/btt-swift-sdk.git";
+			repositoryURL = "https://github.com/JP-aloha/btt-swift-sdk.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.9.1;
+				branch = "bugfix/page-type-issue";
+				kind = branch;
 			};
 		};
 		C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */ = {
@@ -1315,14 +1315,14 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		51B553742C53FFF00053D6D4 /* BlueTriangle */ = {
+		515641D92C6255FC0095E586 /* BlueTriangle */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 51B553732C53FFF00053D6D4 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
+			package = 515641D82C6255FB0095E586 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
 			productName = BlueTriangle;
 		};
-		51B553762C54000C0053D6D4 /* BlueTriangle */ = {
+		515641DB2C6256190095E586 /* BlueTriangle */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 51B553732C53FFF00053D6D4 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
+			package = 515641D82C6255FB0095E586 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
 			productName = BlueTriangle;
 		};
 		84A03BEA2A49DE16000C8BD0 /* Service */ = {
