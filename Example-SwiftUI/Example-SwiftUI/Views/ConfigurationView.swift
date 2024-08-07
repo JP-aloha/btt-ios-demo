@@ -77,7 +77,7 @@ struct ConfigurationView: View {
                             .disabled(vm.isConfigDefault)
                             .onChange(of: self.vm.isPerfomanceMonitor, perform: { value in
                                 vm.updatePerfomanceMonitorConfig(value)
-                            }).accessibilityIdentifier("switch_network_monitor")
+                            }).accessibilityIdentifier("switch_performance_monitor")
                     }
                 }
                 .frame(height: 30)
@@ -143,7 +143,7 @@ struct ConfigurationView: View {
                             .disabled(vm.isConfigDefault)
                             .onChange(of: self.vm.isNetworkSampleRate, perform: { value in
                                 vm.updateNetworkSampleRate(value)
-                            }).accessibilityIdentifier("switch_network_sample_rate")
+                            }).accessibilityIdentifier("switch_network_capture")
                     }
                 }
                 .frame(height: 30)

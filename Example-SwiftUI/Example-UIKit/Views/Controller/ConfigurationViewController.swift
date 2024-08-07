@@ -50,13 +50,13 @@ class ConfigurationViewController: UIViewController {
         switchMemoryWorning.accessibilityIdentifier = "switch_memory_warning"
         
         switchNetworkMonitor.isOn = vm.isPerfomanceMonitor
-        switchNetworkMonitor.accessibilityIdentifier = "switch_network_monitor"
+        switchNetworkMonitor.accessibilityIdentifier = "switch_performance_monitor"
         
         switchCrash.isOn = vm.isCrashTracking
         switchCrash.accessibilityIdentifier = "switch_crash"
         
         switchNetworkSampleRate.isOn = vm.isNetworkSampleRate
-        switchNetworkSampleRate.accessibilityIdentifier = "switch_network_sample_rate"
+        switchNetworkSampleRate.accessibilityIdentifier = "switch_network_capture"
         
         switchNetworkState.isOn = vm.isNetworkState
         switchNetworkState.accessibilityIdentifier = "switch_network_state"
