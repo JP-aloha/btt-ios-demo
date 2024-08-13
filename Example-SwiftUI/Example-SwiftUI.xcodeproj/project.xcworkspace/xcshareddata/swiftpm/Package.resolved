@@ -3,10 +3,10 @@
     {
       "identity" : "btt-swift-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
+      "location" : "https://github.com/blue-triangle-tech/btt-swift-sdk.git",
       "state" : {
-        "branch" : "bugfix/page-type-issue",
-        "revision" : "01c030c0d2d2c609a612d01a5ea16b8a9e03c400"
+        "revision" : "a0ffc5eab1bbbaf1777e0fb74267cf2cc5e194bc",
+        "version" : "3.9.2"
       }
     },
     {

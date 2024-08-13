@@ -876,6 +876,7 @@
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
+                                                    <outlet property="btnRemove" destination="awz-hJ-aKJ" id="xfJ-7H-xd6"/>
                                                     <outlet property="counter" destination="R03-nk-n1C" id="AA4-Ab-gAv"/>
                                                     <outlet property="productImg" destination="jnd-av-RnG" id="i04-7o-9Ad"/>
                                                     <outlet property="productPrice" destination="fde-d4-TT7" id="0me-3J-DhW"/>
@@ -2664,32 +2665,32 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cart" catalog="system" width="128" height="102"/>
-        <image name="cart.fill" catalog="system" width="128" height="102"/>
-        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="cart" catalog="system" width="32" height="32"/>
+        <image name="cart.fill" catalog="system" width="32" height="32"/>
+        <image name="chevron.backward" catalog="system" width="32" height="32"/>
         <image name="clothes" width="512" height="512"/>
         <image name="cross" width="32" height="32"/>
-        <image name="gearshape" catalog="system" width="128" height="123"/>
-        <image name="gearshape.fill" catalog="system" width="128" height="123"/>
+        <image name="gearshape" catalog="system" width="32" height="32"/>
+        <image name="gearshape.fill" catalog="system" width="32" height="32"/>
         <image name="question" width="32" height="32"/>
         <image name="settingAppIcon" width="512" height="512"/>
-        <image name="square.grid.2x2" catalog="system" width="128" height="114"/>
-        <image name="square.grid.2x2.fill" catalog="system" width="128" height="114"/>
-        <image name="trash" catalog="system" width="117" height="128"/>
+        <image name="square.grid.2x2" catalog="system" width="32" height="32"/>
+        <image name="square.grid.2x2.fill" catalog="system" width="32" height="32"/>
+        <image name="trash" catalog="system" width="32" height="32"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.68235294120000001" green="0.68235294120000001" blue="0.69803921570000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

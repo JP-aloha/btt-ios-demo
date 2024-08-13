@@ -38,6 +38,7 @@ struct CartItemRow: View {
                         Image(systemName: "trash")
                             .tint(.red)
                     }
+                    .accessibilityIdentifier("btn_remove")
                     .frame(width: 40, height: 40)
                 }
 
