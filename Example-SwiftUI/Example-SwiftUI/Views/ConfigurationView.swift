@@ -21,7 +21,7 @@ struct ConfigurationView: View {
                     HStack{
                         Button("Cancel") {
                             isConfigurationActive = false
-                        }
+                        }.accessibilityIdentifier("configure_cancel")
                         Spacer()
                         Text("Configuration")
                             .font(Font.system(size: 18, weight: .regular))
@@ -30,7 +30,7 @@ struct ConfigurationView: View {
                         Button("Apply") {
                             vm.applyChanges()
                             exit(0)
-                        }
+                        }.accessibilityIdentifier("configure_apply")
                     }
                 }
                 .frame(height: 50)
@@ -45,7 +45,7 @@ struct ConfigurationView: View {
                         Toggle("", isOn: $vm.isConfigDefault)
                             .onChange(of: self.vm.isConfigDefault, perform: { value in
                                 vm.updateDefaultConfig(value)
-                            })
+                            }).accessibilityIdentifier("switch_default")
                     }
                 }
                 .frame(height: 100)
@@ -61,7 +61,7 @@ struct ConfigurationView: View {
                             .disabled(vm.isConfigDefault)
                             .onChange(of: self.vm.isScreenTracking, perform: { value in
                                 vm.updateScreenTrackingConfig(value)
-                            })
+                            }).accessibilityIdentifier("switch_screen_tracking")
                     }
                 }
                 .frame(height: 30)
@@ -77,7 +77,7 @@ struct ConfigurationView: View {
                             .disabled(vm.isConfigDefault)
                             .onChange(of: self.vm.isPerfomanceMonitor, perform: { value in
                                 vm.updatePerfomanceMonitorConfig(value)
-                            })
+                            }).accessibilityIdentifier("switch_performance_monitor")
                     }
                 }
                 .frame(height: 30)
@@ -94,7 +94,7 @@ struct ConfigurationView: View {
                             .disabled(vm.isConfigDefault)
                             .onChange(of: self.vm.isCrashTracking, perform: { value in
                                 vm.updateCrash(value)
-                            })
+                            }).accessibilityIdentifier("switch_crash")
                     }
                 }
                 .frame(height: 30)
@@ -110,7 +110,7 @@ struct ConfigurationView: View {
                             .disabled(vm.isConfigDefault)
                             .onChange(of: self.vm.isANR, perform: { value in
                                 vm.updateANRConfig(value)
-                            })
+                            }).accessibilityIdentifier("switch_ANR")
                     }
                 }
                 .frame(height: 30)
@@ -126,13 +126,12 @@ struct ConfigurationView: View {
                             .disabled(vm.isConfigDefault)
                             .onChange(of: self.vm.isMemoryWarning, perform: { value in
                                 vm.updateMemoryWarningConfig(value)
-                            })
+                            }).accessibilityIdentifier("switch_memory_warning")
                     }
                 }
                 .frame(height: 30)
 
 
-                
                 VStack{
                     HStack{
                         Text("Network Capturing")
@@ -144,7 +143,7 @@ struct ConfigurationView: View {
                             .disabled(vm.isConfigDefault)
                             .onChange(of: self.vm.isNetworkSampleRate, perform: { value in
                                 vm.updateNetworkSampleRate(value)
-                            })
+                            }).accessibilityIdentifier("switch_network_capture")
                     }
                 }
                 .frame(height: 30)
@@ -160,7 +159,7 @@ struct ConfigurationView: View {
                             .disabled(vm.isConfigDefault)
                             .onChange(of: self.vm.isNetworkState, perform: { value in
                                 vm.updateNetworkState(value)
-                            })
+                            }).accessibilityIdentifier("switch_network_state")
                     }
                 }
                 .frame(height: 30)
@@ -176,7 +175,7 @@ struct ConfigurationView: View {
                             .disabled(vm.isConfigDefault)
                             .onChange(of: self.vm.isLaunchTime, perform: { value in
                                 vm.updateLaunchTime(value)
-                            })
+                            }).accessibilityIdentifier("switch_launch_time")
                     }
                 }
                 .frame(height: 30)
@@ -194,7 +193,7 @@ struct ConfigurationView: View {
                         Toggle("", isOn: $vm.isConfigOnLaunchTime)
                             .onChange(of: self.vm.isConfigOnLaunchTime, perform: { value in
                                 vm.updateConfigOnLaunch(value)
-                            })
+                            }).accessibilityIdentifier("switch_config_on_launch")
                     }
                 }
                 .frame(height: 30)
@@ -209,7 +208,7 @@ struct ConfigurationView: View {
                         Toggle("", isOn: $vm.isAddDelayKey)
                             .onChange(of: self.vm.isAddDelayKey, perform: { value in
                                 vm.updateAddDelay(value)
-                            })
+                            }).accessibilityIdentifier("switch_add_delay")
                     }
                 }
                 .frame(height: 30)

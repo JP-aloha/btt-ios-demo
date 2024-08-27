@@ -19,6 +19,7 @@ class CartItemTableViewCell: UITableViewCell {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productQty: UILabel!    
     @IBOutlet weak var counter: UIStepper!
+    @IBOutlet weak var btnRemove: UIButton!
     
     weak var delegate: CartItemTVCDelegate?
     
@@ -43,6 +44,7 @@ class CartItemTableViewCell: UITableViewCell {
         self.productTitle.text = data.product.name
         self.productQty.text = "\(data.quantity)"
         self.productPrice.text = "$\(data.price.roundedToPlaces())"
+        self.btnRemove.accessibilityIdentifier = "btn_remove"
         DispatchQueue.global().async {
             do {
                 let data = try Data(contentsOf: data.product.image)
