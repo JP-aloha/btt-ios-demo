@@ -28,6 +28,7 @@ struct Example_SwiftUIApp: App {
         .onChange(of: scenePhase) { phase in
             switch phase {
             case .active:
+                ConfigurationSetup.updateSessionId()
                 ConfigurationSetup.addDelay()
             case .background:
                 print("In Background")

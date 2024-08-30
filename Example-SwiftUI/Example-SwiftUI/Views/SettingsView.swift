@@ -14,6 +14,7 @@ struct SettingsView: View {
     @State private var showingAlert = false
     @State private var showModal = false
     @State private var presentHybridDemo = false
+    @State private var sessionID = ""
     @State private var tagUrl = "\(Secrets.siteID).btttag.com/btt.js"
     
     var body: some View {
@@ -110,7 +111,7 @@ struct SettingsView: View {
                         }
                         
                         HStack{
-                            Text(vm.configureSessionId)
+                            Text(sessionID)
                                 .font(Font.system(size: 18, weight: .regular))
                                 .foregroundColor(.gray)
                                 .accessibilityIdentifier("btt session id")
@@ -233,6 +234,9 @@ struct SettingsView: View {
             .onAppear{
                 Thread.sleep(forTimeInterval: 3)
             }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            sessionID = "\(vm.configureSessionId)"
         }
         
     }

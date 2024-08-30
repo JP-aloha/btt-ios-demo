@@ -7,6 +7,7 @@
 
 import BlueTriangle
 import Foundation
+import UIKit
 
 class ConfigurationSetup {
 
@@ -70,6 +71,12 @@ class ConfigurationSetup {
         UserDefaults.standard.set(sessionId, forKey: UserDefaultKeys.ConfigureSessionId)
         UserDefaults.standard.synchronize()
     }
+    
+    static func updateSessionId(){
+        let sessionId = "\(BlueTriangle.sessionID)"
+        UserDefaults.standard.set(sessionId, forKey: UserDefaultKeys.ConfigureSessionId)
+        UserDefaults.standard.synchronize()
+    }
 
     static func addDelay(){
         let isDelay = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigAddDelayKey)
@@ -100,18 +107,30 @@ class SessionStore {
     private static let sessionKey = "SAVED_SESSION_DATA"
     
     static func updateSessionExpiry(){
-        Timer.scheduledTimer(withTimeInterval: 2.0, repeats: false) { _ in
+        
+        var backgroundTask: UIBackgroundTaskIdentifier = .invalid
+           
+           backgroundTask = UIApplication.shared.beginBackgroundTask {
+               UIApplication.shared.endBackgroundTask(backgroundTask)
+               backgroundTask = .invalid
+           }
+        
+        DispatchQueue.global().asyncAfter(deadline: .now() + 2.0) {
             if let session = retrieveSessionData() {
                 session.expiration = expiryDuration()
                 self.saveSession(session)
-                print("Save session: \(session.sessionID)---\(session.expiration)")
+                NSLog("Save session: \(session.sessionID)---\(session.expiration)")
             }
+            
+            UIApplication.shared.endBackgroundTask(backgroundTask)
+            backgroundTask = .invalid
         }
     }
     
     private static func saveSession(_ session: SessionData) {
         if let encoded = try? JSONEncoder().encode(session) {
             UserDefaults.standard.set(encoded, forKey: sessionKey)
+            UserDefaults.standard.synchronize()
         }
     }
     

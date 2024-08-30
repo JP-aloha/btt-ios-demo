@@ -26,6 +26,10 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         lblSessionId.text =  UserDefaults.standard.string(forKey: UserDefaultKeys.ConfigureSessionId) ?? ""
         lblSessionId.accessibilityIdentifier = "sessionid"
         
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
+            self?.lblSessionId.text =  UserDefaults.standard.string(forKey: UserDefaultKeys.ConfigureSessionId) ?? "Auto Generated"
+        }
+        
         loadData()
     }
     

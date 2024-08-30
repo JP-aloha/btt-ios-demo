@@ -39,6 +39,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneWillEnterForeground(_ scene: UIScene) {
+        ConfigurationSetup.updateSessionId()
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {

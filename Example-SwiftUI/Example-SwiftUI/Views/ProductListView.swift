@@ -16,6 +16,7 @@ struct ProductListView: View {
 
     @ObservedObject var viewModel: ProductListViewModel
     @State var  timer : BTTimer?
+    @State private var sessionID = ""
 
     init(viewModel: ProductListViewModel) {
         self.viewModel = viewModel
@@ -86,7 +87,7 @@ struct ProductListView: View {
                 HStack{
                     Text("SessionID :")
                         .font(Font.system(size: 16, weight: .medium))
-                    Text("\(viewModel.configureSessionId)")
+                    Text("\(sessionID)")
                         .font(Font.system(size: 16, weight: .regular))
                         .accessibilityIdentifier("sessionid")
                 }
@@ -95,6 +96,9 @@ struct ProductListView: View {
             }
         }
         .errorAlert(error: $viewModel.error)
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            sessionID = "\(viewModel.configureSessionId)"
+        }
     }
 }
 

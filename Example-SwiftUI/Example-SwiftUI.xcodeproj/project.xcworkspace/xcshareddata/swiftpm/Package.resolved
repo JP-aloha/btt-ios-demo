@@ -6,7 +6,7 @@
       "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
       "state" : {
         "branch" : "feature/session-expiration",
-        "revision" : "eb8fd424fd9bcf3d9b07e3e0cfa82787a1ebd30d"
+        "revision" : "2562c2ebd4d2798902bf8d60b76751ba2c1351e5"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections",
       "state" : {
-        "revision" : "3d2dc41a01f9e49d84f0a3925fb858bed64f702d",
-        "version" : "1.1.2"
+        "revision" : "9bf03ff58ce34478e66aaee630e491823326fd06",
+        "version" : "1.1.3"
       }
     },
     {
