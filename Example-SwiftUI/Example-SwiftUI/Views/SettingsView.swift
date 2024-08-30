@@ -235,8 +235,15 @@ struct SettingsView: View {
                 Thread.sleep(forTimeInterval: 3)
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                sessionID = "\(BlueTriangle.sessionID)"
+            }
+        }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            sessionID = "\(vm.configureSessionId)"
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                sessionID = "\(BlueTriangle.sessionID)"
+            }
         }
         
     }

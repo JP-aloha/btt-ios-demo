@@ -30,6 +30,7 @@ struct Example_SwiftUIApp: App {
             case .active:
                 ConfigurationSetup.updateSessionId()
                 ConfigurationSetup.addDelay()
+                print("Active")
             case .background:
                 print("In Background")
                 SessionStore.updateSessionExpiry()

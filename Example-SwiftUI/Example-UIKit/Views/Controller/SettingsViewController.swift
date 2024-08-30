@@ -41,8 +41,15 @@ class SettingsViewController: UIViewController {
         btnConfigurationSettings.accessibilityIdentifier = "btn_configuration_settings"
         // Do any additional setup after loading the view.
         
+        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                self?.lblSessionId.text =  "\(BlueTriangle.sessionID)"
+            }
+        }
         NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
-            self?.lblSessionId.text =  UserDefaults.standard.string(forKey: UserDefaultKeys.ConfigureSessionId) ?? "Auto Generated"
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                self?.lblSessionId.text =  "\(BlueTriangle.sessionID)"
+            }
         }
     }
     

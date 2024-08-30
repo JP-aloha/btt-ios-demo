@@ -96,8 +96,15 @@ struct ProductListView: View {
             }
         }
         .errorAlert(error: $viewModel.error)
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                sessionID = "\(BlueTriangle.sessionID)"
+            }
+        }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
-            sessionID = "\(viewModel.configureSessionId)"
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                sessionID = "\(BlueTriangle.sessionID)"
+            }
         }
     }
 }
