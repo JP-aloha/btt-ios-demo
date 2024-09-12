@@ -28,12 +28,16 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
-                self?.lblSessionId.text =   "\(BlueTriangle.sessionID)"
+                if let sessionId = ConfigurationSetup.getSessionId() {
+                    sessionID = sessionId
+                }
             }
         }
         NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
-                self?.lblSessionId.text =   "\(BlueTriangle.sessionID)"
+                if let sessionId = ConfigurationSetup.getSessionId() {
+                    sessionID = sessionId
+                }
             }
         }
         

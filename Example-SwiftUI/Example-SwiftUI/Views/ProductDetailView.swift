@@ -7,6 +7,7 @@
 
 import Service
 import SwiftUI
+import BlueTriangle
 
 struct ProductDetailView: View {
     @ObservedObject var viewModel: ProductDetailViewModel

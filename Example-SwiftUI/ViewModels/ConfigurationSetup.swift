@@ -16,6 +16,9 @@ class ConfigurationSetup {
         let isCofigOnLaunchTime = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigOnLaunchTimeKey)
         if isCofigOnLaunchTime {
             configure()
+        }else{
+            UserDefaults.standard.removeObject(forKey: UserDefaultKeys.ConfigureSessionId)
+            UserDefaults.standard.synchronize()
         }
     }
     
@@ -49,21 +52,24 @@ class ConfigurationSetup {
         UserDefaults.standard.set(enableAnrStackTrace, forKey: UserDefaultKeys.ANRStackTraceKey)
 
         
-        BlueTriangle.configure { config in
-            config.siteID = siteId
-            config.enableDebugLogging = enableDebugLogging
-            if !isDefaultSetting {
-                config.networkSampleRate = isNetworkSampleRate ? 1.0 : 0.00
-                config.crashTracking = isCrashTracking ? .nsException : .none
-                config.enableScreenTracking = enableScreenTracking
-                config.ANRMonitoring = anrMonitoring
-                config.ANRStackTrace = enableAnrStackTrace
-                config.enableMemoryWarning = enableMemoryWarning
-                config.enableTrackingNetworkState = isNetworkState
-                config.isPerformanceMonitorEnabled = isPerformanceMonitor
-                config.cacheMemoryLimit = 20 * 1024
-                config.cacheExpiryDuration = 5 * 60 * 1000
-                config.enableLaunchTime = isLaunchTime
+        if !BlueTriangle.initialized {
+            
+            BlueTriangle.configure { config in
+                config.siteID = siteId
+                config.enableDebugLogging = enableDebugLogging
+                if !isDefaultSetting {
+                    config.networkSampleRate = isNetworkSampleRate ? 1.0 : 0.00
+                    config.crashTracking = isCrashTracking ? .nsException : .none
+                    config.enableScreenTracking = enableScreenTracking
+                    config.ANRMonitoring = anrMonitoring
+                    config.ANRStackTrace = enableAnrStackTrace
+                    config.enableMemoryWarning = enableMemoryWarning
+                    config.enableTrackingNetworkState = isNetworkState
+                    config.isPerformanceMonitorEnabled = isPerformanceMonitor
+                    config.cacheMemoryLimit = 20 * 1024
+                    config.cacheExpiryDuration = 5 * 60 * 1000
+                    config.enableLaunchTime = isLaunchTime
+                }
             }
         }
         
@@ -72,10 +78,16 @@ class ConfigurationSetup {
         UserDefaults.standard.synchronize()
     }
     
+    static func getSessionId() -> String?{
+       let configureSessionId : String? = UserDefaults.standard.string(forKey: UserDefaultKeys.ConfigureSessionId)
+        return nil
+    }
+    
     static func updateSessionId(){
-        let sessionId = "\(BlueTriangle.sessionID)"
-        UserDefaults.standard.set(sessionId, forKey: UserDefaultKeys.ConfigureSessionId)
-        UserDefaults.standard.synchronize()
+        if let sessionId = getSessionId() {
+            UserDefaults.standard.set(sessionId, forKey: UserDefaultKeys.ConfigureSessionId)
+            UserDefaults.standard.synchronize()
+        }
     }
 
     static func addDelay(){

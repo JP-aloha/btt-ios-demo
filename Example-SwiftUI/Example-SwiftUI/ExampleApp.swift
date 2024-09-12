@@ -33,7 +33,7 @@ struct Example_SwiftUIApp: App {
                 print("Active")
             case .background:
                 print("In Background")
-                SessionStore.updateSessionExpiry()
+               //SessionStore.updateSessionExpiry()
             case .inactive:
                 print("Inactive")
             @unknown default: break
