@@ -80,7 +80,7 @@ class ConfigurationSetup {
     
     static func getSessionId() -> String?{
        let configureSessionId : String? = UserDefaults.standard.string(forKey: UserDefaultKeys.ConfigureSessionId)
-        return nil
+        return configureSessionId
     }
     
     static func updateSessionId(){
