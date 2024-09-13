@@ -44,6 +44,13 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         loadData()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let sessionId = ConfigurationSetup.getSessionId() {
+            self.lblSessionId.text =  sessionId
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)

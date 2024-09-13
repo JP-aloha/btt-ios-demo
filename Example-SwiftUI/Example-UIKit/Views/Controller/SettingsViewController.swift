@@ -57,6 +57,13 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let sessionId = ConfigurationSetup.getSessionId() {
+            self.lblSessionId.text =  sessionId
+        }
+    }
+    
     @IBAction func btnTestManualTimer(_ sender: UIButton) {
         
         if BlueTriangle.initialized {

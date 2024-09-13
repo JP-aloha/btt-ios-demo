@@ -233,6 +233,10 @@ struct SettingsView: View {
             })
             .onAppear{
                 Thread.sleep(forTimeInterval: 3)
+                
+                if let sessionId = ConfigurationSetup.getSessionId() {
+                    sessionID = sessionId
+                }
             }
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in

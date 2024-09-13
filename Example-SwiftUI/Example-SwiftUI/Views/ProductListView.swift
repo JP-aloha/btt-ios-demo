@@ -69,6 +69,9 @@ struct ProductListView: View {
                             page: Page(
                                 pageName: "ProductListView Mannual Tracking"))
                     }
+                    if let sessionId = ConfigurationSetup.getSessionId() {
+                        sessionID = sessionId
+                    }
                 }
                 .onDisappear {
                     let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
