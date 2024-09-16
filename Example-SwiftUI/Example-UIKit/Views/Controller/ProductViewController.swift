@@ -46,6 +46,12 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
+        if isScreenTracking, BlueTriangle.initialized{
+            self.timer = BlueTriangle.startTimer(
+                page: Page(
+                    pageName: "ProductViewController Mannual Tracking"))
+        }
         if let sessionId = ConfigurationSetup.getSessionId() {
             self.lblSessionId.text =  sessionId
         }
@@ -53,12 +59,6 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
-        if isScreenTracking, BlueTriangle.initialized{
-            self.timer = BlueTriangle.startTimer(
-                page: Page(
-                    pageName: "ProductViewController Mannual Tracking"))
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
