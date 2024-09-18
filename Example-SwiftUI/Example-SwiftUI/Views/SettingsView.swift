@@ -233,7 +233,7 @@ struct SettingsView: View {
             })
             .onAppear{
                 Thread.sleep(forTimeInterval: 3)
-                
+                ConfigurationSetup.updateChangedSassionId()
                 if let sessionId = ConfigurationSetup.getSessionId() {
                     sessionID = sessionId
                 }
@@ -241,6 +241,7 @@ struct SettingsView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                ConfigurationSetup.updateChangedSassionId()
                 if let sessionId = ConfigurationSetup.getSessionId() {
                     sessionID = sessionId
                 }
@@ -248,6 +249,7 @@ struct SettingsView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                ConfigurationSetup.updateChangedSassionId()
                 if let sessionId = ConfigurationSetup.getSessionId() {
                     sessionID = sessionId
                 }

@@ -43,6 +43,7 @@ class SettingsViewController: UIViewController {
         
         NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                ConfigurationSetup.updateChangedSassionId()
                 if let sessionId = ConfigurationSetup.getSessionId() {
                     self?.lblSessionId.text =  sessionId
                 }
@@ -50,6 +51,7 @@ class SettingsViewController: UIViewController {
         }
         NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                ConfigurationSetup.updateChangedSassionId()
                 if let sessionId = ConfigurationSetup.getSessionId() {
                     self?.lblSessionId.text =  sessionId
                 }
@@ -59,6 +61,7 @@ class SettingsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        ConfigurationSetup.updateChangedSassionId()
         if let sessionId = ConfigurationSetup.getSessionId() {
             self.lblSessionId.text =  sessionId
         }

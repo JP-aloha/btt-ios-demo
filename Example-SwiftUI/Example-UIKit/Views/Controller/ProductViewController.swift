@@ -52,6 +52,7 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
                 page: Page(
                     pageName: "ProductViewController Mannual Tracking"))
         }
+        ConfigurationSetup.updateChangedSassionId()
         if let sessionId = ConfigurationSetup.getSessionId() {
             self.lblSessionId.text =  sessionId
         }

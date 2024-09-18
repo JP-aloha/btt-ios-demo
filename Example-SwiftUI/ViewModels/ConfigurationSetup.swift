@@ -73,9 +73,15 @@ class ConfigurationSetup {
             }
         }
         
-        let sessionId = "\(BlueTriangle.sessionID)"
-        UserDefaults.standard.set(sessionId, forKey: UserDefaultKeys.ConfigureSessionId)
-        UserDefaults.standard.synchronize()
+        self.updateChangedSassionId()
+    }
+    
+    static func updateChangedSassionId(){
+        if BlueTriangle.initialized {
+            let sessionId = "\(BlueTriangle.sessionID)"
+            UserDefaults.standard.set(sessionId, forKey: UserDefaultKeys.ConfigureSessionId)
+            UserDefaults.standard.synchronize()
+        }
     }
     
     static func getSessionId() -> String?{

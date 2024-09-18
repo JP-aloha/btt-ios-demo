@@ -69,6 +69,7 @@ struct ProductListView: View {
                             page: Page(
                                 pageName: "ProductListView Mannual Tracking"))
                     }
+                    ConfigurationSetup.updateChangedSassionId()
                     if let sessionId = ConfigurationSetup.getSessionId() {
                         sessionID = sessionId
                     }
@@ -101,6 +102,7 @@ struct ProductListView: View {
         .errorAlert(error: $viewModel.error)
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                ConfigurationSetup.updateChangedSassionId()
                 if let sessionId = ConfigurationSetup.getSessionId() {
                     sessionID = sessionId
                 }
@@ -108,7 +110,7 @@ struct ProductListView: View {
         }
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
-                
+                ConfigurationSetup.updateChangedSassionId()
                 if let sessionId = ConfigurationSetup.getSessionId() {
                     sessionID = sessionId
                 }
