@@ -44,9 +44,6 @@ class BTTConfigModel: ObservableObject {
             
             BlueTriangle.configure { config in
                 config.siteID = txtSiteId
-                if identifierSessionId > 0{
-                    config.sessionID = identifierSessionId
-                }
                 config.networkSampleRate = 1.0
                 config.enableDebugLogging = true
                 config.crashTracking = .nsException

@@ -26,17 +26,40 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         lblSessionId.text =  UserDefaults.standard.string(forKey: UserDefaultKeys.ConfigureSessionId) ?? ""
         lblSessionId.accessibilityIdentifier = "sessionid"
         
+        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                if let sessionId = ConfigurationSetup.getSessionId() {
+                    self?.lblSessionId.text = sessionId
+                }
+            }
+        }
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                if let sessionId = ConfigurationSetup.getSessionId() {
+                    self?.lblSessionId.text = sessionId
+                }
+            }
+        }
+        
         loadData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
         if isScreenTracking, BlueTriangle.initialized{
             self.timer = BlueTriangle.startTimer(
                 page: Page(
                     pageName: "ProductViewController Mannual Tracking"))
         }
+        ConfigurationSetup.updateChangedSassionId()
+        if let sessionId = ConfigurationSetup.getSessionId() {
+            self.lblSessionId.text =  sessionId
+        }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

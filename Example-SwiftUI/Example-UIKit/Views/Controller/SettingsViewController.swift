@@ -40,6 +40,31 @@ class SettingsViewController: UIViewController {
         lblSessionId.accessibilityIdentifier = "btt session id"
         btnConfigurationSettings.accessibilityIdentifier = "btn_configuration_settings"
         // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                ConfigurationSetup.updateChangedSassionId()
+                if let sessionId = ConfigurationSetup.getSessionId() {
+                    self?.lblSessionId.text =  sessionId
+                }
+            }
+        }
+        NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: .main) { [weak self] _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                ConfigurationSetup.updateChangedSassionId()
+                if let sessionId = ConfigurationSetup.getSessionId() {
+                    self?.lblSessionId.text =  sessionId
+                }
+            }
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        ConfigurationSetup.updateChangedSassionId()
+        if let sessionId = ConfigurationSetup.getSessionId() {
+            self.lblSessionId.text =  sessionId
+        }
     }
     
     @IBAction func btnTestManualTimer(_ sender: UIButton) {

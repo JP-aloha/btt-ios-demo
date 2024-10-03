@@ -16,6 +16,7 @@ struct ProductListView: View {
 
     @ObservedObject var viewModel: ProductListViewModel
     @State var  timer : BTTimer?
+    @State private var sessionID = ""
 
     init(viewModel: ProductListViewModel) {
         self.viewModel = viewModel
@@ -68,6 +69,10 @@ struct ProductListView: View {
                             page: Page(
                                 pageName: "ProductListView Mannual Tracking"))
                     }
+                    ConfigurationSetup.updateChangedSassionId()
+                    if let sessionId = ConfigurationSetup.getSessionId() {
+                        sessionID = sessionId
+                    }
                 }
                 .onDisappear {
                     let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
@@ -86,7 +91,7 @@ struct ProductListView: View {
                 HStack{
                     Text("SessionID :")
                         .font(Font.system(size: 16, weight: .medium))
-                    Text("\(viewModel.configureSessionId)")
+                    Text("\(sessionID)")
                         .font(Font.system(size: 16, weight: .regular))
                         .accessibilityIdentifier("sessionid")
                 }
@@ -95,6 +100,22 @@ struct ProductListView: View {
             }
         }
         .errorAlert(error: $viewModel.error)
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                ConfigurationSetup.updateChangedSassionId()
+                if let sessionId = ConfigurationSetup.getSessionId() {
+                    sessionID = sessionId
+                }
+            }
+        }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.didBecomeActiveNotification)) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
+                ConfigurationSetup.updateChangedSassionId()
+                if let sessionId = ConfigurationSetup.getSessionId() {
+                    sessionID = sessionId
+                }
+            }
+        }
     }
 }
 

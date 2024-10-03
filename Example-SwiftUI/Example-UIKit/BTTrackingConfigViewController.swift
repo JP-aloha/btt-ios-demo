@@ -53,9 +53,6 @@ class BTTrackingConfigViewController: UIViewController {
         
         BlueTriangle.configure { config in
             config.siteID = siteId
-            if identifierSessionId > 0{
-                config.sessionID = identifierSessionId
-            }
             config.networkSampleRate = 1.0
             config.crashTracking = .nsException
             config.enableDebugLogging = true

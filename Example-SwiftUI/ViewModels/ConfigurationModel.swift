@@ -161,7 +161,8 @@ final class ConfigurationModel: ObservableObject {
        
         let hasAppLaunchedBefore = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.HasAppLaunchedBefore)
         if !hasAppLaunchedBefore {
-            UserDefaults.standard.setValue(true, forKey: ConfigUserDefaultKeys.ConfigDefaultKey)
+            UserDefaults.standard.setValue(false, forKey: ConfigUserDefaultKeys.ConfigDefaultKey)
+           // UserDefaults.standard.setValue(true, forKey: ConfigUserDefaultKeys.ConfigDefaultKey)
             UserDefaults.standard.setValue(true, forKey: ConfigUserDefaultKeys.ConfigANRKey)
             UserDefaults.standard.setValue(true, forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
             UserDefaults.standard.setValue(true, forKey: ConfigUserDefaultKeys.ConfigMemoryWarningKey)
