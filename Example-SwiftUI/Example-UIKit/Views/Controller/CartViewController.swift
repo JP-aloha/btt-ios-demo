@@ -67,7 +67,11 @@ class CartViewController: UIViewController {
     }
     
     @IBAction func didSelectUserInfo(_ sender: UIButton) {
-
+		let storyboard = UIStoryboard(name: "Main", bundle: nil)
+		if let loginVc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+			loginVc.modalPresentationStyle = .fullScreen
+			self.present(loginVc, animated: true)
+		}
     }
     
     @IBAction func btnActionCheckOut(_ sender: UIButton) {

@@ -10,7 +10,6 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var vm: SettingsViewModel
-    @ObservedObject var userModel: UserViewModel
     @State var isUnitTestsActive : Bool = false
     @State private var showingAlert = false
     @State private var showModal = false
@@ -224,7 +223,6 @@ struct SettingsView: View {
             }
             .padding(.leading, 15)
             .padding(.trailing, 15)
-            .navigationTitle("Settings")
             .bttTrackScreen("SettingsView")
             .fullScreenCover(isPresented: $showModal, content: {
                 ConfigurationView(isConfigurationActive: $showModal, vm: ConfigurationModel())
@@ -269,6 +267,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(vm: .init(), userModel: UserViewModel())
+        SettingsView(vm: .init())
     }
 }

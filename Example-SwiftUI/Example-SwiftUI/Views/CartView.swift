@@ -13,14 +13,12 @@ import Service
 struct CartView: View {
     private let imageLoader: ImageLoader
     @ObservedObject var viewModel: CartViewModel
-    @ObservedObject var userModel: UserViewModel
     @State var didPlaceOrder = false
     @State var  timer : BTTimer?
    
-    init(imageLoader: ImageLoader, viewModel: CartViewModel, userModel : UserViewModel ) {
+    init(imageLoader: ImageLoader, viewModel: CartViewModel) {
         self.imageLoader = imageLoader
         self.viewModel = viewModel
-        self.userModel = userModel
     }
 
     var body: some View {
@@ -74,7 +72,6 @@ struct CartView: View {
             .alert("Detected memory warning.", isPresented: $viewModel.isMemoryWarning) {
                 Button("OK", role: .cancel) { }
             }
-            .navigationTitle("Cart")
         }
         .errorAlert(error: $viewModel.error)
     }
@@ -138,6 +135,6 @@ struct CartView_Previews: PreviewProvider {
             viewModel: .init(
                 service: .mock,
                 cartRepository: .mock
-            ), userModel: UserViewModel())
+            ))
     }
 }

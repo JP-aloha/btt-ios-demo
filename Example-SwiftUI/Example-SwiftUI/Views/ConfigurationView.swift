@@ -15,6 +15,7 @@ struct ConfigurationView: View {
     
     var body: some View {
         HStack{
+			/*
             VStack(spacing: 10) {
                 
                 VStack{
@@ -217,6 +218,7 @@ struct ConfigurationView: View {
             }
             .padding(.leading, 10)
             .padding(.trailing, 10)
+			 */
         }
         //.alert(isPresented: $showConfirm, content: { confirmChange })
     }
@@ -232,6 +234,8 @@ struct ConfigurationView: View {
     }
 }
 
-#Preview {
-    ConfigurationView(isConfigurationActive: .constant(true), vm: ConfigurationModel())
-}
+/*
+ #Preview {
+ ConfigurationView(isConfigurationActive: .constant(true), vm: ConfigurationModel())
+ }
+ */

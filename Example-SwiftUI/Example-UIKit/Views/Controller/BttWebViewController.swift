@@ -17,11 +17,13 @@ class BttWebViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		/*
         if #available(iOS 16.4, *) {
             webView.isInspectable = true
         } else {
             // Fallback on earlier versions
         }
+		 */
         webView.navigationDelegate = self
         webView.configuration.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
         loadWebView()

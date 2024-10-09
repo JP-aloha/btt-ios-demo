@@ -13,15 +13,16 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var segment : UISegmentedControl!
     @IBOutlet weak var txtUserName : UITextField!
     @IBOutlet weak var txtPassword : UITextField!
-     var userModel : UserViewModel?
+	private var userModel: UserViewModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+		self.userModel = UserViewModel()
         self.loadLoginValue()
     }
     
     private func loadLoginValue(){
-        if let model = userModel, let user = model.loggedInUser(){
+		if let model = self.userModel, let user = model.loggedInUser(){
             txtUserName.text = user.name
             txtPassword.text = user.pass
             segment.selectedSegmentIndex = user.isPremium
@@ -38,7 +39,7 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func didSelectLogout(_ sender: UIButton) {
-        if let model = userModel{
+        if let model = userModel {
             model.logOut()
         }
         self.dismiss(animated: false)

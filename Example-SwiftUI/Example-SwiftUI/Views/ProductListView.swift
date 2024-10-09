@@ -17,13 +17,6 @@ struct ProductListView: View {
     @ObservedObject var viewModel: ProductListViewModel
     @State var  timer : BTTimer?
     @State private var sessionID = ""
-    @ObservedObject var userModel: UserViewModel
-    @State private var showLoginSheet = false
-
-    init(viewModel: ProductListViewModel, userModel : UserViewModel ) {
-        self.viewModel = viewModel
-        self.userModel = userModel
-    }
 
     var columns: [GridItem] {
         [GridItem(.adaptive(minimum: 150, maximum: 170))]
@@ -89,28 +82,7 @@ struct ProductListView: View {
                 .task {
                     await viewModel.onAppear()
                 }
-                .navigationTitle("Products")
-                .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        HStack{
-                            Button(action: {
-                                self.showLoginSheet = true
-                            }) {
-                                Text("User Info")
-                            }
-                        }
-                    }
-                }
-                .fullScreenCover(isPresented: $showLoginSheet) {
-                    LoginView(showLoginSheet: $showLoginSheet,userModel: userModel)
-                }
-                
-                // Show the LoginView as an overlay
-                if showLoginSheet {
-                    LoginView(showLoginSheet: $showLoginSheet,userModel: userModel)
-                        .transition(.move(edge: .bottom))
-                }
-                
+                                
                 HStack{
                     Text("SessionID :")
                         .font(Font.system(size: 16, weight: .medium))
@@ -148,7 +120,6 @@ struct ProductListView_Previews: PreviewProvider {
             viewModel: .init(
                 cartRepository: .mock,
                 imageLoader: .mock,
-                service: .mock), 
-            userModel: UserViewModel())
+                service: .mock))
     }
 }

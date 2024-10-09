@@ -14,7 +14,6 @@ import SwiftUI
 class ProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
   
-    @ObservedObject var userModel = UserViewModel() // Your user model
     @State private var showLoginSheet = false
     
     var vm: ProductListViewModel!
@@ -52,7 +51,6 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBAction func didSelectUserInfo(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let loginVc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
-            loginVc.userModel = userModel
             loginVc.modalPresentationStyle = .fullScreen
             self.present(loginVc, animated: true)
         }

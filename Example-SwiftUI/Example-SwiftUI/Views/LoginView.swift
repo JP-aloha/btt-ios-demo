@@ -6,15 +6,17 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct LoginView: View {
     @Binding var showLoginSheet: Bool
-    @ObservedObject var userModel : UserViewModel
-
+    
     @State private var selectedSegment = 0
     @State private var username = ""
     @State private var password = ""
+	@State private var isLoggedIn = false
     let segments = ["Normal", "Premium"]
+	let userModel = UserViewModel()
 
     var body: some View {
            ZStack {
@@ -43,10 +45,18 @@ struct LoginView: View {
                        }
                        .padding()
                        
-                       Button("Login") {
-                           userModel.loggedIn(username, pass: password, isPremium: 1)
-                           showLoginSheet = false
-                       }
+					   Button(action: {
+						   if (isLoggedIn) {
+							   userModel.logOut()
+							   BlueTriangle.metrics = ["CV1" : "nil"]
+						   } else {
+							   userModel.loggedIn(username, pass: password, isPremium: selectedSegment)
+							   BlueTriangle.metrics = ["CV1" : "Light"]
+						   }
+						   showLoginSheet = false
+					   }) {
+						   Text(isLoggedIn ? "Logout" : "Login")
+					   }
                        .padding()
                    }
                }
@@ -54,10 +64,20 @@ struct LoginView: View {
                .padding()
                .background(Color.white)
            }
+		   .onAppear {
+			   if let user = userModel.loggedInUser() {
+				   username = user.name
+				   password = user.pass
+				   selectedSegment = user.isPremium
+				   isLoggedIn = true
+			   }
+		   }
        }
 }
 
+/*
 #Preview {
     LoginView(showLoginSheet:  .constant(false), 
               userModel: UserViewModel())
 }
+*/
