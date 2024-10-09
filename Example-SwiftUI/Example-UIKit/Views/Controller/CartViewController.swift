@@ -66,6 +66,10 @@ class CartViewController: UIViewController {
         }).store(in: &cancellable)
     }
     
+    @IBAction func didSelectUserInfo(_ sender: UIButton) {
+
+    }
+    
     @IBAction func btnActionCheckOut(_ sender: UIButton) {
         if vm.productItems.count > 4 {
             ANRTest.cartLimitExceedCrash()

@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
       "state" : {
-        "branch" : "feature/session-expiration",
-        "revision" : "d7d72d33c11aaf1088fb3818b06d3aa115c1b338"
+        "branch" : "feature/custom-matrix",
+        "revision" : "4a7edd3a6c8725b5a63ceb42300a45b56414714e"
       }
     },
     {

@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @ObservedObject var vm: SettingsViewModel
+    @ObservedObject var userModel: UserViewModel
     @State var isUnitTestsActive : Bool = false
     @State private var showingAlert = false
     @State private var showModal = false
@@ -268,6 +269,6 @@ struct SettingsView: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(vm: .init())
+        SettingsView(vm: .init(), userModel: UserViewModel())
     }
 }

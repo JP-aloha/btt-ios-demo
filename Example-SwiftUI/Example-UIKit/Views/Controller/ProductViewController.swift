@@ -9,15 +9,20 @@ import UIKit
 import Service
 import Combine
 import BlueTriangle
+import SwiftUI
 
 class ProductViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
   
+    @ObservedObject var userModel = UserViewModel() // Your user model
+    @State private var showLoginSheet = false
+    
     var vm: ProductListViewModel!
     
     @IBOutlet weak var ProductCollectionView: UICollectionView!
     @IBOutlet weak var lblSessionId: UILabel!
     private var timer : BTTimer?
+    private var userView: UIView!
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +47,15 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         
         loadData()
+    }
+    
+    @IBAction func didSelectUserInfo(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let loginVc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
+            loginVc.userModel = userModel
+            loginVc.modalPresentationStyle = .fullScreen
+            self.present(loginVc, animated: true)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -110,6 +124,45 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
             vc.vm = vm.detailViewModel(for: product.id)
             
             self.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}
+
+
+struct UserToolbarView: View {
+    @ObservedObject var userModel: UserViewModel
+    @Binding var showLoginSheet: Bool
+
+    var body: some View {
+        HStack {
+            if userModel.isLoggedIn, let user = userModel.loggedInUser() {
+                VStack {
+                    ZStack {
+                        Circle() // Round circle
+                            .fill(Color.gray.opacity(0.2))
+                            .frame(width: 36, height: 36)
+                        Image(systemName: "person")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 18, height: 18)
+                            .foregroundColor(.blue)
+                    }
+                    Text("\(user.name)")
+                        .font(.system(size: 12))
+                }
+            } else {
+                Text("") // Empty text when not logged in
+            }
+
+            Button(action: {
+                if userModel.isLoggedIn {
+                    userModel.logOut()
+                } else {
+                    showLoginSheet = true
+                }
+            }) {
+                Text(userModel.isLoggedIn ? "Logout" : "Login")
+            }
         }
     }
 }

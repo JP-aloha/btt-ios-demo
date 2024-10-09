@@ -67,6 +67,10 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    @IBAction func didSelectUserInfo(_ sender: UIButton) {
+
+    }
+    
     @IBAction func btnTestManualTimer(_ sender: UIButton) {
         
         if BlueTriangle.initialized {

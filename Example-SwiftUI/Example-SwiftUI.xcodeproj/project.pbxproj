@@ -26,6 +26,14 @@
 		519833A12B55656100F71C1E /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 5198339F2B55656100F71C1E /* template.html */; };
 		5198A2992A9F7104003EFBEF /* MemoryAllocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5198A2982A9F7104003EFBEF /* MemoryAllocationTest.swift */; };
 		5198A29A2A9F7114003EFBEF /* MemoryAllocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5198A2982A9F7104003EFBEF /* MemoryAllocationTest.swift */; };
+		51A7C4DD2CB5204A00EAA81E /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4DC2CB5204A00EAA81E /* UserViewModel.swift */; };
+		51A7C4DE2CB5204A00EAA81E /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4DC2CB5204A00EAA81E /* UserViewModel.swift */; };
+		51A7C4E02CB520FD00EAA81E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4DF2CB520FD00EAA81E /* User.swift */; };
+		51A7C4E12CB520FD00EAA81E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4DF2CB520FD00EAA81E /* User.swift */; };
+		51A7C4E32CB52C0100EAA81E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4E22CB52C0100EAA81E /* LoginView.swift */; };
+		51A7C4E42CB52C0100EAA81E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4E22CB52C0100EAA81E /* LoginView.swift */; };
+		51A7C4E62CB5641700EAA81E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4E52CB5641700EAA81E /* LoginViewController.swift */; };
+		51A7C4E72CB5641700EAA81E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4E52CB5641700EAA81E /* LoginViewController.swift */; };
 		51A9CA4C2C3BCC6F004F86D8 /* SignalCrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9CA4B2C3BCC6F004F86D8 /* SignalCrashViewController.swift */; };
 		51B55E252BCD5E5100758C75 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B55E242BCD5E5100758C75 /* ConfigurationViewController.swift */; };
 		51CC8CEC2BED2DD00079EBD6 /* ConfigurationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8CEB2BED2DD00079EBD6 /* ConfigurationSetup.swift */; };
@@ -150,6 +158,10 @@
 		5170A8C52AA1F87C0091B65A /* CPUTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUTestViewController.swift; sourceTree = "<group>"; };
 		5198339F2B55656100F71C1E /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
 		5198A2982A9F7104003EFBEF /* MemoryAllocationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryAllocationTest.swift; sourceTree = "<group>"; };
+		51A7C4DC2CB5204A00EAA81E /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
+		51A7C4DF2CB520FD00EAA81E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		51A7C4E22CB52C0100EAA81E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		51A7C4E52CB5641700EAA81E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		51A9CA4B2C3BCC6F004F86D8 /* SignalCrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalCrashViewController.swift; sourceTree = "<group>"; };
 		51B55E242BCD5E5100758C75 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		51CC8CEB2BED2DD00079EBD6 /* ConfigurationSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationSetup.swift; sourceTree = "<group>"; };
@@ -311,6 +323,7 @@
 			children = (
 				8419BD1C2A49CFE0009429C9 /* CartItemModel.swift */,
 				8419BD1D2A49CFE0009429C9 /* CartModel.swift */,
+				51A7C4DF2CB520FD00EAA81E /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -327,6 +340,7 @@
 				51E1F49C2B5935CA00C7F523 /* HybridViewModel.swift */,
 				512BD4EE2BCE72A4005E80E5 /* ConfigurationModel.swift */,
 				51CC8CEB2BED2DD00079EBD6 /* ConfigurationSetup.swift */,
+				51A7C4DC2CB5204A00EAA81E /* UserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -388,6 +402,7 @@
 				51D6F4F42B35A38F0044A3F0 /* BttWebViewController.swift */,
 				51B55E242BCD5E5100758C75 /* ConfigurationViewController.swift */,
 				51A9CA4B2C3BCC6F004F86D8 /* SignalCrashViewController.swift */,
+				51A7C4E52CB5641700EAA81E /* LoginViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -448,6 +463,7 @@
 				51E1F49F2B5936D700C7F523 /* BttWebView.swift */,
 				C94BF018290AE519007E1C25 /* TabContainerView.swift */,
 				512BD4EC2BCE68D9005E80E5 /* ConfigurationView.swift */,
+				51A7C4E22CB52C0100EAA81E /* LoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -758,6 +774,7 @@
 				847CF43F2A4315D7001E9011 /* AppDelegate.swift in Sources */,
 				51E1F49E2B5935CA00C7F523 /* HybridViewModel.swift in Sources */,
 				84F2A80F2AB2FB1800471E13 /* CPUUsesTest.swift in Sources */,
+				51A7C4DE2CB5204A00EAA81E /* UserViewModel.swift in Sources */,
 				848826622A449BB6007B9D72 /* APIManager.swift in Sources */,
 				51D6F4F52B35A38F0044A3F0 /* BttWebViewController.swift in Sources */,
 				84AAA77B2A45891B000D2798 /* ProductCollectionViewCell.swift in Sources */,
@@ -769,10 +786,13 @@
 				512BD4F02BCEC198005E80E5 /* ConfigurationModel.swift in Sources */,
 				84538C822A4ABE6400EF70A2 /* CartItemTableViewCell.swift in Sources */,
 				8419BD1A2A49CFD7009429C9 /* Configuration.swift in Sources */,
+				51A7C4E72CB5641700EAA81E /* LoginViewController.swift in Sources */,
 				51F61C972A4ACF2B0071F957 /* BTTrackingConfigViewController.swift in Sources */,
 				51B55E252BCD5E5100758C75 /* ConfigurationViewController.swift in Sources */,
 				8419BD412A49CFFF009429C9 /* Collection+Utils.swift in Sources */,
+				51A7C4E42CB52C0100EAA81E /* LoginView.swift in Sources */,
 				8419BD392A49CFFF009429C9 /* Service+BTT.swift in Sources */,
+				51A7C4E12CB520FD00EAA81E /* User.swift in Sources */,
 				51CC8CED2BED2DD00079EBD6 /* ConfigurationSetup.swift in Sources */,
 				8419BD2F2A49CFEC009429C9 /* ProductListViewModel.swift in Sources */,
 				847CF4632A4466DC001E9011 /* CartViewController.swift in Sources */,
@@ -803,6 +823,7 @@
 			files = (
 				8419BD2E2A49CFEC009429C9 /* ProductListViewModel.swift in Sources */,
 				8419BD2C2A49CFEC009429C9 /* CheckoutViewModel.swift in Sources */,
+				51A7C4E02CB520FD00EAA81E /* User.swift in Sources */,
 				8419BD382A49CFFF009429C9 /* Service+BTT.swift in Sources */,
 				512A3FC42AA1D1D6005D5A22 /* UnitTestsView.swift in Sources */,
 				512BD4EF2BCE72A4005E80E5 /* ConfigurationModel.swift in Sources */,
@@ -814,6 +835,7 @@
 				8419BD172A49CFD7009429C9 /* CartRepository.swift in Sources */,
 				C94BF01B290AE580007E1C25 /* CartView.swift in Sources */,
 				51F61C9F2A4AD6980071F957 /* BTTConfigModel.swift in Sources */,
+				51A7C4E62CB5641700EAA81E /* LoginViewController.swift in Sources */,
 				C94BF00C290ADBF0007E1C25 /* ProductListView.swift in Sources */,
 				8419BD192A49CFD7009429C9 /* Configuration.swift in Sources */,
 				8419BD302A49CFEC009429C9 /* CartViewModel.swift in Sources */,
@@ -830,10 +852,12 @@
 				51F61C9B2A4AD3490071F957 /* BTTRootContrainerView.swift in Sources */,
 				8419BD1E2A49CFE1009429C9 /* CartItemModel.swift in Sources */,
 				8419BD282A49CFEC009429C9 /* ProductDetailViewModel.swift in Sources */,
+				51A7C4E32CB52C0100EAA81E /* LoginView.swift in Sources */,
 				51E1F4A02B5936D700C7F523 /* BttWebView.swift in Sources */,
 				C94BF011290ADC20007E1C25 /* ProductCell.swift in Sources */,
 				8419BD132A49CFD7009429C9 /* Constants.swift in Sources */,
 				C9F4A4162900DB6100BCDF3E /* ExampleApp.swift in Sources */,
+				51A7C4DD2CB5204A00EAA81E /* UserViewModel.swift in Sources */,
 				8419BD2A2A49CFEC009429C9 /* SettingsViewModel.swift in Sources */,
 				5170A8BF2AA1E82D0091B65A /* MemoryTestView.swift in Sources */,
 				84B301EF2A4EDA0C00BF23B5 /* OrderSuccessfulView.swift in Sources */,
@@ -1300,7 +1324,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JP-aloha/btt-swift-sdk.git";
 			requirement = {
-				branch = "feature/session-expiration";
+				branch = "feature/custom-matrix";
 				kind = branch;
 			};
 		};

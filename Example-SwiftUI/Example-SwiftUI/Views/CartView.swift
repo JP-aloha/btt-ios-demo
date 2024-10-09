@@ -13,12 +13,14 @@ import Service
 struct CartView: View {
     private let imageLoader: ImageLoader
     @ObservedObject var viewModel: CartViewModel
+    @ObservedObject var userModel: UserViewModel
     @State var didPlaceOrder = false
     @State var  timer : BTTimer?
    
-    init(imageLoader: ImageLoader, viewModel: CartViewModel) {
+    init(imageLoader: ImageLoader, viewModel: CartViewModel, userModel : UserViewModel ) {
         self.imageLoader = imageLoader
         self.viewModel = viewModel
+        self.userModel = userModel
     }
 
     var body: some View {
@@ -136,6 +138,6 @@ struct CartView_Previews: PreviewProvider {
             viewModel: .init(
                 service: .mock,
                 cartRepository: .mock
-            ))
+            ), userModel: UserViewModel())
     }
 }

@@ -20,21 +20,26 @@ struct TabContainerView: View {
     private let imageLoader: ImageLoader
     private let service: Service
     @ObservedObject var vm: BTTConfigModel
+    @ObservedObject var userModel = UserViewModel()
+    @ObservedObject var productModel : ProductListViewModel
+    @ObservedObject var cartModel : CartViewModel
+    @ObservedObject var settingModel : SettingsViewModel
 
     init(imageLoader: ImageLoader, service: Service, vm : BTTConfigModel) {
         self.imageLoader = imageLoader
         self.service = service
         self.vm = vm
         self.cartRepository = CartRepository(service: service)
+        self.productModel = ProductListViewModel(cartRepository: cartRepository, imageLoader: imageLoader, service: service)
+        self.cartModel = CartViewModel(service: service, cartRepository: cartRepository)
+        self.settingModel = SettingsViewModel()
     }
 
     var body: some View {
         TabView(selection: $selectedTab) {
             ProductListView(
-                viewModel: .init(
-                    cartRepository: cartRepository,
-                    imageLoader: imageLoader,
-                    service: service))
+                viewModel: productModel,
+                userModel: userModel)
                 .bttTrackScreen("ProductListViewTab")
                 .tabItem {
                     Text("Products")
@@ -44,9 +49,8 @@ struct TabContainerView: View {
 
             CartView(
                 imageLoader: imageLoader,
-                viewModel: .init(
-                    service: service,
-                    cartRepository: cartRepository))
+                viewModel:cartModel,
+                userModel: userModel)
                 .bttTrackScreen("CartViewTab")
                 .tabItem {
                     Text("Cart")
@@ -54,7 +58,8 @@ struct TabContainerView: View {
                  }
                 .tag(Tab.cart)
 
-            SettingsView(vm: .init())
+            SettingsView(vm: settingModel,
+                         userModel: userModel)
                 .bttTrackScreen("SettingsViewTab")
                 .tabItem {
                     Text("Settings")
