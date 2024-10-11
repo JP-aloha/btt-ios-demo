@@ -52,6 +52,17 @@ struct LoginView: View {
 						SecureField("Password", text: $password)
 							.textFieldStyle(RoundedBorderTextFieldStyle())
 							.disabled(isLoggedIn)
+                        
+                        Button("Login"){
+                            if (!username.isEmpty && !password.isEmpty) {
+                                self.userModel.loggedIn(username, pass: password, isPremium: selectedSegment)
+                                BlueTriangle.setCustomVariable("user", value: username)
+                                BlueTriangle.setCustomVariable("isPremium", value: (selectedSegment != 0) ? true : false)
+                                isLoggedIn = true
+                            }
+                        }
+                        .padding()
+                        
 					} else {
 						Text(username)
 							.font(.largeTitle)
@@ -60,31 +71,15 @@ struct LoginView: View {
 						Text(segments[selectedSegment])
 							.font(Font.system(size: 16, weight: .regular))//							.padding()
 						
-					}
-					
-					HStack {
-						if (isLoggedIn) {
-							Button("Logout") {
-								userModel.logOut()
-								BlueTriangle._setMetrics(nil, forKey: "user")
-								BlueTriangle._setMetrics(false, forKey: "isPremium")
-								username = ""
-								password = ""
-								isLoggedIn = false
-							}
-							.padding()
-						} else {
-							Button("Login"){
-								if (!username.isEmpty && !password.isEmpty) {
-									let isPremioum = selectedSegment
-									userModel.loggedIn(username, pass: password, isPremium: selectedSegment)
-									BlueTriangle._setMetrics(username, forKey: "user")
-									BlueTriangle._setMetrics((selectedSegment != 0) ? true : false, forKey: "isPremium")
-									isLoggedIn = true
-								}
-							}
-							.padding()
-						}
+                        Button("Logout") {
+                            self.userModel.logOut()
+                            BlueTriangle.clearCustomVariable("user")
+                            BlueTriangle.setCustomVariable("isPremium", value: false)
+                            username = ""
+                            password = ""
+                            isLoggedIn = false
+                        }
+                        .padding()
 					}
 				}
 				.frame(width: 300)
@@ -93,13 +88,18 @@ struct LoginView: View {
 				Spacer()
 			}
 			}
+           .bttTrackScreen("Login View")
 		   .onAppear {
 			   if let user = userModel.loggedInUser() {
 				   username = user.name
 				   password = user.pass
 				   selectedSegment = user.isPremium
 				   isLoggedIn = true
+                   BlueTriangle.setCustomVariable("user", value: username)
+                   BlueTriangle.setCustomVariable("isPremium", value: (selectedSegment != 0) ? true : false)
                }else{
+                   BlueTriangle.clearCustomVariable("user")
+                   BlueTriangle.setCustomVariable("isPremium", value: false)
                    isLoggedIn = false
                }
 		   }
