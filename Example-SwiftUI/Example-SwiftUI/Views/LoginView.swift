@@ -11,7 +11,7 @@ import BlueTriangle
 struct LoginView: View {
     @Binding var showLoginSheet: Bool
     
-    @State private var selectedSegment = 0
+    @State private var selectedSegment : Int = 0
     @State private var username = ""
     @State private var password = ""
 	@State private var isLoggedIn = false
@@ -22,47 +22,62 @@ struct LoginView: View {
            ZStack {
                Color.blue
                    .edgesIgnoringSafeArea(.all)
-               VStack(spacing: 20) {
-                   Text("Login")
-                       .font(.largeTitle)
-                   
-                   Picker("", selection: $selectedSegment) {
-                       ForEach(0..<segments.count) { index in
-                           Text(segments[index]).tag(index)
-                       }
-                   }
-                   .pickerStyle(SegmentedPickerStyle())
-
-                   TextField("Username", text: $username)
-                       .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                   SecureField("Password", text: $password)
-                       .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                   HStack {
+               VStack{
+                   HStack{
                        Button("Cancel") {
                            showLoginSheet = false
                        }
+                       .foregroundColor(.white)
                        .padding()
-                       
-					   Button(action: {
-						   if (isLoggedIn) {
-							   userModel.logOut()
-							   BlueTriangle.metrics = ["CV1" : "nil"]
-						   } else {
-							   userModel.loggedIn(username, pass: password, isPremium: selectedSegment)
-							   BlueTriangle.metrics = ["CV1" : "Light"]
-						   }
-						   showLoginSheet = false
-					   }) {
-						   Text(isLoggedIn ? "Logout" : "Login")
-					   }
-                       .padding()
+                       Spacer()
                    }
+                   Spacer()
+                   VStack(spacing: 20) {
+                       Text("Login")
+                           .font(.largeTitle)
+                       
+                       Picker("", selection: $selectedSegment) {
+                           ForEach(0..<segments.count) { index in
+                               Text(segments[index]).tag(index)
+                           }
+                       }
+                       .pickerStyle(SegmentedPickerStyle())
+                       
+                       TextField("Username", text: $username)
+                           .textFieldStyle(RoundedBorderTextFieldStyle())
+                           .disabled(isLoggedIn)
+                       
+                       SecureField("Password", text: $password)
+                           .textFieldStyle(RoundedBorderTextFieldStyle())
+                           .disabled(isLoggedIn)
+                       
+                       HStack {
+                           Button("Logout") {
+                               userModel.logOut()
+                               showLoginSheet = false
+                               BlueTriangle._setMetrics(nil, forKey: "user")
+                               BlueTriangle._setMetrics(false, forKey: "isPremium")
+                           }
+                           .disabled(!isLoggedIn)
+                           .padding()
+                           
+                           Button("Login"){
+                               
+                               let isPremioum = selectedSegment
+                               userModel.loggedIn(username, pass: password, isPremium: selectedSegment)
+                               BlueTriangle._setMetrics(username, forKey: "user")
+                               BlueTriangle._setMetrics((selectedSegment != 0) ? true : false, forKey: "isPremium")
+                               showLoginSheet = false
+                           }
+                           .disabled(isLoggedIn)
+                           .padding()
+                       }
+                   }
+                   .frame(width: 300)
+                   .padding()
+                   .background(Color.white)
+                   Spacer()
                }
-               .frame(width: 300)
-               .padding()
-               .background(Color.white)
            }
 		   .onAppear {
 			   if let user = userModel.loggedInUser() {
@@ -70,7 +85,9 @@ struct LoginView: View {
 				   password = user.pass
 				   selectedSegment = user.isPremium
 				   isLoggedIn = true
-			   }
+               }else{
+                   isLoggedIn = false
+               }
 		   }
        }
 }

@@ -13,37 +13,50 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var segment : UISegmentedControl!
     @IBOutlet weak var txtUserName : UITextField!
     @IBOutlet weak var txtPassword : UITextField!
-	private var userModel: UserViewModel?
+    @IBOutlet weak var btnLogin : UIButton!
+    @IBOutlet weak var btnLogout : UIButton!
+	private var userModel = UserViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.userModel = UserViewModel()
         self.loadLoginValue()
     }
     
     private func loadLoginValue(){
-		if let model = self.userModel, let user = model.loggedInUser(){
+		if let user = userModel.loggedInUser(){
             txtUserName.text = user.name
             txtPassword.text = user.pass
+            txtUserName.isEnabled = false
+            txtPassword.isEnabled = false
+            btnLogin.isEnabled    = false
+            btnLogout.isEnabled   = true
             segment.selectedSegmentIndex = user.isPremium
+        }else{
+            txtUserName.isEnabled = true
+            txtPassword.isEnabled = true
+            btnLogin.isEnabled    = true
+            btnLogout.isEnabled   = false
         }
     }
 
     @IBAction func didSelectLogin(_ sender: UIButton) {
-        if let model = userModel, let name = txtUserName.text, let pass = txtPassword.text{
-            model.loggedIn(name, pass: pass, isPremium: segment.selectedSegmentIndex)
+        if let name = txtUserName.text, let pass = txtPassword.text{
+            userModel.loggedIn(name, pass: pass, isPremium: segment.selectedSegmentIndex)
+            BlueTriangle.metrics["name"] = ""
+            
+            BlueTriangle._setMetrics(name, forKey: "user")
+            BlueTriangle._setMetrics((segment.selectedSegmentIndex != 0) ? true : false, forKey: "isPremium")
         }
         self.dismiss(animated: false)
-        BlueTriangle.metrics = ["CV1" : "Light"]
+
     }
     
     
     @IBAction func didSelectLogout(_ sender: UIButton) {
-        if let model = userModel {
-            model.logOut()
-        }
+        userModel.logOut()
         self.dismiss(animated: false)
-        BlueTriangle.metrics = ["CV1" : nil]
+        BlueTriangle._setMetrics(nil, forKey: "user")
+        BlueTriangle._setMetrics(false, forKey: "isPremium")
     }
     
     @IBAction func didSelectCancel(_ sender: UIButton) {
