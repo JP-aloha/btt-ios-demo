@@ -18,10 +18,8 @@ struct SettingsView: View {
     @State private var tagUrl = "\(Secrets.siteID).btttag.com/btt.js"
     
     var body: some View {
-        NavigationStack {
-        
+        VStack {
             VStack(spacing: 5){
-                
                 VStack{
                     HStack{
                         Spacer()

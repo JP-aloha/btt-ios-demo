@@ -22,9 +22,8 @@ struct CartView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        VStack {
             Group {
-
                     cartList(viewModel)
                         .padding(.bottom, 60)
                         .overlay(alignment: .bottom) {

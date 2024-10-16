@@ -23,7 +23,7 @@ struct ProductListView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        VStack {
             VStack{
                 ScrollView {
                     HStack(alignment: .top, spacing: 16) {
