@@ -33,7 +33,6 @@ struct LoginView: View {
 				}
 				Spacer()
 				VStack(spacing: 20) {
-					
 					if (!isLoggedIn) {
 						Text("Login")
 							.font(.largeTitle)
@@ -47,17 +46,15 @@ struct LoginView: View {
 						
 						TextField("Username", text: $username)
 							.textFieldStyle(RoundedBorderTextFieldStyle())
-							.disabled(isLoggedIn)
 						
 						SecureField("Password", text: $password)
 							.textFieldStyle(RoundedBorderTextFieldStyle())
-							.disabled(isLoggedIn)
                         
                         Button("Login"){
                             if (!username.isEmpty && !password.isEmpty) {
                                 self.userModel.loggedIn(username, pass: password, isPremium: selectedSegment)
-                                BlueTriangle.setCustomVariable("user", value: username)
-                                BlueTriangle.setCustomVariable("isPremium", value: (selectedSegment != 0) ? true : false)
+                                BlueTriangle.setCustomVariable("CV1", value: username)
+                                BlueTriangle.setCustomVariable("CV2", value: (selectedSegment != 0) ? true : false)
                                 isLoggedIn = true
                             }
                         }
@@ -69,12 +66,12 @@ struct LoginView: View {
 							.padding(.bottom, 10)
 						
 						Text(segments[selectedSegment])
-							.font(Font.system(size: 16, weight: .regular))//							.padding()
+							.font(Font.system(size: 16, weight: .regular))
 						
                         Button("Logout") {
                             self.userModel.logOut()
-                            BlueTriangle.clearCustomVariable("user")
-                            BlueTriangle.setCustomVariable("isPremium", value: false)
+                            BlueTriangle.clearCustomVariable("CV1")
+                            BlueTriangle.clearCustomVariable("CV2")
                             username = ""
                             password = ""
                             isLoggedIn = false
@@ -95,12 +92,15 @@ struct LoginView: View {
 				   password = user.pass
 				   selectedSegment = user.isPremium
 				   isLoggedIn = true
-                   BlueTriangle.setCustomVariable("user", value: username)
-                   BlueTriangle.setCustomVariable("isPremium", value: (selectedSegment != 0) ? true : false)
+                   BlueTriangle.setCustomVariable("CV1", value: username)
+                   BlueTriangle.setCustomVariable("CV2", value: (selectedSegment != 0) ? true : false)
                }else{
-                   BlueTriangle.clearCustomVariable("user")
-                   BlueTriangle.setCustomVariable("isPremium", value: false)
+                   BlueTriangle.clearCustomVariable("CV1")
+                   BlueTriangle.clearCustomVariable("CV2")
+                   selectedSegment = 0
                    isLoggedIn = false
+                   username = ""
+                   password = ""
                }
 		   }
        }

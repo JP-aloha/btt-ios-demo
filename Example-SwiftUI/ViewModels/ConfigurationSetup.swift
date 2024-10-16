@@ -73,6 +73,9 @@ class ConfigurationSetup {
             }
         }
         
+        BlueTriangle.setCustomVariable("CV3", value: UIScreen.resolutionWidth())
+        BlueTriangle.setCustomVariable("CV4", value: UIScreen.resolutionHeight())
+        
         self.updateChangedSassionId()
     }
     

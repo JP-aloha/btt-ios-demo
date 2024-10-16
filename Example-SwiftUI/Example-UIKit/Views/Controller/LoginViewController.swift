@@ -35,8 +35,8 @@ class LoginViewController: UIViewController {
             segment.selectedSegmentIndex = user.isPremium
             logInView.isHidden    = true
             logOutView.isHidden   = false
-            BlueTriangle.setCustomVariable("user", value: user.name)
-            BlueTriangle.setCustomVariable("isPremium", value: (user.isPremium != 0) ? true : false)
+            BlueTriangle.setCustomVariable("CV1", value: user.name)
+            BlueTriangle.setCustomVariable("CV2", value: (user.isPremium != 0) ? true : false)
         }else{
             logInView.isHidden    = false
             logOutView.isHidden   = true
@@ -44,16 +44,16 @@ class LoginViewController: UIViewController {
             lblPremium.text = "Normal"
             txtUserName.text = ""
             txtPassword.text = ""
-            BlueTriangle.clearCustomVariable("user")
-            BlueTriangle.setCustomVariable("isPremium", value: false)
+            BlueTriangle.clearCustomVariable("CV1")
+            BlueTriangle.clearCustomVariable("CV2")
         }
     }
 
     @IBAction func didSelectLogin(_ sender: UIButton) {
         if let name = txtUserName.text, let pass = txtPassword.text{
             userModel.loggedIn(name, pass: pass, isPremium: segment.selectedSegmentIndex)
-            BlueTriangle.setCustomVariable("user", value: name)
-            BlueTriangle.setCustomVariable("isPremium", value: (segment.selectedSegmentIndex != 0) ? true : false)
+            BlueTriangle.setCustomVariable("CV1", value: name)
+            BlueTriangle.setCustomVariable("CV2", value: (segment.selectedSegmentIndex != 0) ? true : false)
             self.updateUI()
         }
     }
@@ -61,8 +61,8 @@ class LoginViewController: UIViewController {
     
     @IBAction func didSelectLogout(_ sender: UIButton) {
         userModel.logOut()
-        BlueTriangle.clearCustomVariable("user")
-        BlueTriangle.setCustomVariable("isPremium", value: false)
+        BlueTriangle.clearCustomVariable("CV1")
+        BlueTriangle.clearCustomVariable("CV2")
         self.updateUI()
     }
     

@@ -34,6 +34,8 @@
 		51A7C4E42CB52C0100EAA81E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4E22CB52C0100EAA81E /* LoginView.swift */; };
 		51A7C4E62CB5641700EAA81E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4E52CB5641700EAA81E /* LoginViewController.swift */; };
 		51A7C4E72CB5641700EAA81E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4E52CB5641700EAA81E /* LoginViewController.swift */; };
+		51A8BD8B2CBE615600917299 /* UIScreen+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8BD8A2CBE615600917299 /* UIScreen+Utils.swift */; };
+		51A8BD8C2CBE615600917299 /* UIScreen+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8BD8A2CBE615600917299 /* UIScreen+Utils.swift */; };
 		51A9CA4C2C3BCC6F004F86D8 /* SignalCrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A9CA4B2C3BCC6F004F86D8 /* SignalCrashViewController.swift */; };
 		51B55E252BCD5E5100758C75 /* ConfigurationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B55E242BCD5E5100758C75 /* ConfigurationViewController.swift */; };
 		51CC8CEC2BED2DD00079EBD6 /* ConfigurationSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51CC8CEB2BED2DD00079EBD6 /* ConfigurationSetup.swift */; };
@@ -162,6 +164,7 @@
 		51A7C4DF2CB520FD00EAA81E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		51A7C4E22CB52C0100EAA81E /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		51A7C4E52CB5641700EAA81E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		51A8BD8A2CBE615600917299 /* UIScreen+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScreen+Utils.swift"; sourceTree = "<group>"; };
 		51A9CA4B2C3BCC6F004F86D8 /* SignalCrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalCrashViewController.swift; sourceTree = "<group>"; };
 		51B55E242BCD5E5100758C75 /* ConfigurationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationViewController.swift; sourceTree = "<group>"; };
 		51CC8CEB2BED2DD00079EBD6 /* ConfigurationSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationSetup.swift; sourceTree = "<group>"; };
@@ -354,6 +357,7 @@
 				8419BD362A49CFFF009429C9 /* String+LocalizedError.swift */,
 				8419BD372A49CFFF009429C9 /* Collection+Utils.swift */,
 				84F2A80A2AB069F900471E13 /* Identifier.swift */,
+				51A8BD8A2CBE615600917299 /* UIScreen+Utils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -776,6 +780,7 @@
 				84F2A80F2AB2FB1800471E13 /* CPUUsesTest.swift in Sources */,
 				51A7C4DE2CB5204A00EAA81E /* UserViewModel.swift in Sources */,
 				848826622A449BB6007B9D72 /* APIManager.swift in Sources */,
+				51A8BD8C2CBE615600917299 /* UIScreen+Utils.swift in Sources */,
 				51D6F4F52B35A38F0044A3F0 /* BttWebViewController.swift in Sources */,
 				84AAA77B2A45891B000D2798 /* ProductCollectionViewCell.swift in Sources */,
 				5198A29A2A9F7114003EFBEF /* MemoryAllocationTest.swift in Sources */,
@@ -826,6 +831,7 @@
 				51A7C4E02CB520FD00EAA81E /* User.swift in Sources */,
 				8419BD382A49CFFF009429C9 /* Service+BTT.swift in Sources */,
 				512A3FC42AA1D1D6005D5A22 /* UnitTestsView.swift in Sources */,
+				51A8BD8B2CBE615600917299 /* UIScreen+Utils.swift in Sources */,
 				512BD4EF2BCE72A4005E80E5 /* ConfigurationModel.swift in Sources */,
 				8419BD152A49CFD7009429C9 /* ImageLoader.swift in Sources */,
 				C93FCCB729100D9C00633487 /* PrimaryButtonStyle.swift in Sources */,
@@ -934,7 +940,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example-UIKit/Info.plist";
@@ -949,7 +955,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.10.0;
+				MARKETING_VERSION = 3.12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.UIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -972,7 +978,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example-UIKit/Info.plist";
@@ -987,7 +993,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.10.0;
+				MARKETING_VERSION = 3.12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.UIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1124,7 +1130,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
@@ -1140,7 +1146,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.10.0;
+				MARKETING_VERSION = 3.12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.SwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1163,7 +1169,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
@@ -1179,7 +1185,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.10.0;
+				MARKETING_VERSION = 3.12.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.SwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
