@@ -48,14 +48,6 @@ struct ProductListView: View {
                         }
                     }
                     .padding(.horizontal, 16)
-                    .navigationDestination(for: Product.self) { product in
-                        if let detailViewModel = viewModel.detailViewModel(for: product.id) {
-                            ProductDetailView(
-                                viewModel: detailViewModel)
-                        } else {
-                            Text("Error")
-                        }
-                    }
                 }
                 .bttTrackScreen("ProductListView")
                 .onAppear{

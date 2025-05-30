@@ -17,6 +17,8 @@
 		512BD4ED2BCE68D9005E80E5 /* ConfigurationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512BD4EC2BCE68D9005E80E5 /* ConfigurationView.swift */; };
 		512BD4EF2BCE72A4005E80E5 /* ConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512BD4EE2BCE72A4005E80E5 /* ConfigurationModel.swift */; };
 		512BD4F02BCEC198005E80E5 /* ConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512BD4EE2BCE72A4005E80E5 /* ConfigurationModel.swift */; };
+		5144D7D12DDB6D2C001C3F2D /* Clarity in Frameworks */ = {isa = PBXBuildFile; productRef = 5144D7D02DDB6D2C001C3F2D /* Clarity */; };
+		5144D7D32DDB6D99001C3F2D /* Clarity in Frameworks */ = {isa = PBXBuildFile; productRef = 5144D7D22DDB6D99001C3F2D /* Clarity */; };
 		5170A8BF2AA1E82D0091B65A /* MemoryTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8BE2AA1E82D0091B65A /* MemoryTestView.swift */; };
 		5170A8C12AA1F3B50091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
 		5170A8C22AA1F4090091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
@@ -250,6 +252,7 @@
 				84A03BEB2A49DE16000C8BD0 /* Service in Frameworks */,
 				84A03BED2A49DE16000C8BD0 /* IdentifiedCollections in Frameworks */,
 				511EF7082C7DFD8300BC8B8C /* BlueTriangle in Frameworks */,
+				5144D7D32DDB6D99001C3F2D /* Clarity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +263,7 @@
 				C9E1141A291421F00031E874 /* IdentifiedCollections in Frameworks */,
 				C94BF015290AE2FC007E1C25 /* Service in Frameworks */,
 				511EF7062C7DFD5F00BC8B8C /* BlueTriangle in Frameworks */,
+				5144D7D12DDB6D2C001C3F2D /* Clarity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +610,7 @@
 				84A03BEA2A49DE16000C8BD0 /* Service */,
 				84A03BEC2A49DE16000C8BD0 /* IdentifiedCollections */,
 				511EF7072C7DFD8300BC8B8C /* BlueTriangle */,
+				5144D7D22DDB6D99001C3F2D /* Clarity */,
 			);
 			productName = "Example-UIKit";
 			productReference = 847CF43C2A4315D7001E9011 /* Example-UIKit.app */;
@@ -628,6 +633,7 @@
 				C94BF014290AE2FC007E1C25 /* Service */,
 				C9E11419291421F00031E874 /* IdentifiedCollections */,
 				511EF7052C7DFD5F00BC8B8C /* BlueTriangle */,
+				5144D7D02DDB6D2C001C3F2D /* Clarity */,
 			);
 			productName = "Example-SwiftUI";
 			productReference = C9F4A4122900DB6100BCDF3E /* Example-SwiftUI.app */;
@@ -708,6 +714,7 @@
 			packageReferences = (
 				C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
 				511EF7042C7DFD5F00BC8B8C /* XCRemoteSwiftPackageReference "btt-swift-sdk" */,
+				5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */,
 			);
 			productRefGroup = C9F4A4132900DB6100BCDF3E /* Products */;
 			projectDirPath = "";
@@ -1330,8 +1337,16 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JP-aloha/btt-swift-sdk.git";
 			requirement = {
-				branch = "feature/custom-matrix";
+				branch = "feature/clarity-integration";
 				kind = branch;
+			};
+		};
+		5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/microsoft/clarity-apps.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.7;
 			};
 		};
 		C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */ = {
@@ -1354,6 +1369,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 511EF7042C7DFD5F00BC8B8C /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
 			productName = BlueTriangle;
+		};
+		5144D7D02DDB6D2C001C3F2D /* Clarity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */;
+			productName = Clarity;
+		};
+		5144D7D22DDB6D99001C3F2D /* Clarity */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */;
+			productName = Clarity;
 		};
 		84A03BEA2A49DE16000C8BD0 /* Service */ = {
 			isa = XCSwiftPackageProductDependency;

@@ -8,6 +8,7 @@
 import BlueTriangle
 import Foundation
 import UIKit
+import Clarity
 
 class ConfigurationSetup {
 
@@ -77,6 +78,9 @@ class ConfigurationSetup {
         BlueTriangle.setCustomVariable("CV4", value: UIScreen.resolutionHeight())
         
         self.updateChangedSassionId()
+        
+        let clarityConfig = ClarityConfig(projectId: "jtjobmhr3i")
+        ClaritySDK.initialize(config: clarityConfig)
     }
     
     static func updateChangedSassionId(){

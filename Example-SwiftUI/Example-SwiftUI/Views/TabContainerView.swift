@@ -39,8 +39,8 @@ struct TabContainerView: View {
 	var body: some View {
 		NavigationStack {
 			TabView(selection: $selectedTab) {
-				ProductListView(
-					viewModel: productModel)
+                ProductListView(
+                            viewModel: productModel)
 				.bttTrackScreen("ProductListViewTab")
 				.tabItem {
 					Text("Products")
@@ -83,7 +83,14 @@ struct TabContainerView: View {
 			.fullScreenCover(isPresented: $showLoginSheet) {
 				LoginView(showLoginSheet: $showLoginSheet)
 			}
-			
+            .navigationDestination(for: Product.self) { product in
+                if let detailViewModel = productModel.detailViewModel(for: product.id) {
+                    ProductDetailView(viewModel: detailViewModel)
+                } else {
+                    Text("Error: Product not found")
+                }
+            }
+            
 			// Show the LoginView as an overlay
 //			if showLoginSheet {
 //				LoginView(showLoginSheet: $showLoginSheet)
