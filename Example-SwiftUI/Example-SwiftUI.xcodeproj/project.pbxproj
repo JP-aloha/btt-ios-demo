@@ -1337,7 +1337,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JP-aloha/btt-swift-sdk.git";
 			requirement = {
-				branch = "feature/clarity-integration";
+				branch = "feature/screen-tracking-grouping";
 				kind = branch;
 			};
 		};

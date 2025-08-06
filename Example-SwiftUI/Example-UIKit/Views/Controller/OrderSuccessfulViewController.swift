@@ -18,7 +18,7 @@ class OrderSuccessfulViewController: UIViewController {
         super.viewDidLoad()
         self.lblCheckoutId.text = checkoutID
         btnSetup()
-        
+        navigationItem.title = "Checkout"
         let backButton = UIBarButtonItem()
         backButton.title = "Cart"
         navigationItem.backBarButtonItem = backButton

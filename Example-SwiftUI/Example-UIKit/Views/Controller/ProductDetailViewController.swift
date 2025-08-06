@@ -29,7 +29,7 @@ class ProductDetailViewController: UIViewController {
         let backButton = UIBarButtonItem()
         backButton.title = "Products"
         self.navigationItem.backBarButtonItem = backButton
-        
+        self.navigationItem.title = "Product Details"
         btnAddtoCart.accessibilityIdentifier = "add to cart"
         btnBack.accessibilityIdentifier = "back"
     }

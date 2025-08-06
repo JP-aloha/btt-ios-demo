@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
       "state" : {
-        "branch" : "feature/clarity-integration",
-        "revision" : "f54bcb014acde27824750ab8b4efe1630f2299a5"
+        "branch" : "feature/screen-tracking-grouping",
+        "revision" : "53535b1e10ed6eddeee012486d1593a3941f0841"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/microsoft/clarity-apps.git",
       "state" : {
-        "revision" : "49056c5b238930182d9309070d3f457d7d88a65b",
-        "version" : "3.0.7"
+        "revision" : "92166f823cf3606ae7c8eac594c97a72879f8d74",
+        "version" : "3.0.12"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections",
       "state" : {
-        "revision" : "671108c96644956dddcd89dd59c203dcdb36cec7",
-        "version" : "1.1.4"
+        "revision" : "8c0c0a8b49e080e54e5e328cc552821ff07cd341",
+        "version" : "1.2.1"
       }
     },
     {
