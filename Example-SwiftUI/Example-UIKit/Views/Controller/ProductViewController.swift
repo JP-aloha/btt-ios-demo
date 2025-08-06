@@ -22,13 +22,19 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var lblSessionId: UILabel!
     private var timer : BTTimer?
     private var userView: UIView!
+    private var activityIndicator: UIActivityIndicatorView!
  
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backButtonTitle = "Product"
         navigationItem.title = "Product"
+        
         lblSessionId.text =  UserDefaults.standard.string(forKey: UserDefaultKeys.ConfigureSessionId) ?? ""
         lblSessionId.accessibilityIdentifier = "sessionid"
+        activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        view.addSubview(activityIndicator)
         
         NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
@@ -46,6 +52,18 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         }
         
         loadData()
+    }
+    
+    private func startLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.startAnimating()
+        }
+    }
+    
+    private func stopLoading() {
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+        }
     }
     
     @IBAction func didSelectUserInfo(_ sender: UIButton) {
@@ -84,9 +102,8 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     func loadData()  {
-        
-        
         Task {
+            self.startLoading()
             let _ =  await vm.loadProducts()
             
             if let error = vm.error{                
@@ -99,6 +116,7 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
             }
             
             self.ProductCollectionView.reloadData()
+            self.stopLoading()
         }
     }
     
