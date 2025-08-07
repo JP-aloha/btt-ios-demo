@@ -19,6 +19,11 @@
 		512BD4F02BCEC198005E80E5 /* ConfigurationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512BD4EE2BCE72A4005E80E5 /* ConfigurationModel.swift */; };
 		5144D7D12DDB6D2C001C3F2D /* Clarity in Frameworks */ = {isa = PBXBuildFile; productRef = 5144D7D02DDB6D2C001C3F2D /* Clarity */; };
 		5144D7D32DDB6D99001C3F2D /* Clarity in Frameworks */ = {isa = PBXBuildFile; productRef = 5144D7D22DDB6D99001C3F2D /* Clarity */; };
+		514AA9972E448DD400F4A364 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514AA9962E448DBB00F4A364 /* TutorialViewController.swift */; };
+		514AA9992E448E0000F4A364 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514AA9982E448DFC00F4A364 /* TutorialPageViewController.swift */; };
+		514AA99B2E44A9AD00F4A364 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514AA99A2E44A9AA00F4A364 /* TutorialView.swift */; };
+		514AA99D2E44A9FD00F4A364 /* TutorialPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514AA99C2E44A9FC00F4A364 /* TutorialPageView.swift */; };
+		514AA99F2E44AA9D00F4A364 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514AA99E2E44AA9400F4A364 /* AppCoordinator.swift */; };
 		5170A8BF2AA1E82D0091B65A /* MemoryTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8BE2AA1E82D0091B65A /* MemoryTestView.swift */; };
 		5170A8C12AA1F3B50091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
 		5170A8C22AA1F4090091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
@@ -156,6 +161,11 @@
 		512BBE972A49ED1A00EAFD97 /* Config.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 		512BD4EC2BCE68D9005E80E5 /* ConfigurationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationView.swift; sourceTree = "<group>"; };
 		512BD4EE2BCE72A4005E80E5 /* ConfigurationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationModel.swift; sourceTree = "<group>"; };
+		514AA9962E448DBB00F4A364 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		514AA9982E448DFC00F4A364 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
+		514AA99A2E44A9AA00F4A364 /* TutorialView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialView.swift; sourceTree = "<group>"; };
+		514AA99C2E44A9FC00F4A364 /* TutorialPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPageView.swift; sourceTree = "<group>"; };
+		514AA99E2E44AA9400F4A364 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		5170A8BE2AA1E82D0091B65A /* MemoryTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryTestView.swift; sourceTree = "<group>"; };
 		5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestsViewModel.swift; sourceTree = "<group>"; };
 		5170A8C32AA1F7490091B65A /* CPUTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUTestView.swift; sourceTree = "<group>"; };
@@ -369,6 +379,8 @@
 		847CF43D2A4315D7001E9011 /* Example-UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				514AA9982E448DFC00F4A364 /* TutorialPageViewController.swift */,
+				514AA9962E448DBB00F4A364 /* TutorialViewController.swift */,
 				51F61C922A4ACE9F0071F957 /* AppCoordinator.swift */,
 				847CF43E2A4315D7001E9011 /* AppDelegate.swift */,
 				847CF4402A4315D7001E9011 /* SceneDelegate.swift */,
@@ -531,10 +543,13 @@
 			isa = PBXGroup;
 			children = (
 				C9D83EA5294FEA9C00330F33 /* Info.plist */,
+				514AA99E2E44AA9400F4A364 /* AppCoordinator.swift */,
 				C9F4A4152900DB6100BCDF3E /* ExampleApp.swift */,
 				51F61C9E2A4AD6980071F957 /* BTTConfigModel.swift */,
 				51F61C9A2A4AD3490071F957 /* BTTRootContrainerView.swift */,
 				51F61C982A4AD1EB0071F957 /* BTTrackingConfigView.swift */,
+				514AA99A2E44A9AA00F4A364 /* TutorialView.swift */,
+				514AA99C2E44A9FC00F4A364 /* TutorialPageView.swift */,
 				C9F4A41B2900DB6200BCDF3E /* Preview Content */,
 				C9F4A43F2900DBD000BCDF3E /* Resources */,
 				C94BF00A290ADBA6007E1C25 /* Views */,
@@ -783,6 +798,7 @@
 				8419BD142A49CFD7009429C9 /* Constants.swift in Sources */,
 				8419BD162A49CFD7009429C9 /* ImageLoader.swift in Sources */,
 				847CF43F2A4315D7001E9011 /* AppDelegate.swift in Sources */,
+				514AA9972E448DD400F4A364 /* TutorialViewController.swift in Sources */,
 				51E1F49E2B5935CA00C7F523 /* HybridViewModel.swift in Sources */,
 				84F2A80F2AB2FB1800471E13 /* CPUUsesTest.swift in Sources */,
 				51A7C4DE2CB5204A00EAA81E /* UserViewModel.swift in Sources */,
@@ -823,6 +839,7 @@
 				5170A8C22AA1F4090091B65A /* UnitTestsViewModel.swift in Sources */,
 				8419BD1F2A49CFE1009429C9 /* CartItemModel.swift in Sources */,
 				8419BD3D2A49CFFF009429C9 /* UIColor+Utils.swift in Sources */,
+				514AA9992E448E0000F4A364 /* TutorialPageViewController.swift in Sources */,
 				5170A8C62AA1F87C0091B65A /* CPUTestViewController.swift in Sources */,
 				84B301ED2A4ED16700BF23B5 /* OrderSuccessfulViewController.swift in Sources */,
 				84A2DA732A4AC6F4002732EC /* TabBarViewController.swift in Sources */,
@@ -859,8 +876,10 @@
 				C94BF01D290AE58A007E1C25 /* SettingsView.swift in Sources */,
 				51F61C992A4AD1EB0071F957 /* BTTrackingConfigView.swift in Sources */,
 				8419BD202A49CFE1009429C9 /* CartModel.swift in Sources */,
+				514AA99B2E44A9AD00F4A364 /* TutorialView.swift in Sources */,
 				8419BD3A2A49CFFF009429C9 /* View+ErrorAlert.swift in Sources */,
 				5170A8C42AA1F7490091B65A /* CPUTestView.swift in Sources */,
+				514AA99D2E44A9FD00F4A364 /* TutorialPageView.swift in Sources */,
 				512BD4ED2BCE68D9005E80E5 /* ConfigurationView.swift in Sources */,
 				51F61C9B2A4AD3490071F957 /* BTTRootContrainerView.swift in Sources */,
 				8419BD1E2A49CFE1009429C9 /* CartItemModel.swift in Sources */,
@@ -881,6 +900,7 @@
 				84B301E92A4DD9DC00BF23B5 /* ANRTests.swift in Sources */,
 				84F2A80E2AB2FB1800471E13 /* CPUUsesTest.swift in Sources */,
 				C94BF019290AE519007E1C25 /* TabContainerView.swift in Sources */,
+				514AA99F2E44AA9D00F4A364 /* AppCoordinator.swift in Sources */,
 				5198A2992A9F7104003EFBEF /* MemoryAllocationTest.swift in Sources */,
 				C93FCCB929103A7E00633487 /* CartItemRow.swift in Sources */,
 			);

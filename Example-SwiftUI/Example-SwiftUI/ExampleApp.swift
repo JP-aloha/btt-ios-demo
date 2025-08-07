@@ -12,7 +12,7 @@ import UIKit
 
 @main
 struct Example_SwiftUIApp: App {
-    @State private var  BttContainer =  BTTRootContrainerView(vm: BTTConfigModel())
+    @State private var  BttContainer =  BTTRootContrainerView(coordinatorVm: AppCoordinator(), vm: BTTConfigModel())
     @Environment(\.scenePhase) private var scenePhase
     
     init() {

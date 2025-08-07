@@ -27,4 +27,5 @@ struct UserDefaultKeys {
     static let ConfigureSiteId = "ConfigureSiteId"
     static let ConfigureSessionId = "ConfigureSessionId"
     static let ANRStackTraceKey = "ANRStackTraceKey"
+    static let TutorialShownKey = "TutorialShownKey"
 }
