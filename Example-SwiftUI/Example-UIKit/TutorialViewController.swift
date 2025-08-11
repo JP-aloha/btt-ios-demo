@@ -35,15 +35,27 @@ class TutorialViewController: UIViewController {
         pageControl.currentPage = 0
     }
     
-    private func setupSlideScrollView(slides : [TutorialPageViewController]) {
-        scrollView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height)
-        scrollView.contentSize = CGSize(width: view.frame.width * CGFloat(slides.count), height: view.frame.height - 150.0)
-        scrollView.isPagingEnabled = true
-        
-        // set up pages x coordinate and height width
-        for i in 0 ..< slides.count {
-            slides[i].view.frame = CGRect(x: view.frame.width * CGFloat(i), y: 0, width: view.frame.width, height: view.frame.height)
-            scrollView.addSubview(slides[i].view)
+    private func setupSlideScrollView(slides: [TutorialPageViewController]) {
+        let contentStack = UIStackView()
+        contentStack.axis = .horizontal
+        contentStack.distribution = .fillEqually
+        contentStack.translatesAutoresizingMaskIntoConstraints = false
+
+        scrollView.addSubview(contentStack)
+
+        NSLayoutConstraint.activate([
+            contentStack.topAnchor.constraint(equalTo: scrollView.topAnchor),
+            contentStack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
+            contentStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor),
+            contentStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor),
+            contentStack.heightAnchor.constraint(equalTo: scrollView.heightAnchor)
+        ])
+
+        for vc in slides {
+            addChild(vc)
+            contentStack.addArrangedSubview(vc.view)
+            vc.didMove(toParent: self)
+            vc.view.widthAnchor.constraint(equalTo: scrollView.widthAnchor).isActive = true
         }
     }
     
