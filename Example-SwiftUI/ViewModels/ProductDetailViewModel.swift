@@ -68,16 +68,16 @@ final class ProductDetailViewModel: ObservableObject {
         var timer : BTTimer?
         
         if BlueTriangle.initialized {
-             timer = BlueTriangle.startTimer(
+           /*  timer = BlueTriangle.startTimer(
                 page: Page(
-                    pageName: "ProductDetail: \(product.name)"))
+                    pageName: "ProductDetail: \(product.name)"))*/
         }
 
         let status = await imageLoader.images[product.image]
 
         if BlueTriangle.initialized, let timer = timer {
             // End timer
-            BlueTriangle.endTimer(timer)
+           // BlueTriangle.endTimer(timer)
         }
 
         return status

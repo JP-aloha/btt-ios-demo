@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23727" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="XTc-JZ-VZc">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23721"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -1703,7 +1702,7 @@
         <!--Order Sccuess View Controller-->
         <scene sceneID="icX-6p-vpF">
             <objects>
-                <viewController storyboardIdentifier="OrderSuccessfulViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HRd-6l-sxg" userLabel="Order Sccuess View Controller" customClass="OrderSuccessfulViewController" customModule="Example_UIKit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OrderSuccessfulViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HRd-6l-sxg" userLabel="Order Sccuess View Controller" customClass="OrderCheckOutViewController" customModule="Example_UIKit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FLi-EF-RX2">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

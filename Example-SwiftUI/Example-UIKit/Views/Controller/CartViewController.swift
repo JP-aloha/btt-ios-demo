@@ -85,7 +85,7 @@ class CartViewController: UIViewController {
             await vm.checkout()
             await vm.placeOrder()
             
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessfulViewController") as? OrderSuccessfulViewController{
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessfulViewController") as? OrderCheckOutViewController{
                 vc.checkoutID = vm.checkoutItem?.confirmation ?? UUID().uuidString
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -200,7 +200,7 @@ extension CartViewController: CartItemTVCDelegate {
 
 extension CartViewController: CheckoutVCDelegate {
     func didCheckout(with id: String) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessfulViewController") as? OrderSuccessfulViewController{
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessfulViewController") as? OrderCheckOutViewController{
             vc.checkoutID = id
             self.navigationController?.pushViewController(vc, animated: true)
         }

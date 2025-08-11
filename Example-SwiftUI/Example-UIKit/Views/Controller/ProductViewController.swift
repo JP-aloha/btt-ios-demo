@@ -78,9 +78,9 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewWillAppear(animated)
         let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
         if isScreenTracking, BlueTriangle.initialized{
-            self.timer = BlueTriangle.startTimer(
+           /* self.timer = BlueTriangle.startTimer(
                 page: Page(
-                    pageName: "ProductViewController Mannual Tracking"))
+                    pageName: "ProductViewController Mannual Tracking"))*/
         }
         ConfigurationSetup.updateChangedSassionId()
         if let sessionId = ConfigurationSetup.getSessionId() {
@@ -97,7 +97,7 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         
         let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
         if let timer = self.timer, !isScreenTracking, BlueTriangle.initialized{
-            BlueTriangle.endTimer(timer)
+           // BlueTriangle.endTimer(timer)
         }
     }
     
