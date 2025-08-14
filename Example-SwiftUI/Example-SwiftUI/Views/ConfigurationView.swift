@@ -219,6 +219,7 @@ struct ConfigurationView: View {
             .padding(.trailing, 10)
 			 
         }
+        .bttTrackScreen("ConfigurationView")
         .alert(isPresented: $showConfirm, content: { confirmChange })
     }
     

@@ -6,7 +6,7 @@
       "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
       "state" : {
         "branch" : "feature/screen-tracking-grouping",
-        "revision" : "608b39b584fdca238518bafca2f93233a94cd5ce"
+        "revision" : "399501b0699a012f4699637468ab6fba65a5e154"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/microsoft/clarity-apps.git",
       "state" : {
-        "revision" : "92166f823cf3606ae7c8eac594c97a72879f8d74",
-        "version" : "3.0.12"
+        "revision" : "cd39b380d78e5483fdeb62570434567ea6e73e31",
+        "version" : "3.0.14"
       }
     },
     {

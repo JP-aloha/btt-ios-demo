@@ -64,13 +64,13 @@ class TutorialPageViewController: UIViewController {
  
  and more...
  """,
-            iconName: "hand.wave.fill"
+            iconName: "Ecomdemo_image"
         ))
         
         let page2 = TutorialPageViewController(model: TutorialPageModel(
             title: "Screen Tracking",
             desc: "The Blue Triangle SDK automatically tracks all screens for UIKit, for SwiftUI the app screens have manually been tagged to be tracked by the SDK. Just browse through different screens, perform checkouts, etc that will generate some page views.",
-            iconName: "eye.fill"
+            iconName: "ScreenTracking_image"
         ))
         
         let page3 = TutorialPageViewController(model: TutorialPageModel(
@@ -86,7 +86,7 @@ class TutorialPageViewController: UIViewController {
  
  Note: The crash will be captured and stored locally until the next launch of the app, when it will be submitted to the backend servers.
  """,
-            iconName: "exclamationmark.triangle.fill"
+            iconName: "Crash_image"
         ))
         
         let page4 = TutorialPageViewController(model: TutorialPageModel(
@@ -100,17 +100,12 @@ class TutorialPageViewController: UIViewController {
  Scenario 2: Continue Shopping  
      . Add some products to the cart and perform a checkout. A checkout confirmation screen appears with a "Continue Shopping" button. Clicking on it will result in the app getting into an ANR state.
  """,
-            iconName: "timer"
+            iconName: "ANR_image"
         ))
         
         return [page1, page2, page3, page4]
     }
 
-    /*private func updateUI() {
-        titleLabel.text = model?.title
-        descriptionLabel.text = model?.desc
-        iconImageView.image = UIImage(systemName: model?.iconName ?? "star.fill")
-    }*/
     private func updateUI() {
         // Bold heading
         let titleFont = UIFont.systemFont(ofSize: 26, weight: .bold)
@@ -141,7 +136,7 @@ class TutorialPageViewController: UIViewController {
         descriptionLabel.attributedText = attributedDesc
 
         // Icon
-        iconImageView.image = UIImage(systemName: model?.iconName ?? "star.fill")
+        iconImageView.image = UIImage(named: model?.iconName ?? "")
         iconImageView.tintColor = .systemBlue
     }
 }

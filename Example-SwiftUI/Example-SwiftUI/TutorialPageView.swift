@@ -8,10 +8,10 @@ struct TutorialPageView: View {
             HStack {
                 Spacer()
                 VStack(spacing: 5) {
-                    Image(systemName: model.iconName ?? "info.circle")
+                    Image(model.iconName ?? "")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 80, height: 80)
+                        .frame(width: 100, height: 100)
                         .foregroundColor(.accentColor)
 
                     Text(model.title)

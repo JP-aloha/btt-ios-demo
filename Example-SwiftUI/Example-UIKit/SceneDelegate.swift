@@ -20,14 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         self.window = UIWindow(windowScene: windowScene)
         
-      /*  let isTutorial = UserDefaults.standard.bool(forKey: UserDefaultKeys.TutorialShownKey)
+        let isTutorial = UserDefaults.standard.bool(forKey: UserDefaultKeys.TutorialShownKey)
         if !isTutorial {
             AppCoordinator.setupTutorialVc()
         } else {
             AppCoordinator.setupRootTabVc()
-        }*/
-        
-        AppCoordinator.setupTutorialVc()
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
