@@ -14,6 +14,7 @@ struct SettingsView: View {
     @State private var showingAlert = false
     @State private var showModal = false
     @State private var presentHybridDemo = false
+    @State private var presentTutorial = false
     @State private var sessionID = ""
     @State private var tagUrl = "\(Secrets.siteID).btttag.com/btt.js"
     
@@ -210,6 +211,16 @@ struct SettingsView: View {
                         .buttonStyle(.borderedProminent)
                         .tint(.blue)
                         .accessibilityIdentifier("btn_configuration_settings")
+                        
+                        Button("About") {
+                            self.presentTutorial = true
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.blue)
+                        .accessibilityIdentifier("btn_about")
+                        .fullScreenCover(isPresented: $presentTutorial) {
+                            TutorialView(vm: AppCoordinator())
+                        }
                         
                         Spacer()
                     }

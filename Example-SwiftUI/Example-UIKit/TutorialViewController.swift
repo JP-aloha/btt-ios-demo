@@ -61,9 +61,12 @@ class TutorialViewController: UIViewController {
     
     @objc private func doneButtonTapped() {
         self.dismiss(animated: true, completion: nil)
-        UserDefaults.standard.set(true, forKey: UserDefaultKeys.TutorialShownKey)
-        UserDefaults.standard.synchronize()
-        AppCoordinator.setupRootTabVc()
+        let isTutorial = UserDefaults.standard.bool(forKey: UserDefaultKeys.TutorialShownKey)
+        if !isTutorial {
+            UserDefaults.standard.set(true, forKey: UserDefaultKeys.TutorialShownKey)
+            UserDefaults.standard.synchronize()
+            AppCoordinator.setupRootTabVc()
+        }
     }
 }
 

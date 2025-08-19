@@ -143,6 +143,14 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    @IBAction func didSelectAbout(_ sender: Any?) {
+        let storyboard = UIStoryboard(name:"Main", bundle: nil)
+        let tutorialVC = storyboard.instantiateViewController(withIdentifier: "TutorialVC")
+        let navTutorialVC = UINavigationController(rootViewController: tutorialVC)
+        navTutorialVC.modalPresentationStyle = .fullScreen
+        self.present(navTutorialVC, animated: true)
+    }
+    
     func version() -> String {
         let dictionary = Bundle.main.infoDictionary!
         let version = dictionary["CFBundleShortVersionString"] as! String

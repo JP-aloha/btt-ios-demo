@@ -3,10 +3,10 @@
     {
       "identity" : "btt-swift-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
+      "location" : "https://github.com/blue-triangle-tech/btt-swift-sdk.git",
       "state" : {
-        "branch" : "feature/screen-tracking-grouping",
-        "revision" : "399501b0699a012f4699637468ab6fba65a5e154"
+        "revision" : "9151774508346ddb1d69e9f49eaecb07df2c7571",
+        "version" : "3.15.0-beta-3"
       }
     },
     {

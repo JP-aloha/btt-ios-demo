@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct TutorialView: View {
     @ObservedObject var vm: AppCoordinator
@@ -25,6 +26,7 @@ struct TutorialView: View {
                 .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
                 .animation(.easeInOut, value: currentPage)
             }
+            .bttTrackScreen("Tutorial")
             .navigationTitle("Tutorial")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
