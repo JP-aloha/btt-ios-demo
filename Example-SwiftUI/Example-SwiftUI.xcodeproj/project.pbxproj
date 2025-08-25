@@ -968,10 +968,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example-UIKit/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "BTT e-Com";
+				INFOPLIST_KEY_CFBundleDisplayName = "eCom UIKit";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1006,10 +1006,10 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example-UIKit/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "BTT e-Com";
+				INFOPLIST_KEY_CFBundleDisplayName = "eCom UIKit";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1159,11 +1159,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example-SwiftUI/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "BTT e-Com";
+				INFOPLIST_KEY_CFBundleDisplayName = "eCom SwiftUI";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1198,11 +1198,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example-SwiftUI/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "BTT e-Com";
+				INFOPLIST_KEY_CFBundleDisplayName = "eCom SwiftUI";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -1358,7 +1358,7 @@
 			repositoryURL = "https://github.com/blue-triangle-tech/btt-swift-sdk.git";
 			requirement = {
 				kind = exactVersion;
-				version = "3.15.0-beta-3";
+				version = "3.15.0-beta-4";
 			};
 		};
 		5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */ = {

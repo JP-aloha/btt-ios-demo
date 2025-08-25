@@ -35,7 +35,7 @@ struct SettingsView: View {
                 VStack{
                     HStack{
                         Spacer()
-                        Text("BTT e-Com")
+                        Text("eCom SwiftUI")
                             .font(Font.system(size: 20, weight: .bold))
                             .foregroundColor(.black)
                         Spacer()

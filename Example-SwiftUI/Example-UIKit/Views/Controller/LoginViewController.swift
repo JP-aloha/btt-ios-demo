@@ -66,6 +66,12 @@ class LoginViewController: UIViewController {
         self.updateUI()
     }
     
+    @IBAction func didSelectCustomVarriableScenario(_ sender: Any) {
+        let alert = UIAlertController(title: "Custom varriable scenario", message: "You can add a custom variable by logging in with any username and password, and clear it by logging out.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func didSelectCancel(_ sender: UIButton) {
         self.dismiss(animated: false)
     }

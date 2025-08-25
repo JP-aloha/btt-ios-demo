@@ -66,6 +66,18 @@ class CartViewController: UIViewController {
         }).store(in: &cancellable)
     }
     
+    @IBAction func didSelectSignalCrashScenario(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Signal crash scenario", message: "You can generated Signal crash here by clicking on CheckOut button without selecting any product. and that crash will upload to BlueTriangle after next app launch.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func didSelectNSCrashScenario(_ sender: UIButton) {
+        let alert = UIAlertController(title: "NSException crash Scenario", message: "You can generate an NSException crash by clicking on the Checkout button after selecting more than four different products. This crash will be uploaded to BlueTriangle after the next app launch.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     @IBAction func didSelectUserInfo(_ sender: UIButton) {
 		let storyboard = UIStoryboard(name: "Main", bundle: nil)
 		if let loginVc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
@@ -195,6 +207,12 @@ extension CartViewController: CartItemTVCDelegate {
                 self.view.isUserInteractionEnabled = true
             }
         }
+    }
+    
+    func didSelectAnrScenarioInfo() {
+        let alert = UIAlertController(title: "ANR scenario", message: "You can generate an ANR by clicking on the Trash icon button.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

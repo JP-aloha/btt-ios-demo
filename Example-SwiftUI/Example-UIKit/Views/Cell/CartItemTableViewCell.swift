@@ -10,6 +10,7 @@ import UIKit
 protocol CartItemTVCDelegate: AnyObject {
     func chageQuanitiy(to quantity: Int, for index: Int)
     func deleteItem(at index: Int)
+    func didSelectAnrScenarioInfo()
 }
 
 class CartItemTableViewCell: UITableViewCell {
@@ -35,6 +36,10 @@ class CartItemTableViewCell: UITableViewCell {
     @IBAction func didSelectRemoveItem(_ sender: UIButton) {
         guard let index = index else { return }
         delegate?.deleteItem(at: index)
+    }
+    
+    @IBAction func didSelectAnrScenario(_ sender: UIButton) {
+        delegate?.didSelectAnrScenarioInfo()
     }
     
     

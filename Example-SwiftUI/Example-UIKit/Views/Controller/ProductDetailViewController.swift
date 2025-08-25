@@ -96,6 +96,18 @@ class ProductDetailViewController: UIViewController {
         }
     }
     
+    @IBAction func didSelectMemoryWarningScenario(_ sender: Any) {
+        let alert = UIAlertController(title: "Memory Warning scenario", message: "You can generate a memory warning by clicking the Add to Cart button continuously after selecting any perfume product, until an alert appears.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func didSelectCPUScenario(_ sender: Any) {
+        let alert = UIAlertController(title: "CPU Usage scenario", message: "You can generate high CPU usage by clicking the Add to Cart button after selecting the product ‘KEY Holder,’ which will increase CPU usage up to 50–80%. Similarly, selecting the product ‘Infinix Inbook’ will increase CPU usage up to 50%", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
      //MARK: - Memory Warning observers
     

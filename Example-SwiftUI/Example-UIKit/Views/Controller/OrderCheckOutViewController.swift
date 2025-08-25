@@ -53,6 +53,12 @@ class OrderCheckOutViewController: UIViewController {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func didSelectANRScenario(_ sender: UIButton) {
+        let alert = UIAlertController(title: "ANR scenario", message: "You can generate an ANR by clicking on the Continue Shopping button.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func btnSetup() {
         self.btnConitueShopping.layer.cornerRadius = 8
        
