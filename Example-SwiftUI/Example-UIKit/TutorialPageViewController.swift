@@ -1,3 +1,10 @@
+//
+//  TutorialPageViewController.swift
+//
+//  Created by Ashok Singh on 07/08/25.
+//  Copyright © 2025 Blue Triangle. All rights reserved.
+//
+
 import UIKit
 
 class TutorialPageViewController: UIViewController {

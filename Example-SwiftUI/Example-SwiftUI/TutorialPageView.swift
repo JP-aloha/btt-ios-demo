@@ -1,3 +1,10 @@
+//
+//  TutorialPageView.swift
+//
+//  Created by Ashok Singh on 07/08/25.
+//  Copyright © 2025 Blue Triangle. All rights reserved.
+//
+
 import SwiftUI
 
 struct TutorialPageView: View {
@@ -26,6 +33,7 @@ struct TutorialPageView: View {
                 .font(.body)
                 .multilineTextAlignment(.leading)
         }
+        .bttTrackScreen("TutorialPageView")
         .padding()
     }
 

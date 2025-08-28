@@ -13,9 +13,12 @@ struct TutorialView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var currentPage = 0
 
+    private var isFirst: Bool { currentPage == 0 }
+    private var isLast: Bool { currentPage == slides.count - 1 }
+
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 0) {
                 TabView(selection: $currentPage) {
                     ForEach(Array(slides.enumerated()), id: \.offset) { index, slide in
                         TutorialPageView(model: slide)
@@ -23,25 +26,53 @@ struct TutorialView: View {
                             .padding()
                     }
                 }
-                .tabViewStyle(PageTabViewStyle(indexDisplayMode: .always))
+                .tabViewStyle(.page(indexDisplayMode: .always))
                 .animation(.easeInOut, value: currentPage)
             }
             .bttTrackScreen("Tutorial")
             .navigationTitle("Tutorial")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Done") {
-                        dismiss()
-                        UserDefaults.standard.set(true, forKey: UserDefaultKeys.TutorialShownKey)
-                        UserDefaults.standard.synchronize()
-                        vm.isShownTutorial.toggle()
-                    }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Prev") { prevTapped() }
+                        .disabled(isFirst)
+                        .accessibilityIdentifier("intro prev")
+                }
+
+                ToolbarItemGroup(placement: .navigationBarTrailing) {
+                    Button(isLast ? "Done" : "Skip") { skipOrDoneTapped() }
+                        .accessibilityIdentifier("intro skip")
+                    Button("Next") { nextTapped() }
+                        .disabled(isLast)
+                        .accessibilityIdentifier("intro next")
                 }
             }
         }
     }
-    
+
+    // MARK: - Actions
+
+    private func prevTapped() {
+        withAnimation {
+            currentPage = max(currentPage - 1, 0)
+        }
+    }
+
+    private func nextTapped() {
+        withAnimation {
+            currentPage = min(currentPage + 1, slides.count - 1)
+        }
+    }
+
+    private func skipOrDoneTapped() {
+        dismiss()
+        if !UserDefaults.standard.bool(forKey: UserDefaultKeys.TutorialShownKey) {
+            UserDefaults.standard.set(true, forKey: UserDefaultKeys.TutorialShownKey)
+            UserDefaults.standard.synchronize()
+            vm.isShownTutorial.toggle()
+        }
+    }
+
     private let slides: [TutorialPageModel] = [
         .init(title: "Welcome to Ecom Demo App", desc: """
 This app is built for testing out the features of the Blue Triangle SDK for Android/iOS.

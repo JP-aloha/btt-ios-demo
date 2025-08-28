@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/microsoft/clarity-apps.git",
       "state" : {
-        "revision" : "cd39b380d78e5483fdeb62570434567ea6e73e31",
-        "version" : "3.0.14"
+        "revision" : "4b1dba23a993d07c70cf24010cbb0f0649f1e963",
+        "version" : "3.0.17"
       }
     },
     {
