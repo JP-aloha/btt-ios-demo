@@ -42,7 +42,7 @@ class SettingsViewController: UIViewController {
         btnConfigurationSettings.accessibilityIdentifier = "btn_configuration_settings"
         // Do any additional setup after loading the view.
         
-        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
+      /*  NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification, object: nil, queue: .main) { [weak self] _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5)  {
                 ConfigurationSetup.updateChangedSassionId()
                 if let sessionId = ConfigurationSetup.getSessionId() {
@@ -57,7 +57,7 @@ class SettingsViewController: UIViewController {
                     self?.lblSessionId.text =  sessionId
                 }
             }
-        }
+        }*/
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -69,11 +69,9 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func didSelectUserInfo(_ sender: UIButton) {
-		let storyboard = UIStoryboard(name: "Main", bundle: nil)
-		if let loginVc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
-			loginVc.modalPresentationStyle = .fullScreen
-			self.present(loginVc, animated: true)
-		}
+        let authContainer = AuthContainerViewController()
+        authContainer.modalPresentationStyle = .fullScreen
+        self.present(authContainer, animated: true)
     }
     
     @IBAction func btnTestManualTimer(_ sender: UIButton) {

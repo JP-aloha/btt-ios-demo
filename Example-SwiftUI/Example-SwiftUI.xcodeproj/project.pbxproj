@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5113F49E2E5373910019E904 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 5113F49D2E5373910019E904 /* BlueTriangle */; };
-		5113F4A02E53739F0019E904 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 5113F49F2E53739F0019E904 /* BlueTriangle */; };
 		512A3FBE2AA1CE2E005D5A22 /* UnitTestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A3FBD2AA1CE2E005D5A22 /* UnitTestsViewController.swift */; };
 		512A3FC12AA1CFEF005D5A22 /* MemoryTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A3FC02AA1CFEF005D5A22 /* MemoryTestViewController.swift */; };
 		512A3FC42AA1D1D6005D5A22 /* UnitTestsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 512A3FC32AA1D1D6005D5A22 /* UnitTestsView.swift */; };
@@ -24,11 +22,16 @@
 		514AA99B2E44A9AD00F4A364 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514AA99A2E44A9AA00F4A364 /* TutorialView.swift */; };
 		514AA99D2E44A9FD00F4A364 /* TutorialPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514AA99C2E44A9FC00F4A364 /* TutorialPageView.swift */; };
 		514AA99F2E44AA9D00F4A364 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514AA99E2E44AA9400F4A364 /* AppCoordinator.swift */; };
+		514B6E812F2B891C00522DF8 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 514B6E802F2B891C00522DF8 /* BlueTriangle */; };
+		514B6E832F2B893000522DF8 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 514B6E822F2B893000522DF8 /* BlueTriangle */; };
 		5170A8BF2AA1E82D0091B65A /* MemoryTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8BE2AA1E82D0091B65A /* MemoryTestView.swift */; };
 		5170A8C12AA1F3B50091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
 		5170A8C22AA1F4090091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
 		5170A8C42AA1F7490091B65A /* CPUTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C32AA1F7490091B65A /* CPUTestView.swift */; };
 		5170A8C62AA1F87C0091B65A /* CPUTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C52AA1F87C0091B65A /* CPUTestViewController.swift */; };
+		517A02C32EF2A7EB00E0E4B5 /* ProductDetailPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A02C22EF2A7DE00E0E4B5 /* ProductDetailPageController.swift */; };
+		517A02C52EF2B6AD00E0E4B5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A02C42EF2B6A400E0E4B5 /* SignupViewController.swift */; };
+		517A02C72EF2B8CB00E0E4B5 /* AuthContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A02C62EF2B8C900E0E4B5 /* AuthContainerViewController.swift */; };
 		519833A02B55656100F71C1E /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 5198339F2B55656100F71C1E /* template.html */; };
 		519833A12B55656100F71C1E /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 5198339F2B55656100F71C1E /* template.html */; };
 		5198A2992A9F7104003EFBEF /* MemoryAllocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5198A2982A9F7104003EFBEF /* MemoryAllocationTest.swift */; };
@@ -170,6 +173,9 @@
 		5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTestsViewModel.swift; sourceTree = "<group>"; };
 		5170A8C32AA1F7490091B65A /* CPUTestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUTestView.swift; sourceTree = "<group>"; };
 		5170A8C52AA1F87C0091B65A /* CPUTestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPUTestViewController.swift; sourceTree = "<group>"; };
+		517A02C22EF2A7DE00E0E4B5 /* ProductDetailPageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailPageController.swift; sourceTree = "<group>"; };
+		517A02C42EF2B6A400E0E4B5 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		517A02C62EF2B8C900E0E4B5 /* AuthContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthContainerViewController.swift; sourceTree = "<group>"; };
 		5198339F2B55656100F71C1E /* template.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = template.html; sourceTree = "<group>"; };
 		5198A2982A9F7104003EFBEF /* MemoryAllocationTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryAllocationTest.swift; sourceTree = "<group>"; };
 		51A7C4DC2CB5204A00EAA81E /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -261,7 +267,7 @@
 			files = (
 				84A03BEB2A49DE16000C8BD0 /* Service in Frameworks */,
 				84A03BED2A49DE16000C8BD0 /* IdentifiedCollections in Frameworks */,
-				5113F49E2E5373910019E904 /* BlueTriangle in Frameworks */,
+				514B6E812F2B891C00522DF8 /* BlueTriangle in Frameworks */,
 				5144D7D32DDB6D99001C3F2D /* Clarity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,7 +278,7 @@
 			files = (
 				C9E1141A291421F00031E874 /* IdentifiedCollections in Frameworks */,
 				C94BF015290AE2FC007E1C25 /* Service in Frameworks */,
-				5113F4A02E53739F0019E904 /* BlueTriangle in Frameworks */,
+				514B6E832F2B893000522DF8 /* BlueTriangle in Frameworks */,
 				5144D7D12DDB6D2C001C3F2D /* Clarity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -415,6 +421,7 @@
 				847CF4542A431B10001E9011 /* ProductViewController.swift */,
 				84A2DA722A4AC6F4002732EC /* TabBarViewController.swift */,
 				847CF4582A433F35001E9011 /* ProductDetailViewController.swift */,
+				517A02C22EF2A7DE00E0E4B5 /* ProductDetailPageController.swift */,
 				847CF4622A4466DC001E9011 /* CartViewController.swift */,
 				847CF4642A446736001E9011 /* SettingsViewController.swift */,
 				84D977342A4488C700192330 /* CheckOutViewController.swift */,
@@ -422,7 +429,9 @@
 				51D6F4F42B35A38F0044A3F0 /* BttWebViewController.swift */,
 				51B55E242BCD5E5100758C75 /* ConfigurationViewController.swift */,
 				51A9CA4B2C3BCC6F004F86D8 /* SignalCrashViewController.swift */,
+				517A02C62EF2B8C900E0E4B5 /* AuthContainerViewController.swift */,
 				51A7C4E52CB5641700EAA81E /* LoginViewController.swift */,
+				517A02C42EF2B6A400E0E4B5 /* SignupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -625,7 +634,7 @@
 				84A03BEA2A49DE16000C8BD0 /* Service */,
 				84A03BEC2A49DE16000C8BD0 /* IdentifiedCollections */,
 				5144D7D22DDB6D99001C3F2D /* Clarity */,
-				5113F49D2E5373910019E904 /* BlueTriangle */,
+				514B6E802F2B891C00522DF8 /* BlueTriangle */,
 			);
 			productName = "Example-UIKit";
 			productReference = 847CF43C2A4315D7001E9011 /* Example-UIKit.app */;
@@ -648,7 +657,7 @@
 				C94BF014290AE2FC007E1C25 /* Service */,
 				C9E11419291421F00031E874 /* IdentifiedCollections */,
 				5144D7D02DDB6D2C001C3F2D /* Clarity */,
-				5113F49F2E53739F0019E904 /* BlueTriangle */,
+				514B6E822F2B893000522DF8 /* BlueTriangle */,
 			);
 			productName = "Example-SwiftUI";
 			productReference = C9F4A4122900DB6100BCDF3E /* Example-SwiftUI.app */;
@@ -729,7 +738,7 @@
 			packageReferences = (
 				C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
 				5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */,
-				5113F49C2E5373910019E904 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */,
+				514B6E7F2F2B891C00522DF8 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */,
 			);
 			productRefGroup = C9F4A4132900DB6100BCDF3E /* Products */;
 			projectDirPath = "";
@@ -790,6 +799,7 @@
 			files = (
 				847CF4432A4315D7001E9011 /* ViewController.swift in Sources */,
 				847CF4592A433F35001E9011 /* ProductDetailViewController.swift in Sources */,
+				517A02C72EF2B8CB00E0E4B5 /* AuthContainerViewController.swift in Sources */,
 				848826662A44A33A007B9D72 /* ProductViewModel.swift in Sources */,
 				8492EDC62A45D39000FE3A5E /* ProductDetailCollectionViewCell.swift in Sources */,
 				847CF4652A446736001E9011 /* SettingsViewController.swift in Sources */,
@@ -815,6 +825,7 @@
 				84538C822A4ABE6400EF70A2 /* CartItemTableViewCell.swift in Sources */,
 				8419BD1A2A49CFD7009429C9 /* Configuration.swift in Sources */,
 				51A7C4E72CB5641700EAA81E /* LoginViewController.swift in Sources */,
+				517A02C52EF2B6AD00E0E4B5 /* SignupViewController.swift in Sources */,
 				51F61C972A4ACF2B0071F957 /* BTTrackingConfigViewController.swift in Sources */,
 				51B55E252BCD5E5100758C75 /* ConfigurationViewController.swift in Sources */,
 				8419BD412A49CFFF009429C9 /* Collection+Utils.swift in Sources */,
@@ -839,6 +850,7 @@
 				5170A8C22AA1F4090091B65A /* UnitTestsViewModel.swift in Sources */,
 				8419BD1F2A49CFE1009429C9 /* CartItemModel.swift in Sources */,
 				8419BD3D2A49CFFF009429C9 /* UIColor+Utils.swift in Sources */,
+				517A02C32EF2A7EB00E0E4B5 /* ProductDetailPageController.swift in Sources */,
 				514AA9992E448E0000F4A364 /* TutorialPageViewController.swift in Sources */,
 				5170A8C62AA1F87C0091B65A /* CPUTestViewController.swift in Sources */,
 				84B301ED2A4ED16700BF23B5 /* OrderCheckOutViewController.swift in Sources */,
@@ -967,7 +979,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example-UIKit/Info.plist";
@@ -982,7 +994,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.15.0;
+				MARKETING_VERSION = 3.15.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.UIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1005,7 +1017,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Example-UIKit/Info.plist";
@@ -1020,7 +1032,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.15.0;
+				MARKETING_VERSION = 3.15.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.UIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1157,7 +1169,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
@@ -1173,7 +1185,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.15.0;
+				MARKETING_VERSION = 3.15.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.SwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1196,7 +1208,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
@@ -1212,7 +1224,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.15.0;
+				MARKETING_VERSION = 3.15.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.SwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1353,20 +1365,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		5113F49C2E5373910019E904 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/blue-triangle-tech/btt-swift-sdk.git";
-			requirement = {
-				kind = exactVersion;
-				version = "3.15.0-beta-4";
-			};
-		};
 		5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/microsoft/clarity-apps.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 3.0.7;
+			};
+		};
+		514B6E7F2F2B891C00522DF8 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/blue-triangle-tech/btt-swift-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.15.8;
 			};
 		};
 		C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */ = {
@@ -1380,16 +1392,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		5113F49D2E5373910019E904 /* BlueTriangle */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5113F49C2E5373910019E904 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
-			productName = BlueTriangle;
-		};
-		5113F49F2E53739F0019E904 /* BlueTriangle */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5113F49C2E5373910019E904 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
-			productName = BlueTriangle;
-		};
 		5144D7D02DDB6D2C001C3F2D /* Clarity */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */;
@@ -1399,6 +1401,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */;
 			productName = Clarity;
+		};
+		514B6E802F2B891C00522DF8 /* BlueTriangle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 514B6E7F2F2B891C00522DF8 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
+			productName = BlueTriangle;
+		};
+		514B6E822F2B893000522DF8 /* BlueTriangle */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 514B6E7F2F2B891C00522DF8 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
+			productName = BlueTriangle;
 		};
 		84A03BEA2A49DE16000C8BD0 /* Service */ = {
 			isa = XCSwiftPackageProductDependency;

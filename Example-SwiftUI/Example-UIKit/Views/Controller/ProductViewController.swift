@@ -29,6 +29,8 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
         navigationItem.backButtonTitle = "Product"
         navigationItem.title = "Product"
         
+       // FloatingButton.shared.show()
+
         lblSessionId.text =  UserDefaults.standard.string(forKey: UserDefaultKeys.ConfigureSessionId) ?? ""
         lblSessionId.accessibilityIdentifier = "sessionid"
         activityIndicator = UIActivityIndicatorView(style: .large)
@@ -67,11 +69,9 @@ class ProductViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
     
     @IBAction func didSelectUserInfo(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let loginVc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController {
-            loginVc.modalPresentationStyle = .fullScreen
-            self.present(loginVc, animated: true)
-        }
+        let authContainer = AuthContainerViewController()
+        authContainer.modalPresentationStyle = .fullScreen
+        self.present(authContainer, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {

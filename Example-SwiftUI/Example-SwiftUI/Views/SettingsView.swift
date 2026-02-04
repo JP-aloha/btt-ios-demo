@@ -240,7 +240,7 @@ struct SettingsView: View {
                 UnitTestsView()
             })
             .onAppear{
-                Thread.sleep(forTimeInterval: 3)
+               /* Thread.sleep(forTimeInterval: 3)*/
                 ConfigurationSetup.updateChangedSassionId()
                 if let sessionId = ConfigurationSetup.getSessionId() {
                     sessionID = sessionId

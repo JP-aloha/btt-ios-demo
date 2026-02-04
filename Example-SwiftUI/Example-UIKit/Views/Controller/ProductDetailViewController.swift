@@ -17,6 +17,7 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var btnAddtoCart: UIButton!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var lblQty: UILabel!
+    @IBOutlet weak var imageContainerView: UIView!
     
     var vm: ProductDetailViewModel!
     
@@ -32,6 +33,15 @@ class ProductDetailViewController: UIViewController {
         self.navigationItem.title = "Product Details"
         btnAddtoCart.accessibilityIdentifier = "add to cart"
         btnBack.accessibilityIdentifier = "back"
+    }
+    
+    private func embedImagePages(images: [UIImage]) {
+        let pageVC = ProductDetailPageController(images: images)
+
+        addChild(pageVC)
+        pageVC.view.frame = imageContainerView.bounds
+        imageContainerView.addSubview(pageVC.view)
+        pageVC.didMove(toParent: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,12 +78,15 @@ class ProductDetailViewController: UIViewController {
             case .downloaded(let result):
                 switch result {
                 case .success(let image):
-                    self.productImage.image = image
+                    self.embedImagePages(images: [image, image, image])
+                    //self.productImage.image = image
                 default:
-                    self.productImage.image = UIImage(systemName: "exclamationmark.circle")
+                    let placeholder = UIImage(systemName: "exclamationmark.circle")!
+                    self.embedImagePages(images: [placeholder, placeholder, placeholder])
                 }
             default:
-                self.productImage.image = UIImage(systemName: "exclamationmark.circle")
+                let placeholder = UIImage(systemName: "exclamationmark.circle")!
+                self.embedImagePages(images: [placeholder, placeholder, placeholder])
             }
         }
     }

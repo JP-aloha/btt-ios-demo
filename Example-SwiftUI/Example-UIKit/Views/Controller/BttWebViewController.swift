@@ -24,9 +24,9 @@ class BttWebViewController: UIViewController {
             // Fallback on earlier versions
         }
 		 */
-        webView.navigationDelegate = self
-        webView.configuration.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
-        loadWebView()
+       // webView.navigationDelegate = self
+       // webView.configuration.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
+        //loadWebView()
     }
     
     func loadWebView() {
@@ -52,6 +52,6 @@ extension BttWebViewController: WKNavigationDelegate {
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        BTTWebViewTracker.webView(webView, didCommit: navigation)
+       // BTTWebViewTracker.webView(webView, didCommit: navigation)
     }
 }
