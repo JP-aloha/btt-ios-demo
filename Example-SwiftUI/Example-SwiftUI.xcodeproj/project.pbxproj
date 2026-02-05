@@ -22,8 +22,8 @@
 		514AA99B2E44A9AD00F4A364 /* TutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514AA99A2E44A9AA00F4A364 /* TutorialView.swift */; };
 		514AA99D2E44A9FD00F4A364 /* TutorialPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514AA99C2E44A9FC00F4A364 /* TutorialPageView.swift */; };
 		514AA99F2E44AA9D00F4A364 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 514AA99E2E44AA9400F4A364 /* AppCoordinator.swift */; };
-		514B6E812F2B891C00522DF8 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 514B6E802F2B891C00522DF8 /* BlueTriangle */; };
-		514B6E832F2B893000522DF8 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 514B6E822F2B893000522DF8 /* BlueTriangle */; };
+		516F18002F33743200B63265 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 516F17FF2F33743200B63265 /* BlueTriangle */; };
+		516F18022F33745D00B63265 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 516F18012F33745D00B63265 /* BlueTriangle */; };
 		5170A8BF2AA1E82D0091B65A /* MemoryTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8BE2AA1E82D0091B65A /* MemoryTestView.swift */; };
 		5170A8C12AA1F3B50091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
 		5170A8C22AA1F4090091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
@@ -267,7 +267,7 @@
 			files = (
 				84A03BEB2A49DE16000C8BD0 /* Service in Frameworks */,
 				84A03BED2A49DE16000C8BD0 /* IdentifiedCollections in Frameworks */,
-				514B6E812F2B891C00522DF8 /* BlueTriangle in Frameworks */,
+				516F18002F33743200B63265 /* BlueTriangle in Frameworks */,
 				5144D7D32DDB6D99001C3F2D /* Clarity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,7 +278,7 @@
 			files = (
 				C9E1141A291421F00031E874 /* IdentifiedCollections in Frameworks */,
 				C94BF015290AE2FC007E1C25 /* Service in Frameworks */,
-				514B6E832F2B893000522DF8 /* BlueTriangle in Frameworks */,
+				516F18022F33745D00B63265 /* BlueTriangle in Frameworks */,
 				5144D7D12DDB6D2C001C3F2D /* Clarity in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -634,7 +634,7 @@
 				84A03BEA2A49DE16000C8BD0 /* Service */,
 				84A03BEC2A49DE16000C8BD0 /* IdentifiedCollections */,
 				5144D7D22DDB6D99001C3F2D /* Clarity */,
-				514B6E802F2B891C00522DF8 /* BlueTriangle */,
+				516F17FF2F33743200B63265 /* BlueTriangle */,
 			);
 			productName = "Example-UIKit";
 			productReference = 847CF43C2A4315D7001E9011 /* Example-UIKit.app */;
@@ -657,7 +657,7 @@
 				C94BF014290AE2FC007E1C25 /* Service */,
 				C9E11419291421F00031E874 /* IdentifiedCollections */,
 				5144D7D02DDB6D2C001C3F2D /* Clarity */,
-				514B6E822F2B893000522DF8 /* BlueTriangle */,
+				516F18012F33745D00B63265 /* BlueTriangle */,
 			);
 			productName = "Example-SwiftUI";
 			productReference = C9F4A4122900DB6100BCDF3E /* Example-SwiftUI.app */;
@@ -738,7 +738,7 @@
 			packageReferences = (
 				C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
 				5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */,
-				514B6E7F2F2B891C00522DF8 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */,
+				516F17FE2F33743200B63265 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */,
 			);
 			productRefGroup = C9F4A4132900DB6100BCDF3E /* Products */;
 			projectDirPath = "";
@@ -1373,12 +1373,12 @@
 				minimumVersion = 3.0.7;
 			};
 		};
-		514B6E7F2F2B891C00522DF8 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */ = {
+		516F17FE2F33743200B63265 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/blue-triangle-tech/btt-swift-sdk.git";
+			repositoryURL = "https://github.com/JP-aloha/btt-swift-sdk.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.15.8;
+				branch = feature/event_Id_custom_category;
+				kind = branch;
 			};
 		};
 		C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */ = {
@@ -1402,14 +1402,14 @@
 			package = 5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */;
 			productName = Clarity;
 		};
-		514B6E802F2B891C00522DF8 /* BlueTriangle */ = {
+		516F17FF2F33743200B63265 /* BlueTriangle */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 514B6E7F2F2B891C00522DF8 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
+			package = 516F17FE2F33743200B63265 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
 			productName = BlueTriangle;
 		};
-		514B6E822F2B893000522DF8 /* BlueTriangle */ = {
+		516F18012F33745D00B63265 /* BlueTriangle */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 514B6E7F2F2B891C00522DF8 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
+			package = 516F17FE2F33743200B63265 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
 			productName = BlueTriangle;
 		};
 		84A03BEA2A49DE16000C8BD0 /* Service */ = {

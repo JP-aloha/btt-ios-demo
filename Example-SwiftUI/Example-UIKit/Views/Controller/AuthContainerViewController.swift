@@ -48,10 +48,10 @@ final class AuthContainerViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         setupUI()
-
         // Initial screen
         switchToChild(signupVC)
         switchToChild(loginVC)
+        
     }
 
     // MARK: - UI Setup

@@ -18,6 +18,12 @@ struct Example_SwiftUIApp: App {
     init() {
         ConfigurationSetup.configOnLaunch()
         ConfigurationSetup.addDelay()
+        BlueTriangle.trafficSegmentName = "iOS-SwiftUI-eComDemo"
+        BlueTriangle.setCampaignName("iOS")
+        BlueTriangle.setCampaignMedium("Device")
+        BlueTriangle.setCampaignSource("SwiftUI")
+        BlueTriangle.setDataCenter("NorthEast-1")
+        BlueTriangle.setAbTestID("Mardern-UI")
     }
     
     

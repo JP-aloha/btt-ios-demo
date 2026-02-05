@@ -94,6 +94,11 @@ struct LoginView: View {
 				   isLoggedIn = true
                    BlueTriangle.setCustomVariable("CV1", value: username)
                    BlueTriangle.setCustomVariable("CV2", value: (selectedSegment != 0) ? true : false)
+                   if user.isPremium != 0 {
+                       BlueTriangle.setCustomCategory1("Premium")
+                   } else {
+                       BlueTriangle.setCustomCategory1("Standard")
+                   }
                }else{
                    BlueTriangle.clearCustomVariable("CV1")
                    BlueTriangle.clearCustomVariable("CV2")
@@ -101,6 +106,7 @@ struct LoginView: View {
                    isLoggedIn = false
                    username = ""
                    password = ""
+                   BlueTriangle.setCustomCategory1("Standard")
                }
 		   }
        }

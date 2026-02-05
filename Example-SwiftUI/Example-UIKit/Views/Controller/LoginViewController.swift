@@ -48,6 +48,8 @@ final class LoginViewController: UIViewController {
         styleTextField(txtUserName, placeholder: "Username")
         styleTextField(txtPassword, placeholder: "Password")
         txtPassword.isSecureTextEntry = true
+        txtUserName.accessibilityIdentifier = "fld_user_name"
+        txtPassword.accessibilityIdentifier = "fld_password"
 
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = .systemBlue
@@ -55,6 +57,7 @@ final class LoginViewController: UIViewController {
         loginButton.layer.cornerRadius = 8
         loginButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         loginButton.addTarget(self, action: #selector(didSelectLogin), for: .touchUpInside)
+        loginButton.accessibilityIdentifier = "btn_login"
 
         loginStack.axis = .vertical
         loginStack.spacing = 16
@@ -136,6 +139,11 @@ final class LoginViewController: UIViewController {
 
             BlueTriangle.setCustomVariable("CV1", value: user.name)
             BlueTriangle.setCustomVariable("CV2", value: user.isPremium != 0)
+            if user.isPremium != 0 {
+                BlueTriangle.setCustomCategory1("Premium")
+            } else {
+                BlueTriangle.setCustomCategory1("Standard")
+            }
 
         } else {
             // Logged out
@@ -149,6 +157,8 @@ final class LoginViewController: UIViewController {
 
             BlueTriangle.clearCustomVariable("CV1")
             BlueTriangle.clearCustomVariable("CV2")
+            BlueTriangle.setCustomCategory1("Standard")
+
         }
     }
 

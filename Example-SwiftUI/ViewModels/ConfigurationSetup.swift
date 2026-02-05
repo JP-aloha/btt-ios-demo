@@ -78,6 +78,7 @@ class ConfigurationSetup {
         BlueTriangle.setCustomVariable("CV4", value: UIScreen.resolutionHeight())
         
         self.updateChangedSassionId()
+        BlueTriangle.setCustomCategory1("Guest")
         
         let clarityConfig = ClarityConfig(projectId: "jtjobmhr3i")
         ClaritySDK.initialize(config: clarityConfig)

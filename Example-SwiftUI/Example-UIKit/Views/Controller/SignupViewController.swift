@@ -35,6 +35,8 @@ final class SignupViewController: UIViewController {
         txtPassword.placeholder = "Password"
         txtPassword.isSecureTextEntry = true
         styleTextField(txtPassword)
+        txtUserName.accessibilityIdentifier = "fld_user_name"
+        txtPassword.accessibilityIdentifier = "fld_password"
 
         // Button
         signupButton.setTitle("Signup", for: .normal)
@@ -44,7 +46,7 @@ final class SignupViewController: UIViewController {
         signupButton.layer.cornerRadius = 8
         signupButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         signupButton.addTarget(self, action: #selector(didSelectSignup), for: .touchUpInside)
-
+        signupButton.accessibilityIdentifier = "btn_signup"
         // Stack
         let stack = UIStackView(arrangedSubviews: [
             titleLabel,

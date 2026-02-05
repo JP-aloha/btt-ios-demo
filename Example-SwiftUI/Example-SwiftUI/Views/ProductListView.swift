@@ -61,6 +61,7 @@ struct ProductListView: View {
                     if let sessionId = ConfigurationSetup.getSessionId() {
                         sessionID = sessionId
                     }
+                    BlueTriangle.setCustomCategory1("Guest")
                 }
                 .onDisappear {
                     let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
