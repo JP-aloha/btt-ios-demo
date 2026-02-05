@@ -46,9 +46,11 @@ struct LoginView: View {
 						
 						TextField("Username", text: $username)
 							.textFieldStyle(RoundedBorderTextFieldStyle())
+                            .accessibilityIdentifier("fld_user_name")
 						
 						SecureField("Password", text: $password)
 							.textFieldStyle(RoundedBorderTextFieldStyle())
+                            .accessibilityIdentifier("fld_password")
                         
                         Button("Login"){
                             if (!username.isEmpty && !password.isEmpty) {
@@ -58,6 +60,7 @@ struct LoginView: View {
                                 isLoggedIn = true
                             }
                         }
+                        .accessibilityIdentifier("btn_login")
                         .padding()
                         
 					} else {
