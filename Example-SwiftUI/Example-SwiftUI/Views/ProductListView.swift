@@ -33,6 +33,7 @@ struct ProductListView: View {
                                     ProductCell(
                                         imageStatusProvider: viewModel.imageStatus(_:),
                                         product: product)
+                                    .bttTrackAction("Tap ProductCell \(product.name)")
                                 }
                             }
                         }
@@ -43,6 +44,7 @@ struct ProductListView: View {
                                     ProductCell(
                                         imageStatusProvider: viewModel.imageStatus(_:),
                                         product: product)
+                                    .bttTrackAction("Tap ProductCell \(product.name)")
                                 }
                             }
                         }

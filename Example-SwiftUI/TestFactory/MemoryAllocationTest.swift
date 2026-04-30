@@ -21,8 +21,8 @@ class MemoryAllocationTest {
         }
  
         let data = "H".data(using: .utf8)! as NSData
-        memcpy(memoryBlock, data.bytes, totalSize)
-       // memset(memoryBlock, 0, totalSize)
+       // memcpy(memoryBlock, data.bytes, totalSize)
+        memset(memoryBlock, 0, totalSize)
         
         allocatedMemoryBlocks.append(memoryBlock)
     }
