@@ -9,7 +9,7 @@
 // https://help.apple.com/xcode/#/dev745c5c974
 
 BASE_URL = 34.31.235.63:8000/btriangle/api
-SITE_ID = sdkdemo26621z
+SITE_ID = sdkdevtest500z
 DEVELOPMENT_TEAM = UG892XBK75
 
 // Developers can override the Xcode settings by creating a build configuration file named

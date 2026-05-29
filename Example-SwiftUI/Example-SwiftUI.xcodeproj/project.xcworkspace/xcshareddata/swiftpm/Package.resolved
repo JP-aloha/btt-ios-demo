@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
       "state" : {
-        "branch" : "feature/event_Id_custom_category",
-        "revision" : "479ed7916acf4c5d32fd33c16f3ba6f1824235c3"
+        "branch" : "feature/auto_track_test",
+        "revision" : "4a518818575e3282a8f73f5cb8168706a07da30d"
       }
     },
     {
@@ -34,6 +34,15 @@
       "state" : {
         "revision" : "d01446a78fb768adc9a78cbb6df07767c8ccfc29",
         "version" : "0.8.0"
+      }
+    },
+    {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax.git",
+      "state" : {
+        "revision" : "64889f0c732f210a935a0ad7cda38f77f876262d",
+        "version" : "509.1.1"
       }
     }
   ],

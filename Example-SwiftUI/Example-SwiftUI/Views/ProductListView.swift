@@ -111,8 +111,8 @@ struct ProductListView_Previews: PreviewProvider {
     static var previews: some View {
         ProductListView(
             viewModel: .init(
-                cartRepository: .mock,
-                imageLoader: .mock,
-                service: .mock))
+                cartRepository: CartRepository(service: .captured),
+                imageLoader: .live,
+                service: .captured))
     }
 }

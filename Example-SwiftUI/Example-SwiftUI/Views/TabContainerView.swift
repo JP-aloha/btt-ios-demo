@@ -103,6 +103,6 @@ struct TabContainerView: View {
 
 struct TabContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        TabContainerView(imageLoader: .mock, service: .mock, vm: BTTConfigModel())
+        TabContainerView(imageLoader: .live, service: .captured, vm: BTTConfigModel())
     }
 }

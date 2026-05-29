@@ -1377,7 +1377,7 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/JP-aloha/btt-swift-sdk.git";
 			requirement = {
-				branch = feature/event_Id_custom_category;
+				branch = feature/auto_track_test;
 				kind = branch;
 			};
 		};
