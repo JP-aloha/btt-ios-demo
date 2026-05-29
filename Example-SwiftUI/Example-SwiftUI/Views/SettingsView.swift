@@ -104,6 +104,7 @@ struct SettingsView: View {
                                     .foregroundColor(.white)
                             }
                             .padding(.leading, 10)
+                            .accessibilityIdentifier("copy_action")
                             .buttonStyle(.borderedProminent)
                             .tint(.blue)
                             Spacer()

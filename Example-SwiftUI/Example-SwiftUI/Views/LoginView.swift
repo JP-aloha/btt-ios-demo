@@ -27,6 +27,7 @@ struct LoginView: View {
 					Button("Cancel") {
 						showLoginSheet = false
 					}
+                    .accessibilityIdentifier("btn_Cancel")
 					.foregroundColor(.white)
 					.padding()
 					Spacer()
@@ -61,6 +62,7 @@ struct LoginView: View {
                             }
                         }
                         .accessibilityIdentifier("btn_login")
+                        .bttTrackAction("Login_Button")
                         .padding()
                         
 					} else {
