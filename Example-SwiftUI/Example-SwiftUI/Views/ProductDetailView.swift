@@ -35,7 +35,7 @@ struct ProductDetailView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .bttTrackScreen("ProductDetailView")
+        //.bttTrackScreen("ProductDetailView")
         .toolbar {
                    ToolbarItem(placement: .navigationBarLeading) {
                        Button(action: {

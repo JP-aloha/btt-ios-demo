@@ -51,7 +51,7 @@ struct ProductListView: View {
                     }
                     .padding(.horizontal, 16)
                 }
-                .bttTrackScreen("ProductListView")
+               // .bttTrackScreen("ProductListView")
                 .onAppear{
                     let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
                     if !isScreenTracking, BlueTriangle.initialized{

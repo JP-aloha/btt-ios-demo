@@ -233,7 +233,7 @@ struct SettingsView: View {
             }
             .padding(.leading, 15)
             .padding(.trailing, 15)
-            .bttTrackScreen("SettingsView")
+            //.bttTrackScreen("SettingsView")
             .fullScreenCover(isPresented: $showModal, content: {
                 ConfigurationView(isConfigurationActive: $showModal, vm: ConfigurationModel())
             })

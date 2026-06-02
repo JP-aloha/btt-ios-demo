@@ -47,7 +47,7 @@ struct CartView: View {
                             .buttonStyle(.primary())
                             .padding()
                         }//.disabled(viewModel.isLoading)
-                    .bttTrackScreen("CartView")
+                    //.bttTrackScreen("CartView")
                     .onAppear{
                         let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
                         if !isScreenTracking, BlueTriangle.initialized{

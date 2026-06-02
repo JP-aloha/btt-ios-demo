@@ -644,6 +644,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9F4A4362900DB6200BCDF3E /* Build configuration list for PBXNativeTarget "Example-SwiftUI" */;
 			buildPhases = (
+				51E3A53D2FC9A915007B0710 /* BTT Pre Build injection */,
 				C9F4A40E2900DB6100BCDF3E /* Sources */,
 				C9F4A40F2900DB6100BCDF3E /* Frameworks */,
 				C9F4A4102900DB6100BCDF3E /* Resources */,
@@ -791,6 +792,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		51E3A53D2FC9A915007B0710 /* BTT Pre Build injection */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "BTT Pre Build injection";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# -------- BlueTriangle Injection Script (PRE-BUILD) --------\nset -e\n\nARCH=$(uname -m)\nDERIVED_DATA=$(dirname \"$BUILD_DIR\")/..\n\n# Locate bundle\nBUNDLE=$(find \\\n    \"$DERIVED_DATA/SourcePackages/artifacts\" \\\n    \"$DERIVED_DATA/SourcePackages/checkouts\" \\\n    \"$SRCROOT/../../../\" \\\n    -maxdepth 8 \\\n    -name \"BTTInstrumentor.artifactbundle\" \\\n    -type d 2>/dev/null | head -1)\n\n[ -z \"$BUNDLE\" ] && { echo \"⚠️ Bundle not found\"; exit 0; }\necho \"📦 Bundle: $BUNDLE\"\n\n# Resolve binary using ruby (always on macOS, no CLT needed)\nBINARY_REL=$(ruby -e \"\n  require 'json'\n  data = JSON.parse(File.read('$BUNDLE/info.json'))\n  variants = data['artifacts']['BTTInstrumentor']['variants']\n  match = variants.find { |v| v['supportedTriples'][0].include?('$ARCH') }\n  puts match['path'] if match\n\")\n\n[ -z \"$BINARY_REL\" ] && { echo \"⚠️ No binary for arch: $ARCH\"; exit 0; }\n\nBINARY=\"$BUNDLE/$BINARY_REL\"\n[ ! -f \"$BINARY\" ] && { echo \"⚠️ Binary not found: $BINARY\"; exit 0; }\necho \"⚙️ Binary: $BINARY\"\nchmod +x \"$BINARY\"\n\n# Source directory\nSOURCE_DIR=\"${BTT_SOURCE_DIR:-$SRCROOT/$PRODUCT_NAME}\"\n[ ! -d \"$SOURCE_DIR\" ] && { echo \"⚠️ Source dir not found: $SOURCE_DIR\"; exit 0; }\necho \"📁 Source: $SOURCE_DIR\"\n\n# Inject\necho \"🔧 Injecting...\"\nfind \"$SOURCE_DIR\" -name \"*.swift\" | while read -r FILE; do\n    \"$BINARY\" \"$FILE\"\ndone\n\necho \"✅ Injection complete\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		847CF4382A4315D7001E9011 /* Sources */ = {
