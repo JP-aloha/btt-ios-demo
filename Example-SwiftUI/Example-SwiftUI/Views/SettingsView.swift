@@ -14,14 +14,13 @@ struct SettingsView: View {
     @State private var showingAlert = false
     @State private var showModal = false
     @State private var presentHybridDemo = false
+    @State private var presentTutorial = false
     @State private var sessionID = ""
     @State private var tagUrl = "\(Secrets.siteID).btttag.com/btt.js"
     
     var body: some View {
-        NavigationStack {
-        
+        VStack {
             VStack(spacing: 5){
-                
                 VStack{
                     HStack{
                         Spacer()
@@ -36,7 +35,7 @@ struct SettingsView: View {
                 VStack{
                     HStack{
                         Spacer()
-                        Text("BTT e-Com")
+                        Text("eCom SwiftUI")
                             .font(Font.system(size: 20, weight: .bold))
                             .foregroundColor(.black)
                         Spacer()
@@ -105,6 +104,7 @@ struct SettingsView: View {
                                     .foregroundColor(.white)
                             }
                             .padding(.leading, 10)
+                            .accessibilityIdentifier("copy_action")
                             .buttonStyle(.borderedProminent)
                             .tint(.blue)
                             Spacer()
@@ -213,6 +213,16 @@ struct SettingsView: View {
                         .tint(.blue)
                         .accessibilityIdentifier("btn_configuration_settings")
                         
+                        Button("About") {
+                            self.presentTutorial = true
+                        }
+                        .buttonStyle(.borderedProminent)
+                        .tint(.blue)
+                        .accessibilityIdentifier("btn_about")
+                        .fullScreenCover(isPresented: $presentTutorial) {
+                            TutorialView(vm: AppCoordinator())
+                        }
+                        
                         Spacer()
                     }
                     .frame(height: 45)
@@ -223,8 +233,7 @@ struct SettingsView: View {
             }
             .padding(.leading, 15)
             .padding(.trailing, 15)
-            .navigationTitle("Settings")
-            .bttTrackScreen("SettingsView")
+            //.bttTrackScreen("SettingsView")
             .fullScreenCover(isPresented: $showModal, content: {
                 ConfigurationView(isConfigurationActive: $showModal, vm: ConfigurationModel())
             })
@@ -232,7 +241,7 @@ struct SettingsView: View {
                 UnitTestsView()
             })
             .onAppear{
-                Thread.sleep(forTimeInterval: 3)
+               /* Thread.sleep(forTimeInterval: 3)*/
                 ConfigurationSetup.updateChangedSassionId()
                 if let sessionId = ConfigurationSetup.getSessionId() {
                     sessionID = sessionId

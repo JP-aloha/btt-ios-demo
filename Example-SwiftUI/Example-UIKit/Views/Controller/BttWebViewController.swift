@@ -17,6 +17,7 @@ class BttWebViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+		
         if #available(iOS 16.4, *) {
             webView.isInspectable = true
         } else {
@@ -33,7 +34,9 @@ class BttWebViewController: UIViewController {
              return
         }
 
-        webView.load(URLRequest(url: url))
+        if let urlNew = URL.init(string: "http://192.168.1.126:5173") {
+            webView.load(URLRequest(url: urlNew))
+        }
     }
     
     @IBAction func didSelectFinish(_ sender: Any?) {
@@ -43,13 +46,64 @@ class BttWebViewController: UIViewController {
     @IBAction func didSelectQuestion(_ sender: Any?) {
         HybridViewModel.showDocInfo()
     }
+    
+    func makeSPAInjectionScript() -> WKUserScript {
+        let script = """
+        (function() {
+            function notify() {
+                window.webkit.messageHandlers.urlChanged.postMessage(window.location.href);
+            }
+
+            const pushState = history.pushState;
+            history.pushState = function() {
+                pushState.apply(history, arguments);
+                notify();
+            };
+
+            const replaceState = history.replaceState;
+            history.replaceState = function() {
+                replaceState.apply(history, arguments);
+                notify();
+            };
+
+            window.addEventListener('popstate', notify);
+
+            // hash change (important!)
+            window.addEventListener('hashchange', notify);
+
+            // initial load
+            notify();
+        })();
+        """
+
+        return WKUserScript(
+            source: script,
+            injectionTime: .atDocumentStart,
+            forMainFrameOnly: false   // 👈 important for iframe cases
+        )
+    }
 }
 
 extension BttWebViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+       // print("Finished loading: \(webView.url?.absoluteString ?? "")")
     }
     
     func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
-        BTTWebViewTracker.webView(webView, didCommit: navigation)
+        print("Finished loading: \(webView.url?.absoluteString ?? "")")
+         BTTWebViewTracker.webView(webView, didCommit: navigation)
+    }
+    
+    // Called when navigation starts
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        print("Started loading: \(webView.url?.absoluteString ?? "")")
+    }
+    // Called before navigation (decision point)
+    func webView(_ webView: WKWebView,
+                 decidePolicyFor navigationAction: WKNavigationAction,
+                 decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        
+        print("Navigating to: \(navigationAction.request.url?.absoluteString ?? "")")
+        decisionHandler(.allow)
     }
 }

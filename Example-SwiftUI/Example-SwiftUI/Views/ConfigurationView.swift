@@ -217,8 +217,10 @@ struct ConfigurationView: View {
             }
             .padding(.leading, 10)
             .padding(.trailing, 10)
+			 
         }
-        //.alert(isPresented: $showConfirm, content: { confirmChange })
+        .bttTrackScreen("ConfigurationView")
+        .alert(isPresented: $showConfirm, content: { confirmChange })
     }
     
     var confirmChange: Alert {
@@ -232,6 +234,8 @@ struct ConfigurationView: View {
     }
 }
 
-#Preview {
-    ConfigurationView(isConfigurationActive: .constant(true), vm: ConfigurationModel())
-}
+
+ #Preview {
+ ConfigurationView(isConfigurationActive: .constant(true), vm: ConfigurationModel())
+ }
+ 

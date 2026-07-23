@@ -14,6 +14,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         ConfigurationSetup.configOnLaunch()
         ConfigurationSetup.addDelay()
+        BlueTriangle.trafficSegmentName = "iOS-UIKit-eComDemo"
+        BlueTriangle.setCampaignName("iOS")
+        BlueTriangle.setCampaignMedium("Device")
+        BlueTriangle.setCampaignSource("UIKIT")
+        BlueTriangle.setDataCenter("NorthWest-1")
+        BlueTriangle.setAbTestID("Lagacy-UI")
+
+        _ = MetricKitManager.shared
+        LaunchHistory.recordColdLaunch()
+        if let delay = StressSimulators.slowLaunchDelayIfArmed() {
+            Thread.sleep(forTimeInterval: delay)
+        }
+
         return true
     }
 

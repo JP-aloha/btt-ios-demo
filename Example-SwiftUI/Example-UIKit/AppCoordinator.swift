@@ -16,6 +16,12 @@ class AppCoordinator{
         }
     }
     
+    static func setupTutorialVc(){
+        if let tutorialVC = self.getRootTutorialVC(){
+            switchRoot(sourceVC: tutorialVC)
+        }
+    }
+    
     static func setupRootConfigVc(){
         if let rootVC = self.getRootConfigVC(){
             switchRoot(sourceVC: rootVC)
@@ -60,6 +66,13 @@ class AppCoordinator{
         let rootVC = storyboard.instantiateViewController(withIdentifier: "ConfigVC")
         let navRootVc = UINavigationController(rootViewController: rootVC)
         return navRootVc
+    }
+    
+    static private func getRootTutorialVC() ->UINavigationController?{
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let tutorialVC = storyboard.instantiateViewController(withIdentifier: "TutorialVC")
+        let navTutorialVC = UINavigationController(rootViewController: tutorialVC)
+        return navTutorialVC
     }
 }
 

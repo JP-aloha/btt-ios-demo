@@ -28,6 +28,7 @@ struct OrderSuccessfulView: View {
                     label: {
                         Text("Continue Shopping")
                     })
+                .bttTrackAction("Continue Shopping_action")
                 .accessibilityIdentifier("continue shopping")
                 .buttonStyle(.primary())
             }
@@ -48,7 +49,7 @@ struct OrderSuccessfulView: View {
             .foregroundColor(.secondary)
             .padding(.horizontal)
             .navigationTitle("Checkout")
-            .bttTrackScreen("OrderSuccessfulView")
+//.bttTrackScreen("OrderSuccessfulView")
         }
     }
 }

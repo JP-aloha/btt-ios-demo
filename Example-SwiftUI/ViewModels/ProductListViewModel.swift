@@ -40,9 +40,9 @@ final class ProductListViewModel: ObservableObject {
         
         if BlueTriangle.initialized {
             // Start timer
-            timer = BlueTriangle.startTimer(
+           /* timer = BlueTriangle.startTimer(
                 page: Page(
-                    pageName: "ProductList"))
+                    pageName: "ProductList"))*/
         }
 
         do {
@@ -62,7 +62,7 @@ final class ProductListViewModel: ObservableObject {
        
         if BlueTriangle.initialized, let timer = timer {
             // End timer after view images have loaded
-            BlueTriangle.endTimer(timer)
+          //  BlueTriangle.endTimer(timer)
         }
     }
 

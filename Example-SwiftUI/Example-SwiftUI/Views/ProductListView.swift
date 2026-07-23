@@ -18,16 +18,12 @@ struct ProductListView: View {
     @State var  timer : BTTimer?
     @State private var sessionID = ""
 
-    init(viewModel: ProductListViewModel) {
-        self.viewModel = viewModel
-    }
-
     var columns: [GridItem] {
         [GridItem(.adaptive(minimum: 150, maximum: 170))]
     }
 
     var body: some View {
-        NavigationStack {
+        VStack {
             VStack{
                 ScrollView {
                     HStack(alignment: .top, spacing: 16) {
@@ -37,6 +33,7 @@ struct ProductListView: View {
                                     ProductCell(
                                         imageStatusProvider: viewModel.imageStatus(_:),
                                         product: product)
+                                    .bttTrackAction("Tap ProductCell \(product.name)")
                                 }
                             }
                         }
@@ -47,21 +44,14 @@ struct ProductListView: View {
                                     ProductCell(
                                         imageStatusProvider: viewModel.imageStatus(_:),
                                         product: product)
+                                    .bttTrackAction("Tap ProductCell \(product.name)")
                                 }
                             }
                         }
                     }
                     .padding(.horizontal, 16)
-                    .navigationDestination(for: Product.self) { product in
-                        if let detailViewModel = viewModel.detailViewModel(for: product.id) {
-                            ProductDetailView(
-                                viewModel: detailViewModel)
-                        } else {
-                            Text("Error")
-                        }
-                    }
                 }
-                .bttTrackScreen("ProductListView")
+               // .bttTrackScreen("ProductListView")
                 .onAppear{
                     let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
                     if !isScreenTracking, BlueTriangle.initialized{
@@ -73,6 +63,7 @@ struct ProductListView: View {
                     if let sessionId = ConfigurationSetup.getSessionId() {
                         sessionID = sessionId
                     }
+                    BlueTriangle.setCustomCategory1("Guest")
                 }
                 .onDisappear {
                     let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
@@ -86,8 +77,7 @@ struct ProductListView: View {
                 .task {
                     await viewModel.onAppear()
                 }
-                .navigationTitle("Products")
-                
+                                
                 HStack{
                     Text("SessionID :")
                         .font(Font.system(size: 16, weight: .medium))
@@ -123,8 +113,8 @@ struct ProductListView_Previews: PreviewProvider {
     static var previews: some View {
         ProductListView(
             viewModel: .init(
-                cartRepository: .mock,
-                imageLoader: .mock,
-                service: .mock))
+                cartRepository: CartRepository(service: .captured),
+                imageLoader: .live,
+                service: .captured))
     }
 }

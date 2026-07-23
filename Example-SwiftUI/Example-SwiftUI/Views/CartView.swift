@@ -22,9 +22,8 @@ struct CartView: View {
     }
 
     var body: some View {
-        NavigationStack {
+        VStack {
             Group {
-
                     cartList(viewModel)
                         .padding(.bottom, 60)
                         .overlay(alignment: .bottom) {
@@ -48,7 +47,7 @@ struct CartView: View {
                             .buttonStyle(.primary())
                             .padding()
                         }//.disabled(viewModel.isLoading)
-                    .bttTrackScreen("CartView")
+                    //.bttTrackScreen("CartView")
                     .onAppear{
                         let isScreenTracking : Bool = UserDefaults.standard.bool(forKey: ConfigUserDefaultKeys.ConfigScreenTrackingKey)
                         if !isScreenTracking, BlueTriangle.initialized{
@@ -72,7 +71,6 @@ struct CartView: View {
             .alert("Detected memory warning.", isPresented: $viewModel.isMemoryWarning) {
                 Button("OK", role: .cancel) { }
             }
-            .navigationTitle("Cart")
         }
         .errorAlert(error: $viewModel.error)
     }

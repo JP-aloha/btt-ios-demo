@@ -26,7 +26,7 @@ class CartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.title = "Cart"
         btnSetup()
         getCart()
         resisterObserver()
@@ -66,6 +66,24 @@ class CartViewController: UIViewController {
         }).store(in: &cancellable)
     }
     
+    @IBAction func didSelectSignalCrashScenario(_ sender: UIButton) {
+        let alert = UIAlertController(title: "Signal crash scenario", message: "You can generated Signal crash here by clicking on CheckOut button without selecting any product. and that crash will upload to BlueTriangle after next app launch.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func didSelectNSCrashScenario(_ sender: UIButton) {
+        let alert = UIAlertController(title: "NSException crash Scenario", message: "You can generate an NSException crash by clicking on the Checkout button after selecting more than four different products. This crash will be uploaded to BlueTriangle after the next app launch.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func didSelectUserInfo(_ sender: UIButton) {
+        let authContainer = AuthContainerViewController()
+        authContainer.modalPresentationStyle = .fullScreen
+        self.present(authContainer, animated: true)
+    }
+    
     @IBAction func btnActionCheckOut(_ sender: UIButton) {
         if vm.productItems.count > 4 {
             ANRTest.cartLimitExceedCrash()
@@ -77,7 +95,7 @@ class CartViewController: UIViewController {
             await vm.checkout()
             await vm.placeOrder()
             
-            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessfulViewController") as? OrderSuccessfulViewController{
+            if let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessfulViewController") as? OrderCheckOutViewController{
                 vc.checkoutID = vm.checkoutItem?.confirmation ?? UUID().uuidString
                 self.navigationController?.pushViewController(vc, animated: true)
             }
@@ -188,11 +206,17 @@ extension CartViewController: CartItemTVCDelegate {
             }
         }
     }
+    
+    func didSelectAnrScenarioInfo() {
+        let alert = UIAlertController(title: "ANR scenario", message: "You can generate an ANR by clicking on the Trash icon button.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension CartViewController: CheckoutVCDelegate {
     func didCheckout(with id: String) {
-        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessfulViewController") as? OrderSuccessfulViewController{
+        if let vc = self.storyboard?.instantiateViewController(withIdentifier: "OrderSuccessfulViewController") as? OrderCheckOutViewController{
             vc.checkoutID = id
             self.navigationController?.pushViewController(vc, animated: true)
         }

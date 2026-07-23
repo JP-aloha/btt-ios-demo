@@ -3,10 +3,19 @@
     {
       "identity" : "btt-swift-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
+      "location" : "https://github.com/blue-triangle-tech/btt-swift-sdk.git",
       "state" : {
-        "branch" : "feature/session-expiration",
-        "revision" : "d7d72d33c11aaf1088fb3818b06d3aa115c1b338"
+        "revision" : "1f81b5ea0ef6b22629986da67dd497c02c3714a0",
+        "version" : "3.15.13"
+      }
+    },
+    {
+      "identity" : "clarity-apps",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/microsoft/clarity-apps.git",
+      "state" : {
+        "revision" : "66c5158d7520f2d28bd795206a01642d3916a632",
+        "version" : "3.5.3"
       }
     },
     {
@@ -14,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections",
       "state" : {
-        "revision" : "9bf03ff58ce34478e66aaee630e491823326fd06",
-        "version" : "1.1.3"
+        "revision" : "a0cb0954ecb21e4e31b0070e6ed5674e8556685a",
+        "version" : "1.6.0"
       }
     },
     {

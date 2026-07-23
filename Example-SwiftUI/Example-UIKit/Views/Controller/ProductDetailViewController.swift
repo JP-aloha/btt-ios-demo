@@ -17,6 +17,7 @@ class ProductDetailViewController: UIViewController {
     @IBOutlet weak var btnAddtoCart: UIButton!
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var lblQty: UILabel!
+    @IBOutlet weak var imageContainerView: UIView!
     
     var vm: ProductDetailViewModel!
     
@@ -29,9 +30,18 @@ class ProductDetailViewController: UIViewController {
         let backButton = UIBarButtonItem()
         backButton.title = "Products"
         self.navigationItem.backBarButtonItem = backButton
-        
+        self.navigationItem.title = "Product Details"
         btnAddtoCart.accessibilityIdentifier = "add to cart"
         btnBack.accessibilityIdentifier = "back"
+    }
+    
+    private func embedImagePages(images: [UIImage]) {
+        let pageVC = ProductDetailPageController(images: images)
+
+        addChild(pageVC)
+        pageVC.view.frame = imageContainerView.bounds
+        imageContainerView.addSubview(pageVC.view)
+        pageVC.didMove(toParent: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -68,12 +78,15 @@ class ProductDetailViewController: UIViewController {
             case .downloaded(let result):
                 switch result {
                 case .success(let image):
-                    self.productImage.image = image
+                    self.embedImagePages(images: [image, image, image])
+                    //self.productImage.image = image
                 default:
-                    self.productImage.image = UIImage(systemName: "exclamationmark.circle")
+                    let placeholder = UIImage(systemName: "exclamationmark.circle")!
+                    self.embedImagePages(images: [placeholder, placeholder, placeholder])
                 }
             default:
-                self.productImage.image = UIImage(systemName: "exclamationmark.circle")
+                let placeholder = UIImage(systemName: "exclamationmark.circle")!
+                self.embedImagePages(images: [placeholder, placeholder, placeholder])
             }
         }
     }
@@ -94,6 +107,18 @@ class ProductDetailViewController: UIViewController {
             await vm.addToCart()
             btnAddtoCart.isEnabled = true
         }
+    }
+    
+    @IBAction func didSelectMemoryWarningScenario(_ sender: Any) {
+        let alert = UIAlertController(title: "Memory Warning scenario", message: "You can generate a memory warning by clicking the Add to Cart button continuously after selecting any perfume product, until an alert appears.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    @IBAction func didSelectCPUScenario(_ sender: Any) {
+        let alert = UIAlertController(title: "CPU Usage scenario", message: "You can generate high CPU usage by clicking the Add to Cart button after selecting the product ‘KEY Holder,’ which will increase CPU usage up to 50–80%. Similarly, selecting the product ‘Infinix Inbook’ will increase CPU usage up to 50%", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     

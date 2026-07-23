@@ -35,7 +35,7 @@ struct ProductDetailView: View {
             }
         }
         .navigationBarBackButtonHidden(true)
-        .bttTrackScreen("ProductDetailView")
+        //.bttTrackScreen("ProductDetailView")
         .toolbar {
                    ToolbarItem(placement: .navigationBarLeading) {
                        Button(action: {
@@ -65,9 +65,12 @@ struct ProductDetailView: View {
                 },
                 label: {
                     Text("Add to Cart")
-                }).disabled(isLoading)
-                .accessibilityIdentifier("add to cart")
+                }
+            )
+            .accessibilityIdentifier("Add_Identifier")
+            .disabled(isLoading)
             .buttonStyle(.primary())
+            .bttTrackAction("User-Add to Cart")
             .padding()
         }
         .task {
