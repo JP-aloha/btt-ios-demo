@@ -7,6 +7,7 @@
 
 import Service
 import SwiftUI
+import BlueTriangle
 
 struct TabContainerView: View {
 	enum Tab: String, Hashable {
@@ -108,6 +109,7 @@ struct TabContainerView: View {
 //			}
 			// }
 		}
+		.bttTrack("\(Self.self)")
 	}
 }
 

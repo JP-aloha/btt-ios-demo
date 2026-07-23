@@ -48,6 +48,7 @@ struct TutorialView: View {
                 }
             }
         }
+        .bttTrack("\(Self.self)")
     }
 
     // MARK: - Actions

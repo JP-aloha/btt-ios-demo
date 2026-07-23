@@ -36,6 +36,7 @@ struct MemoryTestView: View {
             }
             .navigationTitle("Memory Test")
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

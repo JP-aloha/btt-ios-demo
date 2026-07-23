@@ -7,6 +7,7 @@
 
 import Service
 import SwiftUI
+import BlueTriangle
 
 struct ProductCell: View {
     @State var imageStatus: ImageStatus?
@@ -40,6 +41,7 @@ struct ProductCell: View {
                 imageStatus = status
             }
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

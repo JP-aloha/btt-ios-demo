@@ -1,4 +1,5 @@
 import SwiftUI
+import BlueTriangle
 
 struct HitchRateView: View {
     @EnvironmentObject private var monitor: HitchRateMonitor
@@ -65,6 +66,7 @@ struct HitchRateView: View {
         } message: {
             Text("This permanently deletes all \(monitor.sessions.count) saved hitch-rate session(s). This cannot be undone.")
         }
+        .bttTrack("\(Self.self)")
     }
 }
 
@@ -86,6 +88,7 @@ private struct HitchRateSessionRow: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

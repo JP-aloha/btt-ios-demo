@@ -1,4 +1,5 @@
 import SwiftUI
+import BlueTriangle
 
 struct PayloadRow: View {
     let payload: StoredPayload
@@ -27,5 +28,6 @@ struct PayloadRow: View {
                 .monospacedDigit()
                 .foregroundStyle(.secondary)
         }
+        .bttTrack("\(Self.self)")
     }
 }

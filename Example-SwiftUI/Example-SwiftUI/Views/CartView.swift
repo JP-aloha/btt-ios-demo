@@ -73,6 +73,7 @@ struct CartView: View {
             }
         }
         .errorAlert(error: $viewModel.error)
+        .bttTrack("\(Self.self)")
     }
 }
 

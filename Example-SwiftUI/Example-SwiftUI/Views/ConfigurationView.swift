@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct ConfigurationView: View {
     
@@ -221,6 +222,7 @@ struct ConfigurationView: View {
         }
         .bttTrackScreen("ConfigurationView")
         .alert(isPresented: $showConfirm, content: { confirmChange })
+        .bttTrack("\(Self.self)")
     }
     
     var confirmChange: Alert {

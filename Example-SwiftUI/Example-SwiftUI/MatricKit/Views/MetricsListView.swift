@@ -1,4 +1,5 @@
 import SwiftUI
+import BlueTriangle
 
 struct MetricsListView: View {
     @EnvironmentObject private var manager: MetricKitManager
@@ -24,6 +25,7 @@ struct MetricsListView: View {
                 }
             }
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

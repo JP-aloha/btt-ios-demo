@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct UnitTestsView: View {
     
@@ -40,6 +41,7 @@ struct UnitTestsView: View {
         .navigationDestination(isPresented: self.$isCPUTestsActive, destination: {
             CPUTestView(viewModel: UnitTestsViewModel())
         })
+        .bttTrack("\(Self.self)")
         
     }
 }

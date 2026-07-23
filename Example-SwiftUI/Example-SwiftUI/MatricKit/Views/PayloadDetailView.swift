@@ -1,4 +1,5 @@
 import SwiftUI
+import BlueTriangle
 
 struct PayloadDetailView: View {
     let title: String
@@ -48,5 +49,6 @@ struct PayloadDetailView: View {
         } message: {
             Text("This payload was sent to Blue Triangle via logError.")
         }
+        .bttTrack("\(Self.self)")
     }
 }

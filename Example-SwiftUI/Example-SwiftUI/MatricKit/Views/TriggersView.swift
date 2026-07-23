@@ -1,4 +1,5 @@
 import SwiftUI
+import BlueTriangle
 
 struct TriggersView: View {
     @State private var cpuDuration: Double = 60
@@ -185,6 +186,7 @@ struct TriggersView: View {
         } message: {
             Text("This blocks the main thread indefinitely — the app will become fully unresponsive. You'll need to force-quit it (swipe up in the app switcher) to recover.")
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

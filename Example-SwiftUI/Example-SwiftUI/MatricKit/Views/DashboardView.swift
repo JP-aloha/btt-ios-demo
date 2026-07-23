@@ -1,4 +1,5 @@
 import SwiftUI
+import BlueTriangle
 
 struct DashboardView: View {
     @EnvironmentObject private var manager: MetricKitManager
@@ -83,6 +84,7 @@ struct DashboardView: View {
         } message: {
             Text("This permanently deletes all \(manager.metricPayloads.count + manager.diagnosticPayloads.count) archived payload(s) from local storage. This cannot be undone.")
         }
+        .bttTrack("\(Self.self)")
     }
 }
 
@@ -138,6 +140,7 @@ private struct FeatureRow: View {
         } message: {
             Text("\"\(feature.title)\" was sent to Blue Triangle Errors Explorer for siteId: \(Secrets.siteID)")
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

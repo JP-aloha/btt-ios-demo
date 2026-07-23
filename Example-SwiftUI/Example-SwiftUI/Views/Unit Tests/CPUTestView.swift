@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct CPUTestView: View {
     
@@ -16,6 +17,7 @@ struct CPUTestView: View {
             Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
         }
         .navigationTitle("CPU Test")
+        .bttTrack("\(Self.self)")
         
     }
 }

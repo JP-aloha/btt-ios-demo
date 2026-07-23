@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct LineItemRow<ModifiedTitle: View>: View {
     let title: String
@@ -36,6 +37,7 @@ struct LineItemRow<ModifiedTitle: View>: View {
                 format: .currency(
                     code: currencyCode))
         }
+        .bttTrack("\(Self.self)")
     }
 }
 
