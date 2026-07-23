@@ -14,3 +14,5 @@ CLARITY_PROJECT_ID = <Your Clarity Project ID>
 ```
 
 **NOTE**: you must create this file and provide at least a `BASE_URL` as the default value is not operational.
+
+
