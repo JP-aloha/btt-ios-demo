@@ -180,5 +180,6 @@ struct UserToolbarView: View {
                 Text(userModel.isLoggedIn ? "Logout" : "Login")
             }
         }
+        .bttTrack("\(Self.self)")
     }
 }

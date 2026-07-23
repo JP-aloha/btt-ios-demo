@@ -114,6 +114,7 @@ struct LoginView: View {
                    BlueTriangle.setCustomCategory1("Standard")
                }
 		   }
+		   .bttTrack("\(Self.self)")
        }
 }
 

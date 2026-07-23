@@ -1,4 +1,5 @@
 import SwiftUI
+import BlueTriangle
 
 struct HitchRateSessionDetailView: View {
     let session: HitchRateSession
@@ -36,6 +37,7 @@ struct HitchRateSessionDetailView: View {
         } message: {
             Text("This hitch-rate session was sent to Blue Triangle via logError.")
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

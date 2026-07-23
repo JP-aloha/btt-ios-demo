@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct RemoteImage: View {
     @State var imageResult: Result<UIImage, Error>?
@@ -34,7 +35,8 @@ struct RemoteImage: View {
         }
         .task {
             await load(imageStatus)
-        }}
+        }
+        .bttTrack("\(Self.self)")}
 
     func load(_ status: ImageStatus) async {
         switch status {

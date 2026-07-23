@@ -90,6 +90,7 @@ struct ProductDetailView: View {
             viewModel.freeAllMemoryOnDisapear()
         }
         .navigationTitle("Product Detail")
+        .bttTrack("\(Self.self)")
         //.navigationBarTitleDisplayMode(.inline)
     }
 }

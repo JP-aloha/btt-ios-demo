@@ -1,4 +1,5 @@
 import SwiftUI
+import BlueTriangle
 import UIKit
 
 struct RawJSONView: View {
@@ -25,5 +26,6 @@ struct RawJSONView: View {
                 }
             }
         }
+        .bttTrack("\(Self.self)")
     }
 }

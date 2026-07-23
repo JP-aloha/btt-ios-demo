@@ -1,4 +1,5 @@
 import SwiftUI
+import BlueTriangle
 
 struct DiagnosticsListView: View {
     @EnvironmentObject private var manager: MetricKitManager
@@ -24,6 +25,7 @@ struct DiagnosticsListView: View {
                 }
             }
         }
+        .bttTrack("\(Self.self)")
     }
 
     /// Maps a payload's top-level JSON keys back to their human-readable

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct BTTrackingConfigView: View {
     
@@ -142,6 +143,7 @@ struct BTTrackingConfigView: View {
         .onAppear{
             vm.updateSessionId()
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

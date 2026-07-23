@@ -106,6 +106,7 @@ struct ProductListView: View {
                 }
             }
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

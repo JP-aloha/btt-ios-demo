@@ -8,6 +8,7 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct MatricKitView: View {
     enum Section: String, CaseIterable, Identifiable {
@@ -51,6 +52,7 @@ struct MatricKitView: View {
                 }
             }
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

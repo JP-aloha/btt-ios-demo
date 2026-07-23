@@ -51,6 +51,7 @@ struct OrderSuccessfulView: View {
             .navigationTitle("Checkout")
 //.bttTrackScreen("OrderSuccessfulView")
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct MatricKitEmptyStateView: View {
     let title: String
@@ -27,5 +28,6 @@ struct MatricKitEmptyStateView: View {
                 .padding(.horizontal, 32)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .bttTrack("\(Self.self)")
     }
 }

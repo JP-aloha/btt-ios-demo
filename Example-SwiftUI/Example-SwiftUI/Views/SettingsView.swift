@@ -264,6 +264,7 @@ struct SettingsView: View {
                 }
             }
         }
+        .bttTrack("\(Self.self)")
         
     }
     

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct BTTRootContrainerView: View {
     
@@ -22,6 +23,7 @@ struct BTTRootContrainerView: View {
                     service: .captured, vm: vm)
             }
         }
+        .bttTrack("\(Self.self)")
     }
 }
 

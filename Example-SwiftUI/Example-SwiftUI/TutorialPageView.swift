@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import BlueTriangle
 
 struct TutorialPageView: View {
     let model: TutorialPageModel
@@ -35,6 +36,7 @@ struct TutorialPageView: View {
         }
         .bttTrackScreen("TutorialPageView")
         .padding()
+        .bttTrack("\(Self.self)")
     }
 
     private var attributedDescription: AttributedString {
