@@ -12,6 +12,7 @@ import UIKit
 
 @main
 struct Example_SwiftUIApp: App {
+    @UIApplicationDelegateAdaptor(MatricKitAppDelegate.self) private var matricKitAppDelegate
     @State private var  BttContainer =  BTTRootContrainerView(coordinatorVm: AppCoordinator(), vm: BTTConfigModel())
     @Environment(\.scenePhase) private var scenePhase
     
@@ -30,6 +31,8 @@ struct Example_SwiftUIApp: App {
     var body: some Scene {
         WindowGroup {
             self.BttContainer
+                .environmentObject(MetricKitManager.shared)
+                .environmentObject(HitchRateMonitor.shared)
         }
         .onChange(of: scenePhase) { phase in
             switch phase {

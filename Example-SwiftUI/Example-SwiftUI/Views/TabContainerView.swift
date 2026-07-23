@@ -12,6 +12,7 @@ struct TabContainerView: View {
 	enum Tab: String, Hashable {
 		case products = "Products"
 		case cart	  = "Cart"
+		case matricKit = "MatricKit"
 		case settings = "Settings"
 	}
 	
@@ -57,7 +58,15 @@ struct TabContainerView: View {
 					Image(systemName: "cart.fill")
 				}
 				.tag(Tab.cart)
-				
+
+				MatricKitView()
+				.bttTrackScreen("MatricKitViewTab")
+				.tabItem {
+					Text("MatricKit")
+					Image(systemName: "gauge.with.dots.needle.67percent")
+				}
+				.tag(Tab.matricKit)
+
 				SettingsView(vm: settingModel)
 				.bttTrackScreen("SettingsViewTab")
 				.tabItem {
@@ -67,6 +76,7 @@ struct TabContainerView: View {
 				.tag(Tab.settings)
 			}
 			.navigationTitle(selectedTab.rawValue)
+			.navigationBarTitleDisplayMode(.inline)
 			.toolbar {
 				ToolbarItem(placement: .navigationBarTrailing) {
 					HStack{

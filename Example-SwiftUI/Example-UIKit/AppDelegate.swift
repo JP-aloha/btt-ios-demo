@@ -21,6 +21,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         BlueTriangle.setDataCenter("NorthWest-1")
         BlueTriangle.setAbTestID("Lagacy-UI")
 
+        _ = MetricKitManager.shared
+        LaunchHistory.recordColdLaunch()
+        if let delay = StressSimulators.slowLaunchDelayIfArmed() {
+            Thread.sleep(forTimeInterval: delay)
+        }
+
         return true
     }
 

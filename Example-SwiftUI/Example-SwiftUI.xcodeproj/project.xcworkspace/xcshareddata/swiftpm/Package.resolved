@@ -3,10 +3,10 @@
     {
       "identity" : "btt-swift-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
+      "location" : "https://github.com/blue-triangle-tech/btt-swift-sdk.git",
       "state" : {
-        "branch" : "feature/auto_track_test",
-        "revision" : "7edf199da20ce888d9462e40dfa45ebb36d30845"
+        "revision" : "1f81b5ea0ef6b22629986da67dd497c02c3714a0",
+        "version" : "3.15.13"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/microsoft/clarity-apps.git",
       "state" : {
-        "revision" : "67b10c29f4246517d99b0966d10aff9a6eb04555",
-        "version" : "3.5.2"
+        "revision" : "66c5158d7520f2d28bd795206a01642d3916a632",
+        "version" : "3.5.3"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections",
       "state" : {
-        "revision" : "fea17c02d767f46b23070fdfdacc28a03a39232a",
-        "version" : "1.5.1"
+        "revision" : "a0cb0954ecb21e4e31b0070e6ed5674e8556685a",
+        "version" : "1.6.0"
       }
     },
     {
@@ -34,15 +34,6 @@
       "state" : {
         "revision" : "d01446a78fb768adc9a78cbb6df07767c8ccfc29",
         "version" : "0.8.0"
-      }
-    },
-    {
-      "identity" : "swift-syntax",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/apple/swift-syntax.git",
-      "state" : {
-        "revision" : "64889f0c732f210a935a0ad7cda38f77f876262d",
-        "version" : "509.1.1"
       }
     }
   ],
