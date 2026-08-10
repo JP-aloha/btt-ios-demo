@@ -14,9 +14,10 @@ struct TabContainerView: View {
 		case products = "Products"
 		case cart	  = "Cart"
 		case matricKit = "MatricKit"
+		case user = "User"
 		case settings = "Settings"
 	}
-	
+
 	@State private var selectedTab: Tab = .products
 	private let cartRepository: CartRepository
 	private let imageLoader: ImageLoader
@@ -67,6 +68,14 @@ struct TabContainerView: View {
 					Image(systemName: "gauge.with.dots.needle.67percent")
 				}
 				.tag(Tab.matricKit)
+
+				UserTabView()
+				.bttTrackScreen("UserViewTab")
+				.tabItem {
+					Text("User")
+					Image(systemName: "person.crop.circle")
+				}
+				.tag(Tab.user)
 
 				SettingsView(vm: settingModel)
 				.bttTrackScreen("SettingsViewTab")

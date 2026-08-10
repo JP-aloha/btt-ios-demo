@@ -28,8 +28,14 @@ class TabBarViewController: UITabBarController {
         // Insert as the 3rd tab (after Products, Cart), matching the SwiftUI
         // target's tab order, rather than appending after Settings.
         var updatedViewControllers = viewControllers ?? []
-        let insertIndex = min(2, updatedViewControllers.count)
-        updatedViewControllers.insert(makeMatricKitTab(), at: insertIndex)
+        let matricKitIndex = min(2, updatedViewControllers.count)
+        updatedViewControllers.insert(makeMatricKitTab(), at: matricKitIndex)
+
+        // User tab goes right after MatricKit, before Settings — same
+        // Products/Cart/MatricKit/User/Settings order as the SwiftUI target.
+        let userIndex = min(matricKitIndex + 1, updatedViewControllers.count)
+        updatedViewControllers.insert(makeUserTab(), at: userIndex)
+
         viewControllers = updatedViewControllers
     }
 
@@ -48,5 +54,18 @@ class TabBarViewController: UITabBarController {
             selectedImage: nil
         )
         return host
+    }
+
+    /// Fully native UIKit User tab — a plain table (Profile/Order
+    /// History/Favourite) inside its own UINavigationController, unlike
+    /// MatricKit above which hosts SwiftUI.
+    private func makeUserTab() -> UIViewController {
+        let nav = UINavigationController(rootViewController: UserTableViewController())
+        nav.tabBarItem = UITabBarItem(
+            title: "User",
+            image: UIImage(systemName: "person.crop.circle"),
+            selectedImage: nil
+        )
+        return nav
     }
 }
