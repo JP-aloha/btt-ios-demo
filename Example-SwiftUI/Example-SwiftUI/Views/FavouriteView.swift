@@ -44,7 +44,6 @@ struct FavouriteView: View {
         }
         .navigationTitle("Favourite")
         .navigationBarTitleDisplayMode(.inline)
-        .bttTrackScreen("FavouriteView")
         .bttTrack("\(Self.self)")
     }
 }

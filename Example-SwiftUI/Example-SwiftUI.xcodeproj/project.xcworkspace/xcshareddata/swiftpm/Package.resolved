@@ -3,10 +3,10 @@
     {
       "identity" : "btt-swift-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/blue-triangle-tech/btt-swift-sdk.git",
+      "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
       "state" : {
-        "revision" : "39d4a1917b7fcce4b185c9b71271416cac693346",
-        "version" : "3.15.14"
+        "branch" : "feature/hitch_matric",
+        "revision" : "d4384c5595008941fd9c92e7b774e40d593b442c"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/microsoft/clarity-apps.git",
       "state" : {
-        "revision" : "66c5158d7520f2d28bd795206a01642d3916a632",
-        "version" : "3.5.3"
+        "revision" : "88652502e9427779c8c10a75bab49125143865af",
+        "version" : "3.5.4"
       }
     },
     {

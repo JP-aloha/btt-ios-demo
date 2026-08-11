@@ -75,7 +75,6 @@ struct ProfileView: View {
                 BlueTriangle.setCustomCategory1("Standard")
             }
         }
-        .bttTrackScreen("ProfileView")
         .bttTrack("\(Self.self)")
     }
 }

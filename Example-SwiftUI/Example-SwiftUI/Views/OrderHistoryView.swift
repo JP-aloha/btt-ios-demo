@@ -49,7 +49,6 @@ struct OrderHistoryView: View {
         }
         .navigationTitle("Order History")
         .navigationBarTitleDisplayMode(.inline)
-        .bttTrackScreen("OrderHistoryView")
         .bttTrack("\(Self.self)")
     }
 

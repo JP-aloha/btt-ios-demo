@@ -134,17 +134,39 @@ enum StressSimulators {
 
     private static let hangThreshold: TimeInterval = 0.75
 
+    /// Only every `hitchEveryNthRow`th row pays the hitch cost — the rest
+    /// render at negligible cost so the list stays scrollable, with real
+    /// hitches sprinkled in often enough to be detectable rather than a
+    /// wall-to-wall main-thread block on every single row.
+    private static let hitchEveryNthRow = 3
 
+    /// Order History rows: every `hitchEveryNthRow`th cell blocks the
+    /// calling thread briefly (well under the hang threshold); the rest are
+    /// effectively free. Scrolling stays usable while still producing real
+    /// per-frame hitches — this screen exercises only hitch-rate detection,
+    /// never a hang.
     static func hitchOnlyCellImage(index: Int, size: CGSize = CGSize(width: 60, height: 60)) -> UIImage {
-        drawBusyImage(index: index, duration: .random(in: 0.08...0.35), size: size)
+        let duration: TimeInterval = index % hitchEveryNthRow == 0 ? .random(in: 0.02...0.06) : 0
+        return drawBusyImage(index: index, duration: duration, size: size)
     }
 
+    /// Favourite rows: same light hitch cadence as Order History, but every
+    /// `hangEveryNthRow`th row blocks past the hang threshold instead — kept
+    /// infrequent so the list is still scrollable between hangs, while
+    /// exercising both hitch-rate tracking and hang diagnostics.
     static func hitchOrHangCellImage(index: Int, size: CGSize = CGSize(width: 60, height: 60)) -> UIImage {
-        let hangEveryNthRow = 15
+        let hangEveryNthRow = 20
         let isHangRow = index > 0 && index % hangEveryNthRow == 0
-        let duration: TimeInterval = isHangRow
-            ? .random(in: (hangThreshold + 0.15)...(hangThreshold + 0.55))
-            : .random(in: 0.08...0.35)
+        let isHitchRow = index % hitchEveryNthRow == 0
+
+        let duration: TimeInterval
+        if isHangRow {
+            duration = .random(in: (hangThreshold + 0.05)...(hangThreshold + 0.25))
+        } else if isHitchRow {
+            duration = .random(in: 0.02...0.06)
+        } else {
+            duration = 0
+        }
         return drawBusyImage(index: index, duration: duration, size: size)
     }
 
