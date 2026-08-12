@@ -9,12 +9,21 @@ import SwiftUI
 import BlueTriangle
 
 struct UserTabView: View {
+    @State private var loggedInName: String?
+    private let userModel = UserViewModel()
+
+    private var profileRowTitle: String {
+        loggedInName ?? "Guest User"
+    }
+
     var body: some View {
         List {
             NavigationLink {
-                ProfileView()
+                LoginView(showLoginSheet: .constant(false), showsCancelButton: false)
+                    .navigationTitle("Profile")
+                    .navigationBarTitleDisplayMode(.inline)
             } label: {
-                Label("Profile", systemImage: "person.crop.circle")
+                Label(profileRowTitle, systemImage: "person.crop.circle.fill")
             }
 
             NavigationLink {
@@ -28,6 +37,13 @@ struct UserTabView: View {
             } label: {
                 Label("Favourite", systemImage: "heart")
             }
+        }
+        .onAppear {
+            // Re-read on every appearance (including popping back from
+            // ProfileView after a login/logout) rather than once at init,
+            // since ProfileView owns its own UserViewModel instance and
+            // won't otherwise notify this one.
+            loggedInName = userModel.loggedInUser()?.name
         }
         .bttTrack("\(Self.self)")
     }

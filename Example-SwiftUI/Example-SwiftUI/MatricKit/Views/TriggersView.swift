@@ -5,7 +5,14 @@ struct TriggersView: View {
     @State private var cpuDuration: Double = 60
     @State private var hangDuration: Double = 8
     @State private var diskDuration: Double = 30
-    @State private var slowLaunchDelay: Double = 18
+    // Seeded from whatever was last armed (rather than a hardcoded default)
+    // so this screen still reflects your settings after the view reappears
+    // or the app cold-launches — only the one-shot "armed" flag itself gets
+    // consumed on the matching launch hook, not these underlying values.
+    @State private var slowLaunchDelay: Double = StressSimulators.savedSlowLaunchDelay
+    @State private var slowLaunchCallSite: SlowLaunchCallSite = StressSimulators.savedSlowLaunchCallSite
+    @State private var slowLaunchMethod: SlowLaunchMethod = StressSimulators.savedSlowLaunchMethod
+    @State private var isSlowLaunchArmed = false
     @State private var isSpinningCPU = false
     @State private var isChurningDisk = false
     @State private var isAbusingCPUInBackground = false
@@ -68,18 +75,50 @@ struct TriggersView: View {
             }
 
             Section("3. Slow Launch (appLaunchDiagnostics, iOS 16+)") {
-                Slider(value: $slowLaunchDelay, in: 15...25, step: 1) {
-                    Text("Delay")
+                Picker("Delay From", selection: $slowLaunchCallSite) {
+                    ForEach(SlowLaunchCallSite.allCases) { site in
+                        Text(site.title).tag(site)
+                    }
                 }
-                Text("Next cold launch will be delayed by \(Int(slowLaunchDelay))s. Real data shows launches up to ~16s only register as \"slow,\" not \"extended\" — stay in this range to test closer to that boundary without risking a launch-watchdog kill.")
+                .pickerStyle(.segmented)
+
+                Picker("Delay By", selection: $slowLaunchMethod) {
+                    ForEach(SlowLaunchMethod.allCases) { method in
+                        Text(method.title).tag(method)
+                    }
+                }
+                .pickerStyle(.segmented)
+
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Delay: \(Int(slowLaunchDelay))s")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                    Slider(value: $slowLaunchDelay, in: 1...25, step: 1) {
+                        Text("Delay")
+                    }
+                }
+                Text("Next cold launch will be delayed from \(slowLaunchCallSite.title) using \(slowLaunchMethod.title). Real data shows launches up to ~16s only register as \"slow,\" not \"extended\" — stay in this range to test closer to that boundary without risking a launch-watchdog kill.")
                     .font(.caption)
                     .foregroundStyle(.secondary)
                 Button {
-                    StressSimulators.armSlowLaunch(delay: slowLaunchDelay)
-                    statusMessage = "Armed. Force-quit the app now (swipe up in the app switcher) and relaunch by tapping the icon — the next cold launch will be slowed by \(Int(slowLaunchDelay))s."
+                    StressSimulators.armSlowLaunch(delay: slowLaunchDelay, callSite: slowLaunchCallSite, method: slowLaunchMethod)
+                    statusMessage = "Armed (\(slowLaunchCallSite.title) · \(slowLaunchMethod.title)). Force-quit the app now (swipe up in the app switcher) and relaunch by tapping the icon — the next cold launch will be slowed by \(Int(slowLaunchDelay))s."
+                    withAnimation {
+                        isSlowLaunchArmed = true
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        withAnimation {
+                            isSlowLaunchArmed = false
+                        }
+                    }
                 } label: {
-                    Label("Arm Slow Launch for Next Cold Launch", systemImage: "hare")
+                    Label(
+                        isSlowLaunchArmed ? "Armed!" : "Arm Slow Launch for Next Cold Launch",
+                        systemImage: isSlowLaunchArmed ? "checkmark.circle.fill" : "hare"
+                    )
                 }
+                .tint(isSlowLaunchArmed ? .green : nil)
+                .disabled(isSlowLaunchArmed)
             }
 
             Section("4. Hang / App Responsiveness (applicationResponsivenessMetrics / hangDiagnostics)") {

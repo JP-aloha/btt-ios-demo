@@ -63,7 +63,6 @@
 		51A7C4E02CB520FD00EAA81E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4DF2CB520FD00EAA81E /* User.swift */; };
 		51A7C4E12CB520FD00EAA81E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4DF2CB520FD00EAA81E /* User.swift */; };
 		51A7C4E32CB52C0100EAA81E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4E22CB52C0100EAA81E /* LoginView.swift */; };
-		51A7C4E42CB52C0100EAA81E /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4E22CB52C0100EAA81E /* LoginView.swift */; };
 		51A7C4E62CB5641700EAA81E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4E52CB5641700EAA81E /* LoginViewController.swift */; };
 		51A7C4E72CB5641700EAA81E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A7C4E52CB5641700EAA81E /* LoginViewController.swift */; };
 		51A8BD8B2CBE615600917299 /* UIScreen+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51A8BD8A2CBE615600917299 /* UIScreen+Utils.swift */; };
@@ -154,7 +153,6 @@
 		88FA631B98AE36A2710DAB2F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6053F62BF2101CBC69151BC7 /* SampleData.swift */; };
 		8F2DDCF0687A987B37EC8902 /* SignpostLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BEEFFF809A9ABA493B75A /* SignpostLogger.swift */; };
 		944B2AAFE8345E914D448159 /* FramesTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9428870878F4AD2D752F51DB /* FramesTracker.swift */; };
-		988A1C028A25CD8FC3B83DB2 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832EF17544156CB6366A9099 /* ProfileView.swift */; };
 		999667BCF4CE3D1793000692 /* PayloadDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA1FF019E26C2ABC108F569 /* PayloadDetailView.swift */; };
 		9C0AFCCD2A2AC30A240CE943 /* LaunchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44398F06A60DC624F93CA185 /* LaunchHistory.swift */; };
 		9C3DCC237FE7E143F1A9F376 /* MetricKitReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E426CFF59BE8F0CF669B57E /* MetricKitReporter.swift */; };
@@ -278,7 +276,6 @@
 		6053F62BF2101CBC69151BC7 /* SampleData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		7612A4B5E069EC9F1CAA3E91 /* HitchRateView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HitchRateView.swift; sourceTree = "<group>"; };
 		7ED5759484613988140CB5D8 /* UserTabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserTabView.swift; sourceTree = "<group>"; };
-		832EF17544156CB6366A9099 /* ProfileView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		8419BD0F2A49CFD7009429C9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8419BD102A49CFD7009429C9 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		8419BD112A49CFD7009429C9 /* CartRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRepository.swift; sourceTree = "<group>"; };
@@ -640,7 +637,6 @@
 				51A7C4E22CB52C0100EAA81E /* LoginView.swift */,
 				0BC67523DEA7E4BF8D34123A /* OrderHistoryView.swift */,
 				B4582ED877361517EB78D2E5 /* FavouriteView.swift */,
-				832EF17544156CB6366A9099 /* ProfileView.swift */,
 				7ED5759484613988140CB5D8 /* UserTabView.swift */,
 			);
 			path = Views;
@@ -1022,7 +1018,6 @@
 				51F61C972A4ACF2B0071F957 /* BTTrackingConfigViewController.swift in Sources */,
 				51B55E252BCD5E5100758C75 /* ConfigurationViewController.swift in Sources */,
 				8419BD412A49CFFF009429C9 /* Collection+Utils.swift in Sources */,
-				51A7C4E42CB52C0100EAA81E /* LoginView.swift in Sources */,
 				8419BD392A49CFFF009429C9 /* Service+BTT.swift in Sources */,
 				51A7C4E12CB520FD00EAA81E /* User.swift in Sources */,
 				51CC8CED2BED2DD00079EBD6 /* ConfigurationSetup.swift in Sources */,
@@ -1169,7 +1164,6 @@
 				38A1863F4F86B4AF7FEB9FBD /* FavouriteView.swift in Sources */,
 				DE0C8D93C417D6C0D48E3907 /* OrderHistoryItem.swift in Sources */,
 				46E8D3DC69161E3169DB9559 /* FavoriteItem.swift in Sources */,
-				988A1C028A25CD8FC3B83DB2 /* ProfileView.swift in Sources */,
 				654EE530F728A77B9BA00892 /* UserTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1425,7 +1419,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
@@ -1441,7 +1435,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.15.15;
+				MARKETING_VERSION = 3.15.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.SwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1464,7 +1458,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
@@ -1480,7 +1474,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.15.15;
+				MARKETING_VERSION = 3.15.14;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.SwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

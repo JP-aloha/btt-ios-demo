@@ -8,7 +8,7 @@
 import UIKit
 import BlueTriangle
 
-final class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController, UITextFieldDelegate, UIGestureRecognizerDelegate {
 
     // MARK: - UI Components
     private let titleLabel = UILabel()
@@ -23,6 +23,8 @@ final class LoginViewController: UIViewController {
     private let lblUserName = UILabel()
     private let lblPremium = UILabel()
     private let logoutButton = UIButton(type: .system)
+    private var loginStackCenterY: NSLayoutConstraint!
+    private var logoutStackCenterY: NSLayoutConstraint!
 
     // MARK: - Data
     private var userModel = UserViewModel()
@@ -33,6 +35,11 @@ final class LoginViewController: UIViewController {
         view.backgroundColor = .systemBackground
         setupUI()
         updateUI()
+        setupKeyboardHandling()
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
 
     // MARK: - UI Setup
@@ -50,10 +57,24 @@ final class LoginViewController: UIViewController {
         txtPassword.isSecureTextEntry = true
         txtUserName.accessibilityIdentifier = "fld_user_name"
         txtPassword.accessibilityIdentifier = "fld_password"
+        txtUserName.delegate = self
+        txtPassword.delegate = self
+        txtUserName.returnKeyType = .next
+        txtPassword.returnKeyType = .go
+
+        // Tap anywhere on the background to dismiss the keyboard. The
+        // delegate check below (shouldReceive touch:) skips taps that land
+        // on a control (the text fields/buttons) so this never fights with
+        // actually focusing a field.
+        let dismissTap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        dismissTap.cancelsTouchesInView = false
+        dismissTap.delegate = self
+        view.addGestureRecognizer(dismissTap)
 
         loginButton.setTitle("Login", for: .normal)
         loginButton.backgroundColor = .systemBlue
         loginButton.setTitleColor(.white, for: .normal)
+        loginButton.contentHorizontalAlignment = .center
         loginButton.layer.cornerRadius = 8
         loginButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
         loginButton.addTarget(self, action: #selector(didSelectLogin), for: .touchUpInside)
@@ -70,8 +91,9 @@ final class LoginViewController: UIViewController {
 
         view.addSubview(loginStack)
 
+        loginStackCenterY = loginStack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         NSLayoutConstraint.activate([
-            loginStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            loginStackCenterY,
             loginStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             loginStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
         ])
@@ -106,11 +128,48 @@ final class LoginViewController: UIViewController {
 
         view.addSubview(logoutStack)
 
+        logoutStackCenterY = logoutStack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
         NSLayoutConstraint.activate([
-            logoutStack.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            logoutStackCenterY,
             logoutStack.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 24),
             logoutStack.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24)
         ])
+    }
+
+    // MARK: - Keyboard Handling
+    private func setupKeyboardHandling() {
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(keyboardWillChange), name: UIResponder.keyboardWillShowNotification, object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil
+        )
+    }
+
+    @objc private func keyboardWillChange(_ notification: Notification) {
+        guard let frameValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+        let keyboardHeight = frameValue.cgRectValue.height
+        let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double) ?? 0.25
+        let offset = -(keyboardHeight / 2)
+
+        UIView.animate(withDuration: duration) {
+            self.loginStackCenterY.constant = offset
+            self.logoutStackCenterY.constant = offset
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc private func keyboardWillHide(_ notification: Notification) {
+        let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double) ?? 0.25
+        UIView.animate(withDuration: duration) {
+            self.loginStackCenterY.constant = 0
+            self.logoutStackCenterY.constant = 0
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc private func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     // MARK: - Styling
@@ -176,5 +235,21 @@ final class LoginViewController: UIViewController {
     @objc private func didSelectLogout() {
         userModel.logOut()
         updateUI()
+    }
+
+    // MARK: - UITextFieldDelegate
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField === txtUserName {
+            txtPassword.becomeFirstResponder()
+        } else {
+            didSelectLogin()
+            view.endEditing(true)
+        }
+        return true
+    }
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        guard let touchedView = touch.view else { return true }
+        return !(touchedView.isDescendant(of: loginStack) || touchedView.isDescendant(of: logoutStack))
     }
 }

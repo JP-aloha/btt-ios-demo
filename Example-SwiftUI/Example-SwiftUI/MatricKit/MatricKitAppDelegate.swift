@@ -12,13 +12,17 @@ final class MatricKitAppDelegate: NSObject, UIApplicationDelegate {
     func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
         _ = MetricKitManager.shared
         LaunchHistory.recordColdLaunch()
-        if let delay = StressSimulators.slowLaunchDelayIfArmed() {
-            Thread.sleep(forTimeInterval: delay)
+        if let armed = StressSimulators.slowLaunchDelayIfArmed(at: .willFinishLaunching) {
+            StressSimulators.applySlowLaunchDelay(armed.delay, method: armed.method)
         }
         return true
     }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        _ = MetricKitManager.shared
+        if let armed = StressSimulators.slowLaunchDelayIfArmed(at: .didFinishLaunching) {
+            StressSimulators.applySlowLaunchDelay(armed.delay, method: armed.method)
+        }
         return true
     }
 }

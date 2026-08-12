@@ -16,27 +16,38 @@ final class UserTableViewController: UITableViewController {
         case orderHistory
         case favourite
 
-        var title: String {
-            switch self {
-            case .profile: return "Profile"
-            case .orderHistory: return "Order History"
-            case .favourite: return "Favourite"
-            }
-        }
-
         var iconName: String {
             switch self {
-            case .profile: return "person.crop.circle"
+            case .profile: return "person.crop.circle.fill"
             case .orderHistory: return "bag"
             case .favourite: return "heart"
             }
         }
     }
 
+    private let userModel = UserViewModel()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.title = "User"
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "UserRowCell")
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Re-read on every appearance (including popping back from
+        // LoginViewController after a login/logout) rather than once at
+        // load, since that screen owns its own UserViewModel instance and
+        // won't otherwise notify this one.
+        tableView.reloadData()
+    }
+
+    private func title(for row: Row) -> String {
+        switch row {
+        case .profile: return userModel.loggedInUser()?.name ?? "Guest User"
+        case .orderHistory: return "Order History"
+        case .favourite: return "Favourite"
+        }
     }
 
     // MARK: - UITableViewDataSource
@@ -49,7 +60,7 @@ final class UserTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserRowCell", for: indexPath)
         guard let row = Row(rawValue: indexPath.row) else { return cell }
         var content = cell.defaultContentConfiguration()
-        content.text = row.title
+        content.text = title(for: row)
         content.image = UIImage(systemName: row.iconName)
         cell.contentConfiguration = content
         cell.accessoryType = .disclosureIndicator

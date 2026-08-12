@@ -101,7 +101,11 @@ struct TabContainerView: View {
 				}
 			}
 			.fullScreenCover(isPresented: $showLoginSheet) {
-				LoginView(showLoginSheet: $showLoginSheet)
+				NavigationStack {
+					LoginView(showLoginSheet: $showLoginSheet)
+						.navigationTitle("Login")
+						.navigationBarTitleDisplayMode(.inline)
+				}
 			}
             .navigationDestination(for: Product.self) { product in
                 if let detailViewModel = productModel.detailViewModel(for: product.id) {

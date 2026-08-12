@@ -4,123 +4,130 @@
 //  Created by Ashok Singh on 08/10/24.
 //  Copyright © 2024 Blue Triangle. All rights reserved.
 //
+//  The single login/account form, used both standalone (User tab's Profile
+//  row, pushed onto the app's existing NavigationStack) and modally (the
+//  toolbar's fullScreenCover, wrapped in its own NavigationStack with a
+//  Cancel button) — there's no reason to maintain two near-identical login
+//  forms when the only real difference between those two entry points is
+//  how the screen is presented, not what's on it.
+//
 
 import SwiftUI
 import BlueTriangle
 
 struct LoginView: View {
+    private enum Field: Hashable {
+        case username
+        case password
+    }
+
     @Binding var showLoginSheet: Bool
-    
-    @State private var selectedSegment : Int = 0
+    var showsCancelButton: Bool = true
+
+    @State private var selectedSegment: Int = 0
     @State private var username = ""
     @State private var password = ""
-	@State private var isLoggedIn = false
-    let segments = ["Normal", "Premium"]
-	let userModel = UserViewModel()
+    @State private var isLoggedIn = false
+    @FocusState private var focusedField: Field?
+    private let segments = ["Normal", "Premium"]
+    private let userModel = UserViewModel()
 
     var body: some View {
-		ZStack {
-			Color.blue
-				.edgesIgnoringSafeArea(.all)
-			VStack{
-				HStack{
-					Button("Cancel") {
-						showLoginSheet = false
-					}
+        Form {
+            if !isLoggedIn {
+                Section("Login") {
+                    Picker("Account Type", selection: $selectedSegment) {
+                        ForEach(0..<segments.count, id: \.self) { index in
+                            Text(segments[index]).tag(index)
+                        }
+                    }
+                    .pickerStyle(.segmented)
+
+                    TextField("Username", text: $username)
+                        .textInputAutocapitalization(.never)
+                        .autocorrectionDisabled()
+                        .submitLabel(.next)
+                        .focused($focusedField, equals: .username)
+                        .onSubmit { focusedField = .password }
+                        .accessibilityIdentifier("fld_user_name")
+
+                    SecureField("Password", text: $password)
+                        .submitLabel(.go)
+                        .focused($focusedField, equals: .password)
+                        .onSubmit(login)
+                        .accessibilityIdentifier("fld_password")
+
+                    Button(action: login) {
+                        Text("Login")
+                            .frame(maxWidth: .infinity, alignment: .center)
+                    }
+                    .accessibilityIdentifier("btn_login")
+                    .bttTrackAction("Login_Button")
+                }
+            } else {
+                Section("Account") {
+                    LabeledContent("Username", value: username)
+                    LabeledContent("Plan", value: segments[selectedSegment])
+                }
+                Section {
+                    Button("Logout", role: .destructive, action: logout)
+                }
+            }
+        }
+        .scrollContentBackground(.hidden)
+        .background(
+            Color(.systemGroupedBackground)
+                .ignoresSafeArea()
+                .onTapGesture { focusedField = nil }
+        )
+        .scrollDismissesKeyboard(.interactively)
+        .toolbar {
+            if showsCancelButton {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Cancel") {
+                        showLoginSheet = false
+                    }
                     .accessibilityIdentifier("btn_Cancel")
-					.foregroundColor(.white)
-					.padding()
-					Spacer()
-				}
-				Spacer()
-				VStack(spacing: 20) {
-					if (!isLoggedIn) {
-						Text("Login")
-							.font(.largeTitle)
-						
-						Picker("", selection: $selectedSegment) {
-							ForEach(0..<segments.count) { index in
-								Text(segments[index]).tag(index)
-							}
-						}
-						.pickerStyle(SegmentedPickerStyle())
-						
-						TextField("Username", text: $username)
-							.textFieldStyle(RoundedBorderTextFieldStyle())
-                            .accessibilityIdentifier("fld_user_name")
-						
-						SecureField("Password", text: $password)
-							.textFieldStyle(RoundedBorderTextFieldStyle())
-                            .accessibilityIdentifier("fld_password")
-                        
-                        Button("Login"){
-                            if (!username.isEmpty && !password.isEmpty) {
-                                self.userModel.loggedIn(username, pass: password, isPremium: selectedSegment)
-                                BlueTriangle.setCustomVariable("CV1", value: username)
-                                BlueTriangle.setCustomVariable("CV2", value: (selectedSegment != 0) ? true : false)
-                                isLoggedIn = true
-                            }
-                        }
-                        .accessibilityIdentifier("btn_login")
-                        .bttTrackAction("Login_Button")
-                        .padding()
-                        
-					} else {
-						Text(username)
-							.font(.largeTitle)
-							.padding(.bottom, 10)
-						
-						Text(segments[selectedSegment])
-							.font(Font.system(size: 16, weight: .regular))
-						
-                        Button("Logout") {
-                            self.userModel.logOut()
-                            BlueTriangle.clearCustomVariable("CV1")
-                            BlueTriangle.clearCustomVariable("CV2")
-                            username = ""
-                            password = ""
-                            isLoggedIn = false
-                        }
-                        .padding()
-					}
-				}
-				.frame(width: 300)
-				.padding()
-				.background(Color.white)
-				Spacer()
-			}
-			}
-           .bttTrackScreen("Login View")
-		   .onAppear {
-			   if let user = userModel.loggedInUser() {
-				   username = user.name
-				   password = user.pass
-				   selectedSegment = user.isPremium
-				   isLoggedIn = true
-                   BlueTriangle.setCustomVariable("CV1", value: username)
-                   BlueTriangle.setCustomVariable("CV2", value: (selectedSegment != 0) ? true : false)
-                   if user.isPremium != 0 {
-                       BlueTriangle.setCustomCategory1("Premium")
-                   } else {
-                       BlueTriangle.setCustomCategory1("Standard")
-                   }
-               }else{
-                   BlueTriangle.clearCustomVariable("CV1")
-                   BlueTriangle.clearCustomVariable("CV2")
-                   selectedSegment = 0
-                   isLoggedIn = false
-                   username = ""
-                   password = ""
-                   BlueTriangle.setCustomCategory1("Standard")
-               }
-		   }
-		   .bttTrack("\(Self.self)")
-       }
+                }
+            }
+        }
+        .onAppear {
+            if let user = userModel.loggedInUser() {
+                username = user.name
+                password = user.pass
+                selectedSegment = user.isPremium
+                isLoggedIn = true
+                BlueTriangle.setCustomVariable("CV1", value: username)
+                BlueTriangle.setCustomVariable("CV2", value: (selectedSegment != 0) ? true : false)
+                BlueTriangle.setCustomCategory1(user.isPremium != 0 ? "Premium" : "Standard")
+            } else {
+                BlueTriangle.clearCustomVariable("CV1")
+                BlueTriangle.clearCustomVariable("CV2")
+                BlueTriangle.setCustomCategory1("Standard")
+            }
+        }
+        .bttTrack("\(Self.self)")
+    }
+
+    private func login() {
+        guard !username.isEmpty, !password.isEmpty else { return }
+        focusedField = nil
+        userModel.loggedIn(username, pass: password, isPremium: selectedSegment)
+        BlueTriangle.setCustomVariable("CV1", value: username)
+        BlueTriangle.setCustomVariable("CV2", value: (selectedSegment != 0) ? true : false)
+        isLoggedIn = true
+    }
+
+    private func logout() {
+        userModel.logOut()
+        BlueTriangle.clearCustomVariable("CV1")
+        BlueTriangle.clearCustomVariable("CV2")
+        username = ""
+        password = ""
+        isLoggedIn = false
+    }
 }
 
-/*
 #Preview {
-    LoginView(showLoginSheet:  .constant(false), 
-              userModel: UserViewModel())
+    LoginView(showLoginSheet: .constant(false))
 }
-*/

@@ -1,20 +1,104 @@
 import Foundation
 import UIKit
 
+/// Which app-launch lifecycle hook the armed Slow Launch delay should fire
+/// from — the earlier the hook, the more of app startup gets pushed behind
+/// the delay.
+enum SlowLaunchCallSite: String, CaseIterable, Identifiable {
+    case appInit
+    case willFinishLaunching
+    case didFinishLaunching
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .appInit: return "App init()"
+        case .willFinishLaunching: return "willFinish"
+        case .didFinishLaunching: return "didFinish"
+        }
+    }
+}
+
+/// How the armed Slow Launch delay blocks the calling thread.
+enum SlowLaunchMethod: String, CaseIterable, Identifiable {
+    case sleep
+    case busyLoop
+
+    var id: String { rawValue }
+
+    var title: String {
+        switch self {
+        case .sleep: return "Sleep"
+        case .busyLoop: return "Loop"
+        }
+    }
+}
+
 enum StressSimulators {
     static let armSlowLaunchKey = "MatricKitPoc.ArmSlowLaunch"
     static let slowLaunchDelayKey = "MatricKitPoc.SlowLaunchDelay"
+    static let slowLaunchCallSiteKey = "MatricKitPoc.SlowLaunchCallSite"
+    static let slowLaunchMethodKey = "MatricKitPoc.SlowLaunchMethod"
 
-    static func armSlowLaunch(delay: TimeInterval) {
+    static func armSlowLaunch(delay: TimeInterval, callSite: SlowLaunchCallSite, method: SlowLaunchMethod) {
         UserDefaults.standard.set(true, forKey: armSlowLaunchKey)
         UserDefaults.standard.set(delay, forKey: slowLaunchDelayKey)
+        UserDefaults.standard.set(callSite.rawValue, forKey: slowLaunchCallSiteKey)
+        UserDefaults.standard.set(method.rawValue, forKey: slowLaunchMethodKey)
     }
 
-    static func slowLaunchDelayIfArmed() -> TimeInterval? {
+    /// Last-armed delay/call site/method, so the Triggers screen can restore
+    /// what was actually configured instead of resetting to hardcoded
+    /// defaults every time the view (re)appears — including across the cold
+    /// launch that consumes the arm, since only the one-shot `armed` flag
+    /// gets cleared, not these underlying values.
+    static var savedSlowLaunchDelay: TimeInterval {
+        let value = UserDefaults.standard.double(forKey: slowLaunchDelayKey)
+        return value > 0 ? value : 18
+    }
+
+    static var savedSlowLaunchCallSite: SlowLaunchCallSite {
+        UserDefaults.standard.string(forKey: slowLaunchCallSiteKey).flatMap(SlowLaunchCallSite.init) ?? .willFinishLaunching
+    }
+
+    static var savedSlowLaunchMethod: SlowLaunchMethod {
+        UserDefaults.standard.string(forKey: slowLaunchMethodKey).flatMap(SlowLaunchMethod.init) ?? .sleep
+    }
+
+    /// Consumes the armed flag (if set) and returns the delay/method to
+    /// apply — but only when `site` matches the call site that was armed.
+    /// The other two launch hooks call this too on the same cold launch and
+    /// get `nil` back, since the delay is meant to fire from exactly one of
+    /// them; the flag is only cleared once the matching site consumes it.
+    static func slowLaunchDelayIfArmed(at site: SlowLaunchCallSite) -> (delay: TimeInterval, method: SlowLaunchMethod)? {
         guard UserDefaults.standard.bool(forKey: armSlowLaunchKey) else { return nil }
+        let storedSite = UserDefaults.standard.string(forKey: slowLaunchCallSiteKey).flatMap(SlowLaunchCallSite.init) ?? .willFinishLaunching
+        guard storedSite == site else { return nil }
+
         UserDefaults.standard.removeObject(forKey: armSlowLaunchKey)
         let delay = UserDefaults.standard.double(forKey: slowLaunchDelayKey)
-        return delay > 0 ? delay : 5
+        let method = UserDefaults.standard.string(forKey: slowLaunchMethodKey).flatMap(SlowLaunchMethod.init) ?? .sleep
+        return (delay > 0 ? delay : 5, method)
+    }
+
+    /// Applies an armed Slow Launch delay using the selected method:
+    /// `sleep` yields the thread for the duration (near-zero CPU use while
+    /// blocked); `busyLoop` instead spins the CPU the whole time — useful
+    /// for telling apart launch diagnostics that key off wall-clock launch
+    /// duration from ones sensitive to actual CPU usage during launch.
+    static func applySlowLaunchDelay(_ delay: TimeInterval, method: SlowLaunchMethod) {
+        switch method {
+        case .sleep:
+            Thread.sleep(forTimeInterval: delay)
+        case .busyLoop:
+            let deadline = Date().addingTimeInterval(delay)
+            var accumulator: Double = 0
+            while Date() < deadline {
+                accumulator += sin(accumulator)
+            }
+            _ = accumulator
+        }
     }
 
     static func cpuSpin(duration: TimeInterval, completion: @escaping () -> Void) {
