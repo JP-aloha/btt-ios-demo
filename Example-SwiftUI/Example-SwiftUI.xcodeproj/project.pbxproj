@@ -49,11 +49,11 @@
 		5170A8C22AA1F4090091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
 		5170A8C42AA1F7490091B65A /* CPUTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C32AA1F7490091B65A /* CPUTestView.swift */; };
 		5170A8C62AA1F87C0091B65A /* CPUTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C52AA1F87C0091B65A /* CPUTestViewController.swift */; };
+		5179AE33304AC4D200E9CF96 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 5179AE32304AC4D200E9CF96 /* BlueTriangle */; };
+		5179AE35304AC95C00E9CF96 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 5179AE34304AC95C00E9CF96 /* BlueTriangle */; };
 		517A02C32EF2A7EB00E0E4B5 /* ProductDetailPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A02C22EF2A7DE00E0E4B5 /* ProductDetailPageController.swift */; };
 		517A02C52EF2B6AD00E0E4B5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A02C42EF2B6A400E0E4B5 /* SignupViewController.swift */; };
 		517A02C72EF2B8CB00E0E4B5 /* AuthContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A02C62EF2B8C900E0E4B5 /* AuthContainerViewController.swift */; };
-		51926FA23029CAA700D814F4 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 51926FA13029CAA700D814F4 /* BlueTriangle */; };
-		51926FA43029CAB200D814F4 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 51926FA33029CAB200D814F4 /* BlueTriangle */; };
 		519833A02B55656100F71C1E /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 5198339F2B55656100F71C1E /* template.html */; };
 		519833A12B55656100F71C1E /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 5198339F2B55656100F71C1E /* template.html */; };
 		5198A2992A9F7104003EFBEF /* MemoryAllocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5198A2982A9F7104003EFBEF /* MemoryAllocationTest.swift */; };
@@ -154,12 +154,14 @@
 		8F2DDCF0687A987B37EC8902 /* SignpostLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BEEFFF809A9ABA493B75A /* SignpostLogger.swift */; };
 		944B2AAFE8345E914D448159 /* FramesTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9428870878F4AD2D752F51DB /* FramesTracker.swift */; };
 		999667BCF4CE3D1793000692 /* PayloadDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EA1FF019E26C2ABC108F569 /* PayloadDetailView.swift */; };
+		99D39354D348947D7FB31AC8 /* DelayMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2DF4552D8D76845A32E73B /* DelayMarker.m */; };
 		9C0AFCCD2A2AC30A240CE943 /* LaunchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44398F06A60DC624F93CA185 /* LaunchHistory.swift */; };
 		9C3DCC237FE7E143F1A9F376 /* MetricKitReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E426CFF59BE8F0CF669B57E /* MetricKitReporter.swift */; };
 		9DFEE7ED991E604B2E52DAEC /* MetricKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653E502EE1CB48953488246 /* MetricKitManager.swift */; };
 		B0B97AB122E4BAB825A26C9E /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6DAF402D1A2FDE9C3A0FB6 /* UserTableViewController.swift */; };
 		B22A48BFFD6A7616F92A4258 /* OrderHistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0F93ED68F35D01199C72F2 /* OrderHistoryItem.swift */; };
 		B23D08AB91F8BE5C6200B14D /* MatricKitAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B01B3518098005642B7AF3 /* MatricKitAppDelegate.swift */; };
+		B3847C176B0BCC8FC54B415B /* DelayMarker.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2DF4552D8D76845A32E73B /* DelayMarker.m */; };
 		B59450A6CED0A60E5A39322B /* StressSimulators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98E95FA244F0A75EBE4221E3 /* StressSimulators.swift */; };
 		BAD0F7FE5A2CA365AA4EACC7 /* HitchRateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612A4B5E069EC9F1CAA3E91 /* HitchRateView.swift */; };
 		BED8B509398235A505CC40CB /* MetricKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0211EF125EE211EDDCA25E1 /* MetricKit.framework */; };
@@ -273,6 +275,7 @@
 		51F61C9A2A4AD3490071F957 /* BTTRootContrainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTTRootContrainerView.swift; sourceTree = "<group>"; };
 		51F61C9E2A4AD6980071F957 /* BTTConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BTTConfigModel.swift; sourceTree = "<group>"; };
 		5BAD18B93AAB9F3910C6E706 /* RawJSONView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RawJSONView.swift; sourceTree = "<group>"; };
+		5C2DF4552D8D76845A32E73B /* DelayMarker.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = DelayMarker.m; sourceTree = "<group>"; };
 		6053F62BF2101CBC69151BC7 /* SampleData.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		7612A4B5E069EC9F1CAA3E91 /* HitchRateView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HitchRateView.swift; sourceTree = "<group>"; };
 		7ED5759484613988140CB5D8 /* UserTabView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserTabView.swift; sourceTree = "<group>"; };
@@ -367,7 +370,7 @@
 				84A03BED2A49DE16000C8BD0 /* IdentifiedCollections in Frameworks */,
 				5144D7D32DDB6D99001C3F2D /* Clarity in Frameworks */,
 				65E65C508AF151026B1DE45F /* MetricKit.framework in Frameworks */,
-				51926FA43029CAB200D814F4 /* BlueTriangle in Frameworks */,
+				5179AE35304AC95C00E9CF96 /* BlueTriangle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +382,7 @@
 				C94BF015290AE2FC007E1C25 /* Service in Frameworks */,
 				5144D7D12DDB6D2C001C3F2D /* Clarity in Frameworks */,
 				BED8B509398235A505CC40CB /* MetricKit.framework in Frameworks */,
-				51926FA23029CAA700D814F4 /* BlueTriangle in Frameworks */,
+				5179AE33304AC4D200E9CF96 /* BlueTriangle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +467,7 @@
 				1180C1FC8541761581FFCFC6 /* HitchRateSession.swift */,
 				1E426CFF59BE8F0CF669B57E /* MetricKitReporter.swift */,
 				9428870878F4AD2D752F51DB /* FramesTracker.swift */,
+				5C2DF4552D8D76845A32E73B /* DelayMarker.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -801,7 +805,7 @@
 				84A03BEA2A49DE16000C8BD0 /* Service */,
 				84A03BEC2A49DE16000C8BD0 /* IdentifiedCollections */,
 				5144D7D22DDB6D99001C3F2D /* Clarity */,
-				51926FA33029CAB200D814F4 /* BlueTriangle */,
+				5179AE34304AC95C00E9CF96 /* BlueTriangle */,
 			);
 			productName = "Example-UIKit";
 			productReference = 847CF43C2A4315D7001E9011 /* Example-UIKit.app */;
@@ -825,7 +829,7 @@
 				C94BF014290AE2FC007E1C25 /* Service */,
 				C9E11419291421F00031E874 /* IdentifiedCollections */,
 				5144D7D02DDB6D2C001C3F2D /* Clarity */,
-				51926FA13029CAA700D814F4 /* BlueTriangle */,
+				5179AE32304AC4D200E9CF96 /* BlueTriangle */,
 			);
 			productName = "Example-SwiftUI";
 			productReference = C9F4A4122900DB6100BCDF3E /* Example-SwiftUI.app */;
@@ -906,7 +910,7 @@
 			packageReferences = (
 				C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
 				5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */,
-				51926FA03029CAA700D814F4 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */,
+				5179AE31304AC4D200E9CF96 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */,
 			);
 			productRefGroup = C9F4A4132900DB6100BCDF3E /* Products */;
 			projectDirPath = "";
@@ -1074,6 +1078,7 @@
 				B0B97AB122E4BAB825A26C9E /* UserTableViewController.swift in Sources */,
 				09BB2B31D58035BB9F7B0446 /* OrderHistoryViewController.swift in Sources */,
 				EFF24A662AEC667DBD6544AB /* FavouriteViewController.swift in Sources */,
+				B3847C176B0BCC8FC54B415B /* DelayMarker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1165,6 +1170,7 @@
 				DE0C8D93C417D6C0D48E3907 /* OrderHistoryItem.swift in Sources */,
 				46E8D3DC69161E3169DB9559 /* FavoriteItem.swift in Sources */,
 				654EE530F728A77B9BA00892 /* UserTabView.swift in Sources */,
+				99D39354D348947D7FB31AC8 /* DelayMarker.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1419,7 +1425,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
@@ -1458,7 +1464,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
@@ -1623,12 +1629,12 @@
 				minimumVersion = 3.0.7;
 			};
 		};
-		51926FA03029CAA700D814F4 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */ = {
+		5179AE31304AC4D200E9CF96 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/JP-aloha/btt-swift-sdk.git";
+			repositoryURL = "https://github.com/blue-triangle-tech/btt-swift-sdk.git";
 			requirement = {
-				branch = feature/hitch_matric;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.15.14;
 			};
 		};
 		C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */ = {
@@ -1652,14 +1658,14 @@
 			package = 5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */;
 			productName = Clarity;
 		};
-		51926FA13029CAA700D814F4 /* BlueTriangle */ = {
+		5179AE32304AC4D200E9CF96 /* BlueTriangle */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 51926FA03029CAA700D814F4 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
+			package = 5179AE31304AC4D200E9CF96 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
 			productName = BlueTriangle;
 		};
-		51926FA33029CAB200D814F4 /* BlueTriangle */ = {
+		5179AE34304AC95C00E9CF96 /* BlueTriangle */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 51926FA03029CAA700D814F4 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
+			package = 5179AE31304AC4D200E9CF96 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
 			productName = BlueTriangle;
 		};
 		84A03BEA2A49DE16000C8BD0 /* Service */ = {

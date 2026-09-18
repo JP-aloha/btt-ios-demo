@@ -33,10 +33,8 @@ class BttWebViewController: UIViewController {
         guard let url = model.getTemplateUrl(tagUrl) else {
              return
         }
-
-        if let urlNew = URL.init(string: "http://192.168.1.126:5173") {
-            webView.load(URLRequest(url: urlNew))
-        }
+        
+        webView.load(URLRequest(url: url))
     }
     
     @IBAction func didSelectFinish(_ sender: Any?) {

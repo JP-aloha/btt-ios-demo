@@ -5,6 +5,12 @@ import UIKit
 /// from — the earlier the hook, the more of app startup gets pushed behind
 /// the delay.
 enum SlowLaunchCallSite: String, CaseIterable, Identifiable {
+    /// Fires from DelayMarker.m's `+load`, during dyld's image-loading
+    /// phase — before any Swift code runs at all, including `.appInit`.
+    /// That earlier-than-Swift timing is also why it's consumed directly
+    /// in Objective-C (see DelayMarker.m) rather than by calling back into
+    /// this enum/StressSimulators from there.
+    case objcLoad
     case appInit
     case willFinishLaunching
     case didFinishLaunching
@@ -13,6 +19,7 @@ enum SlowLaunchCallSite: String, CaseIterable, Identifiable {
 
     var title: String {
         switch self {
+        case .objcLoad: return "+load"
         case .appInit: return "App init()"
         case .willFinishLaunching: return "willFinish"
         case .didFinishLaunching: return "didFinish"

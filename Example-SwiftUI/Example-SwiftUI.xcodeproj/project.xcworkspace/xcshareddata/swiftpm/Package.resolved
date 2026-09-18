@@ -3,10 +3,10 @@
     {
       "identity" : "btt-swift-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
+      "location" : "https://github.com/blue-triangle-tech/btt-swift-sdk.git",
       "state" : {
-        "branch" : "feature/hitch_matric",
-        "revision" : "6125262cbde9a93b3a471c7e49c7acfa14f488f2"
+        "revision" : "39d4a1917b7fcce4b185c9b71271416cac693346",
+        "version" : "3.15.14"
       }
     },
     {

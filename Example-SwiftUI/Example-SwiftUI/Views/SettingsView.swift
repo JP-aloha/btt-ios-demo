@@ -152,7 +152,7 @@ struct SettingsView: View {
                         Button {
                             self.presentHybridDemo.toggle()
                         } label: {
-                            Text("Hybrid Demo")
+                            Text("Hybrid Web Demo")
                                 .foregroundColor(.white)
                         }
                         .buttonStyle(.borderedProminent)
@@ -160,7 +160,7 @@ struct SettingsView: View {
                         .fullScreenCover(isPresented: $presentHybridDemo) {
                             NavigationView {
                                 BttWebView(tagUrl: tagUrl)
-                                    .navigationTitle("Hybrid Demo")
+                                    .navigationTitle("Hybrid Web Demo")
                                     .navigationBarItems(
                                         leading:
                                             Button {
