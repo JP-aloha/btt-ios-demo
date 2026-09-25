@@ -49,11 +49,11 @@
 		5170A8C22AA1F4090091B65A /* UnitTestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C02AA1F3B50091B65A /* UnitTestsViewModel.swift */; };
 		5170A8C42AA1F7490091B65A /* CPUTestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C32AA1F7490091B65A /* CPUTestView.swift */; };
 		5170A8C62AA1F87C0091B65A /* CPUTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5170A8C52AA1F87C0091B65A /* CPUTestViewController.swift */; };
-		5179AE33304AC4D200E9CF96 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 5179AE32304AC4D200E9CF96 /* BlueTriangle */; };
-		5179AE35304AC95C00E9CF96 /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 5179AE34304AC95C00E9CF96 /* BlueTriangle */; };
 		517A02C32EF2A7EB00E0E4B5 /* ProductDetailPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A02C22EF2A7DE00E0E4B5 /* ProductDetailPageController.swift */; };
 		517A02C52EF2B6AD00E0E4B5 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A02C42EF2B6A400E0E4B5 /* SignupViewController.swift */; };
 		517A02C72EF2B8CB00E0E4B5 /* AuthContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 517A02C62EF2B8C900E0E4B5 /* AuthContainerViewController.swift */; };
+		5197E57C305D380A00CBBDEF /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 5197E57B305D380A00CBBDEF /* BlueTriangle */; };
+		5197E57E305D381A00CBBDEF /* BlueTriangle in Frameworks */ = {isa = PBXBuildFile; productRef = 5197E57D305D381A00CBBDEF /* BlueTriangle */; };
 		519833A02B55656100F71C1E /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 5198339F2B55656100F71C1E /* template.html */; };
 		519833A12B55656100F71C1E /* template.html in Resources */ = {isa = PBXBuildFile; fileRef = 5198339F2B55656100F71C1E /* template.html */; };
 		5198A2992A9F7104003EFBEF /* MemoryAllocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5198A2982A9F7104003EFBEF /* MemoryAllocationTest.swift */; };
@@ -184,6 +184,8 @@
 		C9C7D88F2939029C00950C55 /* LineItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7D88E2939029C00950C55 /* LineItemRow.swift */; };
 		C9C7D8932939315D00950C55 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7D8922939315D00950C55 /* RemoteImage.swift */; };
 		C9E1141A291421F00031E874 /* IdentifiedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = C9E11419291421F00031E874 /* IdentifiedCollections */; };
+		E77A0B01000000000000A005 /* CrashSimulators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A006 /* CrashSimulators.swift */; };
+		E77A0B01000000000000A007 /* CrashTypesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A008 /* CrashTypesView.swift */; };
 		C9F4A4162900DB6100BCDF3E /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4A4152900DB6100BCDF3E /* ExampleApp.swift */; };
 		C9F4A41A2900DB6200BCDF3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F4A4192900DB6200BCDF3E /* Assets.xcassets */; };
 		C9F4A41D2900DB6200BCDF3E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F4A41C2900DB6200BCDF3E /* Preview Assets.xcassets */; };
@@ -197,6 +199,8 @@
 		DD12B174512A2DB1EFDABEC4 /* HitchRateSessionDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7497C03A9C9A287CC38F24 /* HitchRateSessionDetailView.swift */; };
 		DE0C8D93C417D6C0D48E3907 /* OrderHistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0F93ED68F35D01199C72F2 /* OrderHistoryItem.swift */; };
 		E6F02839FE5C85055A1627AA /* OrderHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BC67523DEA7E4BF8D34123A /* OrderHistoryView.swift */; };
+		E77A0B01000000000000A001 /* ErrorRcvLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A002 /* ErrorRcvLog.swift */; };
+		E77A0B01000000000000A003 /* ErrorLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A004 /* ErrorLogView.swift */; };
 		EFF24A662AEC667DBD6544AB /* FavouriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4BB5B7C446FA622E9319855 /* FavouriteViewController.swift */; };
 		F54A43BD62D9167979290C00 /* JSONTreeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F5A87C71760F13A2D9EE6F4 /* JSONTreeView.swift */; };
 		F77336FD11FA12282420B832 /* SignpostLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22BEEFFF809A9ABA493B75A /* SignpostLogger.swift */; };
@@ -344,6 +348,8 @@
 		C9C7D8922939315D00950C55 /* RemoteImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		C9D83EA5294FEA9C00330F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C9F4A4122900DB6100BCDF3E /* Example-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E77A0B01000000000000A006 /* CrashSimulators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashSimulators.swift; sourceTree = "<group>"; };
+		E77A0B01000000000000A008 /* CrashTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashTypesView.swift; sourceTree = "<group>"; };
 		C9F4A4152900DB6100BCDF3E /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		C9F4A4192900DB6200BCDF3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9F4A41C2900DB6200BCDF3E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -356,6 +362,8 @@
 		D62473F31BD05008ED48A6E6 /* StoredPayload.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = StoredPayload.swift; sourceTree = "<group>"; };
 		D69F6C7D5DD200931C8AECAB /* DashboardView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
 		E4BB5B7C446FA622E9319855 /* FavouriteViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = FavouriteViewController.swift; sourceTree = "<group>"; };
+		E77A0B01000000000000A002 /* ErrorRcvLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRcvLog.swift; sourceTree = "<group>"; };
+		E77A0B01000000000000A004 /* ErrorLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogView.swift; sourceTree = "<group>"; };
 		EA6DAF402D1A2FDE9C3A0FB6 /* UserTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		ED576F25C48B4C6A07FEF683 /* HitchRateMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HitchRateMonitor.swift; sourceTree = "<group>"; };
 		F55D3D189F1E1F76CD511821 /* FavoriteItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FavoriteItem.swift; path = Models/FavoriteItem.swift; sourceTree = "<group>"; };
@@ -370,7 +378,7 @@
 				84A03BED2A49DE16000C8BD0 /* IdentifiedCollections in Frameworks */,
 				5144D7D32DDB6D99001C3F2D /* Clarity in Frameworks */,
 				65E65C508AF151026B1DE45F /* MetricKit.framework in Frameworks */,
-				5179AE35304AC95C00E9CF96 /* BlueTriangle in Frameworks */,
+				5197E57E305D381A00CBBDEF /* BlueTriangle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -382,7 +390,7 @@
 				C94BF015290AE2FC007E1C25 /* Service in Frameworks */,
 				5144D7D12DDB6D2C001C3F2D /* Clarity in Frameworks */,
 				BED8B509398235A505CC40CB /* MetricKit.framework in Frameworks */,
-				5179AE33304AC4D200E9CF96 /* BlueTriangle in Frameworks */,
+				5197E57C305D380A00CBBDEF /* BlueTriangle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,6 +650,8 @@
 				0BC67523DEA7E4BF8D34123A /* OrderHistoryView.swift */,
 				B4582ED877361517EB78D2E5 /* FavouriteView.swift */,
 				7ED5759484613988140CB5D8 /* UserTabView.swift */,
+				E77A0B01000000000000A004 /* ErrorLogView.swift */,
+				E77A0B01000000000000A008 /* CrashTypesView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -703,6 +713,8 @@
 				C9D83EA5294FEA9C00330F33 /* Info.plist */,
 				514AA99E2E44AA9400F4A364 /* AppCoordinator.swift */,
 				C9F4A4152900DB6100BCDF3E /* ExampleApp.swift */,
+				E77A0B01000000000000A002 /* ErrorRcvLog.swift */,
+				E77A0B01000000000000A006 /* CrashSimulators.swift */,
 				51F61C9E2A4AD6980071F957 /* BTTConfigModel.swift */,
 				51F61C9A2A4AD3490071F957 /* BTTRootContrainerView.swift */,
 				51F61C982A4AD1EB0071F957 /* BTTrackingConfigView.swift */,
@@ -805,7 +817,7 @@
 				84A03BEA2A49DE16000C8BD0 /* Service */,
 				84A03BEC2A49DE16000C8BD0 /* IdentifiedCollections */,
 				5144D7D22DDB6D99001C3F2D /* Clarity */,
-				5179AE34304AC95C00E9CF96 /* BlueTriangle */,
+				5197E57D305D381A00CBBDEF /* BlueTriangle */,
 			);
 			productName = "Example-UIKit";
 			productReference = 847CF43C2A4315D7001E9011 /* Example-UIKit.app */;
@@ -829,7 +841,7 @@
 				C94BF014290AE2FC007E1C25 /* Service */,
 				C9E11419291421F00031E874 /* IdentifiedCollections */,
 				5144D7D02DDB6D2C001C3F2D /* Clarity */,
-				5179AE32304AC4D200E9CF96 /* BlueTriangle */,
+				5197E57B305D380A00CBBDEF /* BlueTriangle */,
 			);
 			productName = "Example-SwiftUI";
 			productReference = C9F4A4122900DB6100BCDF3E /* Example-SwiftUI.app */;
@@ -910,7 +922,7 @@
 			packageReferences = (
 				C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */,
 				5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */,
-				5179AE31304AC4D200E9CF96 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */,
+				5197E57A305D380A00CBBDEF /* XCRemoteSwiftPackageReference "btt-swift-sdk" */,
 			);
 			productRefGroup = C9F4A4132900DB6100BCDF3E /* Products */;
 			projectDirPath = "";
@@ -1125,6 +1137,10 @@
 				C94BF011290ADC20007E1C25 /* ProductCell.swift in Sources */,
 				8419BD132A49CFD7009429C9 /* Constants.swift in Sources */,
 				C9F4A4162900DB6100BCDF3E /* ExampleApp.swift in Sources */,
+				E77A0B01000000000000A001 /* ErrorRcvLog.swift in Sources */,
+				E77A0B01000000000000A003 /* ErrorLogView.swift in Sources */,
+				E77A0B01000000000000A005 /* CrashSimulators.swift in Sources */,
+				E77A0B01000000000000A007 /* CrashTypesView.swift in Sources */,
 				51A7C4DD2CB5204A00EAA81E /* UserViewModel.swift in Sources */,
 				8419BD2A2A49CFEC009429C9 /* SettingsViewModel.swift in Sources */,
 				5170A8BF2AA1E82D0091B65A /* MemoryTestView.swift in Sources */,
@@ -1425,7 +1441,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
@@ -1441,7 +1457,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.15.14;
+				MARKETING_VERSION = 3.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.SwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1464,7 +1480,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
@@ -1480,7 +1496,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.15.14;
+				MARKETING_VERSION = 3.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.SwiftUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1629,12 +1645,12 @@
 				minimumVersion = 3.0.7;
 			};
 		};
-		5179AE31304AC4D200E9CF96 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */ = {
+		5197E57A305D380A00CBBDEF /* XCRemoteSwiftPackageReference "btt-swift-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/blue-triangle-tech/btt-swift-sdk.git";
+			repositoryURL = "https://github.com/JP-aloha/btt-swift-sdk.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.15.14;
+				branch = feature/matric_kit_and_hitch;
+				kind = branch;
 			};
 		};
 		C9E11418291421F00031E874 /* XCRemoteSwiftPackageReference "swift-identified-collections" */ = {
@@ -1658,14 +1674,14 @@
 			package = 5144D7CF2DDB6D2C001C3F2D /* XCRemoteSwiftPackageReference "clarity-apps" */;
 			productName = Clarity;
 		};
-		5179AE32304AC4D200E9CF96 /* BlueTriangle */ = {
+		5197E57B305D380A00CBBDEF /* BlueTriangle */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5179AE31304AC4D200E9CF96 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
+			package = 5197E57A305D380A00CBBDEF /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
 			productName = BlueTriangle;
 		};
-		5179AE34304AC95C00E9CF96 /* BlueTriangle */ = {
+		5197E57D305D381A00CBBDEF /* BlueTriangle */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 5179AE31304AC4D200E9CF96 /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
+			package = 5197E57A305D380A00CBBDEF /* XCRemoteSwiftPackageReference "btt-swift-sdk" */;
 			productName = BlueTriangle;
 		};
 		84A03BEA2A49DE16000C8BD0 /* Service */ = {

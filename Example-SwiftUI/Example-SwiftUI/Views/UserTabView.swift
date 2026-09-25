@@ -37,6 +37,18 @@ struct UserTabView: View {
             } label: {
                 Label("Favourite", systemImage: "heart")
             }
+
+            NavigationLink {
+                ErrorLogView()
+            } label: {
+                Label("Error Logs", systemImage: "exclamationmark.triangle")
+            }
+
+            NavigationLink {
+                CrashTypesView()
+            } label: {
+                Label("Generate Crash", systemImage: "bolt.trianglebadge.exclamationmark")
+            }
         }
         .onAppear {
             // Re-read on every appearance (including popping back from

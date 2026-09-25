@@ -17,6 +17,7 @@ struct Example_SwiftUIApp: App {
     @Environment(\.scenePhase) private var scenePhase
     
     init() {
+        ErrorRcvLog.install()
         _ = MetricKitManager.shared
         if let armed = StressSimulators.slowLaunchDelayIfArmed(at: .appInit) {
             StressSimulators.applySlowLaunchDelay(armed.delay, method: armed.method)
