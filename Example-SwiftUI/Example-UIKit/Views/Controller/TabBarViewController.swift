@@ -25,15 +25,17 @@ class TabBarViewController: UITabBarController {
             cartVC.vm = CartViewModel(service: service, cartRepository: cartRepository)
         }
 
-        // Insert as the 3rd tab (after Products, Cart), matching the SwiftUI
-        // target's tab order, rather than appending after Settings.
         var updatedViewControllers = viewControllers ?? []
-        let matricKitIndex = min(2, updatedViewControllers.count)
-        updatedViewControllers.insert(makeMatricKitTab(), at: matricKitIndex)
 
-        // User tab goes right after MatricKit, before Settings — same
-        // Products/Cart/MatricKit/User/Settings order as the SwiftUI target.
-        let userIndex = min(matricKitIndex + 1, updatedViewControllers.count)
+        // MatricKit tab hidden for now — makeMatricKitTab() is kept; restore
+        // these lines (and use `matricKitIndex + 1` for userIndex) to bring
+        // it back as the 3rd tab.
+        // let matricKitIndex = min(2, updatedViewControllers.count)
+        // updatedViewControllers.insert(makeMatricKitTab(), at: matricKitIndex)
+
+        // User tab goes after Products and Cart, before Settings — same
+        // Products/Cart/User/Settings order as the SwiftUI target.
+        let userIndex = min(2, updatedViewControllers.count)
         updatedViewControllers.insert(makeUserTab(), at: userIndex)
 
         viewControllers = updatedViewControllers

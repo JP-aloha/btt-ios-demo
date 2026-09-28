@@ -2,10 +2,11 @@
 //  CrashSimulators.swift
 //  Example-SwiftUI
 //
-//  One entry per crash / error type the BlueTriangle SDK can report, so each
-//  can be reproduced on demand from User → Generate Crash. Each entry
-//  terminates the app — the SDK uploads the report (err.rcv) on the next
-//  launch, where it shows up in User → Error Logs.
+//  One trigger per error type the BlueTriangle SDK reports (the `eTp` of the
+//  err.rcv payload), covering the MetricKit tab's triggers as well. Each
+//  trigger has a short `tag` that's remembered before it fires, so the
+//  resulting payload in User → Error Logs (and its mail attachment's file
+//  name) says which trigger produced it.
 //
 
 import Foundation
@@ -16,120 +17,138 @@ struct CrashType: Identifiable {
     let title: String
     let detail: String
     let systemImage: String
-    let trigger: () -> Void
+    /// Goes into the Error Logs entry and attachment file name, e.g.
+    /// `NativeAppCrash_NSException_<timestamp>.json`.
+    let tag: String
+    /// Runs the trigger; `status` is called for triggers that don't crash.
+    let trigger: (_ status: @escaping (String) -> Void) -> Void
 }
 
 struct CrashCategory: Identifiable {
-    let id: String
-    let title: String
+    /// The SDK error type (`eTp`) this section produces.
+    let errorType: String
     let footer: String
     let types: [CrashType]
+
+    var id: String { errorType }
 }
 
 enum CrashSimulators {
 
     static let categories: [CrashCategory] = [
         CrashCategory(
-            id: "swift",
-            title: "Swift Runtime Traps",
-            footer: "EXC_BREAKPOINT / SIGTRAP — reported by the signal crash handler and MetricKit crash diagnostics.",
+            errorType: "NativeAppCrash",
+            footer: "Crashes immediately. The SDK uploads the report on the next launch; MetricKit may also deliver its own crash diagnostic later.",
             types: [
-                CrashType(id: "fatalError", title: "fatalError()", detail: "Explicit fatalError — same as the MetricKit POC test crash", systemImage: "exclamationmark.octagon") {
-                    fatalError("BTT Demo: user-triggered fatalError crash.")
+                CrashType(id: "swiftCrash", title: "Swift Crash", detail: "fatalError() — same as the MetricKit POC's test crash", systemImage: "exclamationmark.octagon", tag: "SwiftCrash") { _ in
+                    StressSimulators.triggerCrash()
                 },
-                CrashType(id: "forceUnwrap", title: "Force Unwrap nil", detail: "Unexpectedly found nil while unwrapping an Optional", systemImage: "questionmark.circle") {
+                // The rest mirror MatricKitPoc's CrashTypeCatalog, with the same
+                // names as tags so payloads line up with the POC's.
+                CrashType(id: "nsException", title: "NSException", detail: "Raises an uncaught NSException directly — Objective-C style crash (SIGABRT), distinct from a Swift runtime trap.", systemImage: "bolt.trianglebadge.exclamationmark", tag: "NSException") { _ in
+                    NSException(name: NSExceptionName("BTTDemoException"),
+                                reason: "BTT Demo: user-triggered NSException test crash.",
+                                userInfo: nil).raise()
+                },
+                CrashType(id: "forceUnwrap", title: "Force Unwrap nil", detail: "Force-unwraps a nil Optional (optional!) — one of the most common real-world Swift crashes.", systemImage: "questionmark.circle", tag: "ForceUnwrapNil") { _ in
                     let value: Int? = runtimeNil()
                     print(value!)
                 },
-                CrashType(id: "indexOutOfRange", title: "Array Index Out of Range", detail: "Swift Array subscript past its bounds", systemImage: "list.number") {
-                    let list = [1, 2]
-                    print(list[runtimeValue(10)])
+                CrashType(id: "simultaneousAccess", title: "Simultaneous Thread Read/Write", detail: "Overlapping access to the same shared state — Swift's exclusivity enforcement traps with \"Simultaneous accesses...\".", systemImage: "arrow.triangle.2.circlepath", tag: "SimultaneousThreadAccess") { _ in
+                    recurseWithExclusiveAccess(&sharedCounter)
                 },
-                CrashType(id: "forceCast", title: "Force Cast Failure", detail: "as! to an incompatible type", systemImage: "arrow.triangle.swap") {
-                    let any: Any = "BTT" as Any
-                    print(any as! Int)
+                CrashType(id: "divideByZero", title: "Divide by Zero", detail: "Integer division by a runtime-computed zero — traps with \"Fatal error: Division by zero\".", systemImage: "divide", tag: "DivideByZero") { _ in
+                    print(100 / runtimeValue(0))
                 },
-                CrashType(id: "intOverflow", title: "Integer Overflow", detail: "Arithmetic overflow on Int.max + 1", systemImage: "plus.forwardslash.minus") {
-                    print(runtimeValue(Int.max) + 1)
+                CrashType(id: "forceCast", title: "Force Cast String to Int", detail: "Force-casts an Any holding a String to Int (as!) — a failed type cast, distinct from a failed optional unwrap.", systemImage: "arrow.triangle.swap", tag: "ForceCastStringToInt") { _ in
+                    let value: Any = "not a number"
+                    print(value as! Int)
                 },
-                CrashType(id: "divideByZero", title: "Division by Zero", detail: "Integer division by zero", systemImage: "divide") {
-                    print(10 / runtimeValue(0))
+                CrashType(id: "arrayOutOfBounds", title: "Array Index Out of Bounds", detail: "Indexes past the end of an empty array — extremely common in real-world crash reports.", systemImage: "list.number", tag: "ArrayIndexOutOfBounds") { _ in
+                    let values: [Int] = []
+                    print(values[runtimeValue(5)])
                 },
-                CrashType(id: "precondition", title: "preconditionFailure()", detail: "Failed precondition check", systemImage: "checkmark.shield") {
-                    preconditionFailure("BTT Demo: user-triggered precondition failure.")
+                CrashType(id: "unrecognizedSelector", title: "Unrecognized Selector", detail: "Calls a selector that doesn't exist on an NSObject — classic Objective-C runtime dispatch crash.", systemImage: "cursorarrow.click.badge.clock", tag: "UnrecognizedSelector") { _ in
+                    _ = NSObject().perform(NSSelectorFromString("bttDemoDoesNotExist"))
                 },
-                CrashType(id: "unowned", title: "Unowned Reference Deallocated", detail: "Reading an unowned reference after its object is freed", systemImage: "link.badge.plus") {
-                    unownedAccessCrash()
-                },
-                CrashType(id: "backgroundThread", title: "Background Thread Crash", detail: "fatalError on a background queue", systemImage: "square.stack.3d.down.right") {
-                    DispatchQueue.global(qos: .userInitiated).async {
-                        fatalError("BTT Demo: crash on background thread.")
-                    }
-                },
-            ]
-        ),
-        CrashCategory(
-            id: "nsexception",
-            title: "Objective-C Exceptions",
-            footer: "Uncaught NSException / SIGABRT — reported by the SDK's NSException handler (crashTracking = .nsException).",
-            types: [
-                CrashType(id: "customException", title: "Custom NSException", detail: "NSException(name: BTTTestException).raise()", systemImage: "bolt.trianglebadge.exclamationmark") {
-                    NSException(name: NSExceptionName("BTTTestException"),
-                                reason: "BTT Demo: user-triggered custom NSException.",
-                                userInfo: ["source": "CrashTypesView"]).raise()
-                },
-                CrashType(id: "nsRange", title: "NSRangeException", detail: "NSArray objectAtIndex: beyond bounds", systemImage: "square.grid.3x1.below.line.grid.1x2") {
-                    print(NSArray().object(at: 1))
-                },
-                CrashType(id: "unrecognizedSelector", title: "Unrecognized Selector", detail: "NSInvalidArgumentException — message sent to an object that doesn't respond", systemImage: "cursorarrow.click.badge.clock") {
-                    _ = NSObject().perform(NSSelectorFromString("bttUndefinedSelector"))
-                },
-                CrashType(id: "unknownKey", title: "NSUnknownKeyException", detail: "KVC value(forKey:) with an undefined key", systemImage: "key") {
-                    print(NSObject().value(forKey: "bttUndefinedKey") as Any)
-                },
-                CrashType(id: "backgroundException", title: "NSException on Background Thread", detail: "NSRangeException raised off the main thread", systemImage: "square.stack.3d.down.right.fill") {
-                    DispatchQueue.global(qos: .userInitiated).async {
-                        print(NSArray().object(at: 5))
-                    }
-                },
-            ]
-        ),
-        CrashCategory(
-            id: "signals",
-            title: "Signals & Memory Errors",
-            footer: "Unix signals — reported by the SDK's signal crash handler (BTSignalCrashReporter). SIGKILL can't be caught in-process; only MetricKit sees it.",
-            types: [
-                CrashType(id: "badAccess", title: "EXC_BAD_ACCESS (SIGSEGV)", detail: "Write through an invalid pointer", systemImage: "memorychip") {
-                    UnsafeMutablePointer<Int>(bitPattern: runtimeValue(0x10))!.pointee = 42
-                },
-                CrashType(id: "abort", title: "abort() (SIGABRT)", detail: "Process abort", systemImage: "xmark.octagon") {
-                    abort()
-                },
-                CrashType(id: "doubleFree", title: "Double Free (SIGABRT)", detail: "Heap corruption — freeing the same pointer twice", systemImage: "trash.slash") {
-                    let pointer = UnsafeMutableRawPointer.allocate(byteCount: 64, alignment: 8)
-                    pointer.deallocate()
-                    pointer.deallocate()
-                },
-                CrashType(id: "stackOverflow", title: "Stack Overflow", detail: "Unbounded recursion exhausts the stack (EXC_BAD_ACCESS)", systemImage: "arrow.clockwise") {
+                CrashType(id: "stackOverflow", title: "Stack Overflow", detail: "Infinite recursion exhausts the call stack — EXC_BAD_ACCESS from stack overflow, a different signal than the Swift traps above.", systemImage: "arrow.clockwise", tag: "StackOverflow") { _ in
                     print(recurse(runtimeValue(1)))
                 },
-                CrashType(id: "mainSyncDeadlock", title: "Main Queue Deadlock", detail: "DispatchQueue.main.sync called from the main thread", systemImage: "lock.rotation") {
-                    DispatchQueue.main.sync { print("unreachable") }
+                CrashType(id: "invalidMemoryAccess", title: "Invalid Memory Access", detail: "Writes through a raw pointer to an unmapped address — a genuine SIGSEGV, not a Swift runtime trap.", systemImage: "memorychip", tag: "InvalidMemoryAccess") { _ in
+                    UnsafeMutablePointer<Int>(bitPattern: runtimeValue(0x10))!.pointee = 42
                 },
-                CrashType(id: "sigbus", title: "SIGBUS", detail: "raise(SIGBUS)", systemImage: "bolt") { raise(SIGBUS) },
-                CrashType(id: "sigill", title: "SIGILL", detail: "raise(SIGILL) — illegal instruction", systemImage: "bolt") { raise(SIGILL) },
-                CrashType(id: "sigfpe", title: "SIGFPE", detail: "raise(SIGFPE) — floating point exception", systemImage: "bolt") { raise(SIGFPE) },
-                CrashType(id: "sigtrap", title: "SIGTRAP", detail: "raise(SIGTRAP) — trace/breakpoint trap", systemImage: "bolt") { raise(SIGTRAP) },
-                CrashType(id: "sigpipe", title: "SIGPIPE", detail: "raise(SIGPIPE) — broken pipe", systemImage: "bolt") { raise(SIGPIPE) },
-                CrashType(id: "sigkill", title: "SIGKILL", detail: "raise(SIGKILL) — uncatchable kill", systemImage: "bolt.slash") { raise(SIGKILL) },
+            ]
+        ),
+        CrashCategory(
+            errorType: "ANRWarning",
+            footer: "Reported by the SDK's ANR watchdog within a few seconds, and by MetricKit's hang diagnostic later.",
+            types: [
+                CrashType(id: "hang", title: "Hang", detail: "Block the main thread for 8 seconds", systemImage: "hourglass", tag: "Hang") { status in
+                    StressSimulators.hangMainThread(duration: 8)
+                    status("Main thread was blocked for 8s. Check Error Logs for ANRWarning.")
+                },
+            ]
+        ),
+        CrashCategory(
+            errorType: "MemoryWarning",
+            footer: "Reported right away.",
+            types: [
+                CrashType(id: "memoryWarning", title: "Memory Warning", detail: "Post didReceiveMemoryWarningNotification", systemImage: "exclamationmark.triangle", tag: "MemoryWarning") { status in
+                    NotificationCenter.default.post(name: UIApplication.didReceiveMemoryWarningNotification, object: UIApplication.shared)
+                    status("Memory warning posted. Check Error Logs for MemoryWarning.")
+                },
+            ]
+        ),
+        CrashCategory(
+            errorType: "ExcessCPUUsage",
+            footer: "MetricKit cpuExceptionDiagnostic — needs iOS to kill the app for CPU use while backgrounded, not attached to Xcode. Delivered on a later launch (can take up to 24h).",
+            types: [
+                CrashType(id: "cpuException", title: "Excess CPU Use", detail: "Spin the CPU in the background — background the app right after tapping", systemImage: "cpu", tag: "CPUException") { status in
+                    status("Running CPU abuse — background the app now and leave it for a minute or two.")
+                    StressSimulators.cpuSpinInBackground { elapsed in
+                        status("Background CPU abuse ran for \(Int(elapsed))s without being killed. Try again for longer or across sessions.")
+                    }
+                },
+            ]
+        ),
+        CrashCategory(
+            errorType: "HeavyDiskWrite",
+            footer: "MetricKit diskWriteExceptionDiagnostic — needs iOS to kill the app for excessive writes while backgrounded. Delivered on a later launch (can take up to 24h).",
+            types: [
+                CrashType(id: "diskWriteException", title: "Excess Disk Write", detail: "Write 10 MB chunks in the background — background the app right after tapping", systemImage: "internaldrive", tag: "DiskWriteException") { status in
+                    status("Running disk abuse — background the app now and leave it for a minute or two.")
+                    StressSimulators.diskChurnInBackground { elapsed in
+                        status("Background disk abuse ran for \(Int(elapsed))s without being killed. Try again for longer or across sessions.")
+                    }
+                },
+            ]
+        ),
+        CrashCategory(
+            errorType: "SlowLaunch",
+            footer: "MetricKit appLaunchDiagnostic (iOS 16+). Uses the last saved Slow Launch settings (default: 18s sleep from willFinishLaunching).",
+            types: [
+                CrashType(id: "slowLaunch", title: "Slow Launch", detail: "Delay the next cold launch", systemImage: "hare", tag: "SlowLaunch") { status in
+                    let delay = StressSimulators.savedSlowLaunchDelay
+                    StressSimulators.armSlowLaunch(delay: delay,
+                                                   callSite: StressSimulators.savedSlowLaunchCallSite,
+                                                   method: StressSimulators.savedSlowLaunchMethod)
+                    status("Armed a \(Int(delay))s slow launch. Force-quit the app and relaunch it from the home screen.")
+                },
+            ]
+        ),
+        CrashCategory(
+            errorType: "ForceRestart",
+            footer: "Detected by the SDK when the app is force-quit and reopened within 10 seconds.",
+            types: [
+                CrashType(id: "forceRestart", title: "Force Restart", detail: "Swipe the app away, then reopen it within 10 seconds", systemImage: "arrow.clockwise.circle", tag: "ForceRestart") { status in
+                    status("Now swipe the app away in the app switcher and reopen it within 10 seconds.")
+                },
             ]
         ),
     ]
 
-    // MARK: - Helpers
-
-    // Values routed through @inline(never) so the compiler can't prove the
-    // crash at build time and reject or optimise it away.
+    // Routed through @inline(never) so the compiler can't prove the crash at
+    // build time and reject or optimise it away.
     @inline(never)
     private static func runtimeValue(_ value: Int) -> Int { value }
 
@@ -143,13 +162,14 @@ enum CrashSimulators {
         return withUnsafeMutablePointer(to: &frame) { recurse(depth + 1) + $0.pointee.0 }
     }
 
-    private final class Node {}
+    /// Re-enters with `&sharedCounter` while the outer `inout` access to it is
+    /// still active, so exclusivity enforcement traps on the first recursion.
+    private static var sharedCounter = 0
 
     @inline(never)
-    private static func unownedAccessCrash() {
-        var strong: Node? = Node()
-        unowned let weakRef = strong!
-        strong = nil
-        print(weakRef)
+    private static func recurseWithExclusiveAccess(_ value: inout Int) {
+        value += 1
+        if value > 1_000_000 { return }
+        recurseWithExclusiveAccess(&sharedCounter)
     }
 }

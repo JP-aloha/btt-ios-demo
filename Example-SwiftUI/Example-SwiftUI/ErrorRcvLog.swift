@@ -22,6 +22,13 @@ struct ErrorRcvEntry: Identifiable, Codable, Equatable {
     let errorType: String
     let message: String
     let body: String
+    /// Which trigger produced this payload (from User → Generate Crash), or a
+    /// detail pulled from the payload itself, e.g. "SIGSEGV" or "ANRWatchDog".
+    let tag: String?
+
+    var displayName: String {
+        tag.map { "\(errorType) · \($0)" } ?? errorType
+    }
 }
 
 final class ErrorRcvLog: ObservableObject {
@@ -35,6 +42,9 @@ final class ErrorRcvLog: ObservableObject {
     private let fileURL: URL? = FileManager.default
         .urls(for: .cachesDirectory, in: .userDomainMask).first?
         .appendingPathComponent("error_rcv_log.json")
+    private let pendingTagsURL: URL? = FileManager.default
+        .urls(for: .cachesDirectory, in: .userDomainMask).first?
+        .appendingPathComponent("error_rcv_pending_tags.json")
 
     private init() {
         entries = loadEntries()
@@ -60,6 +70,50 @@ final class ErrorRcvLog: ObservableObject {
         saveEntries(entries)
     }
 
+    /// Remembers which trigger is about to fire, so the next payload of that
+    /// error type is tagged with it — even when it's only uploaded after a
+    /// crash and relaunch. Written synchronously so it survives the crash.
+    func markPendingTrigger(errorType: String, tag: String) {
+        lock.lock()
+        defer { lock.unlock() }
+        var tags = loadPendingTags()
+        tags[errorType] = tag
+        guard let pendingTagsURL, let data = try? JSONEncoder().encode(tags) else { return }
+        try? data.write(to: pendingTagsURL, options: .atomic)
+    }
+
+    private func consumePendingTag(for errorType: String) -> String? {
+        lock.lock()
+        defer { lock.unlock() }
+        var tags = loadPendingTags()
+        guard let tag = tags.removeValue(forKey: errorType) else { return nil }
+        if let pendingTagsURL, let data = try? JSONEncoder().encode(tags) {
+            try? data.write(to: pendingTagsURL, options: .atomic)
+        }
+        return tag
+    }
+
+    private func loadPendingTags() -> [String: String] {
+        guard let pendingTagsURL, let data = try? Data(contentsOf: pendingTagsURL) else { return [:] }
+        return (try? JSONDecoder().decode([String: String].self, from: data)) ?? [:]
+    }
+
+    /// Fallback tag for payloads no trigger was waiting for: the signal name
+    /// in the message, else the `source` in NATIVEAPP.eMeta.
+    private static func derivedTag(from report: [String: Any]?) -> String? {
+        let message = report?["msg"] as? String ?? ""
+        if let range = message.range(of: "SIG[A-Z]+", options: .regularExpression) {
+            return String(message[range])
+        }
+        let eMeta = (report?["NATIVEAPP"] as? [String: Any])?["eMeta"] as? String ?? ""
+        if let start = eMeta.range(of: "source: \"")?.upperBound,
+           let end = eMeta[start...].firstIndex(of: "\"") {
+            let source = String(eMeta[start..<end])
+            return source.isEmpty ? nil : source
+        }
+        return nil
+    }
+
     fileprivate func capture(_ request: URLRequest) {
         guard let url = request.url, url.path.contains("err.rcv"),
               let body = request.httpBody else { return }
@@ -80,12 +134,14 @@ final class ErrorRcvLog: ObservableObject {
             ?? ""
 
         let first = (object as? [[String: Any]])?.first ?? (object as? [String: Any])
+        let errorType = first?["eTp"] as? String ?? "Error"
         let entry = ErrorRcvEntry(
             id: UUID(),
             date: Date(),
-            errorType: first?["eTp"] as? String ?? "Error",
+            errorType: errorType,
             message: first?["msg"] as? String ?? "",
-            body: pretty
+            body: pretty,
+            tag: consumePendingTag(for: errorType) ?? Self.derivedTag(from: first)
         )
 
         DispatchQueue.main.async {

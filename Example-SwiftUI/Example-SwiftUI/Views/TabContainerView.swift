@@ -61,13 +61,15 @@ struct TabContainerView: View {
 				}
 				.tag(Tab.cart)
 
-				MatricKitView()
-				.bttTrackScreen("MatricKitViewTab")
-				.tabItem {
-					Text("MatricKit")
-					Image(systemName: "gauge.with.dots.needle.67percent")
-				}
-				.tag(Tab.matricKit)
+				// MatricKit tab hidden for now — MatricKitView and its code are
+				// kept; uncomment to bring the tab back.
+				// MatricKitView()
+				// .bttTrackScreen("MatricKitViewTab")
+				// .tabItem {
+				// 	Text("MatricKit")
+				// 	Image(systemName: "gauge.with.dots.needle.67percent")
+				// }
+				// .tag(Tab.matricKit)
 
 				UserTabView()
 				.bttTrackScreen("UserViewTab")
