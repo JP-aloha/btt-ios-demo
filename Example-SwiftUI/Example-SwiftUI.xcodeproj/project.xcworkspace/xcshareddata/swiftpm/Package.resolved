@@ -6,7 +6,7 @@
       "location" : "https://github.com/JP-aloha/btt-swift-sdk.git",
       "state" : {
         "branch" : "feature/matric_kit_and_hitch",
-        "revision" : "99789c88075c9720798206c3c89e30f4aedc4a3f"
+        "revision" : "be63c83fcb486b45fe619e2ffbc76d3b24569dff"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-collections",
       "state" : {
-        "revision" : "a66de878e87ef5a3d5d390e0f6d9002aa5541a43",
-        "version" : "1.7.0"
+        "revision" : "3b69cedbaa49957e97c092ae400bb57602ef941f",
+        "version" : "1.7.2"
       }
     },
     {

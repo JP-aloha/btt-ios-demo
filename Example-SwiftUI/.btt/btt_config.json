@@ -1,0 +1,7 @@
+{
+  "targets" : [
+    "Example-SwiftUI"
+  ],
+  "version" : "1.0.2",
+  "xcodeprojName" : "Example-SwiftUI.xcodeproj"
+}

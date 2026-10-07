@@ -49,6 +49,12 @@ struct UserTabView: View {
             } label: {
                 Label("Generate Crash", systemImage: "bolt.trianglebadge.exclamationmark")
             }
+
+            NavigationLink {
+                MetricKitDiagnosticView()
+            } label: {
+                Label("MetricKit Diagnostic", systemImage: "gauge.with.dots.needle.67percent")
+            }
         }
         .onAppear {
             // Re-read on every appearance (including popping back from

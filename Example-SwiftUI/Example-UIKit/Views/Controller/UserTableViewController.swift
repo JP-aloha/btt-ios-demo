@@ -1,8 +1,9 @@
 //
 //  UserTableViewController.swift
 //
-//  Root screen for the User tab — a plain table of three rows (Profile,
-//  Order History, Favourite), each pushing its own native view controller.
+//  Root screen for the User tab — a plain table of rows (Profile, Order
+//  History, Favourite, Error Logs, Generate Crash, MetricKit Diagnostic),
+//  each pushing its own native view controller.
 //  Copyright © 2026 Blue Triangle. All rights reserved.
 //
 
@@ -15,12 +16,18 @@ final class UserTableViewController: UITableViewController {
         case profile
         case orderHistory
         case favourite
+        case errorLogs
+        case generateCrash
+        case metricKitDiagnostic
 
         var iconName: String {
             switch self {
             case .profile: return "person.crop.circle.fill"
             case .orderHistory: return "bag"
             case .favourite: return "heart"
+            case .errorLogs: return "exclamationmark.triangle"
+            case .generateCrash: return "bolt.trianglebadge.exclamationmark"
+            case .metricKitDiagnostic: return "gauge.with.dots.needle.67percent"
             }
         }
     }
@@ -47,6 +54,9 @@ final class UserTableViewController: UITableViewController {
         case .profile: return userModel.loggedInUser()?.name ?? "Guest User"
         case .orderHistory: return "Order History"
         case .favourite: return "Favourite"
+        case .errorLogs: return "Error Logs"
+        case .generateCrash: return "Generate Crash"
+        case .metricKitDiagnostic: return "MetricKit Diagnostic"
         }
     }
 
@@ -79,6 +89,12 @@ final class UserTableViewController: UITableViewController {
             navigationController?.pushViewController(OrderHistoryViewController(), animated: true)
         case .favourite:
             navigationController?.pushViewController(FavouriteViewController(), animated: true)
+        case .errorLogs:
+            navigationController?.pushViewController(ErrorLogViewController(), animated: true)
+        case .generateCrash:
+            navigationController?.pushViewController(GenerateCrashViewController(), animated: true)
+        case .metricKitDiagnostic:
+            navigationController?.pushViewController(MetricKitDiagnosticViewController(), animated: true)
         }
     }
 }

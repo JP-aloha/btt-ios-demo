@@ -76,6 +76,8 @@ class ConfigurationSetup {
         
         BlueTriangle.setCustomVariable("CV3", value: UIScreen.resolutionWidth())
         BlueTriangle.setCustomVariable("CV4", value: UIScreen.resolutionHeight())
+        BlueTriangle.setCustomVariable("CV6", value: "Mobile Testing")
+        BlueTriangle.setCustomVariable("test_mobile", value: "Test_Mobile")
         
         self.updateChangedSassionId()
         BlueTriangle.setCustomCategory1("Guest")

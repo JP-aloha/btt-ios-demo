@@ -158,6 +158,7 @@
 		9C0AFCCD2A2AC30A240CE943 /* LaunchHistory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44398F06A60DC624F93CA185 /* LaunchHistory.swift */; };
 		9C3DCC237FE7E143F1A9F376 /* MetricKitReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E426CFF59BE8F0CF669B57E /* MetricKitReporter.swift */; };
 		9DFEE7ED991E604B2E52DAEC /* MetricKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A653E502EE1CB48953488246 /* MetricKitManager.swift */; };
+		E77A0B01000000000000A00D /* MetricKitDiagnosticViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A00C /* MetricKitDiagnosticViewController.swift */; };
 		B0B97AB122E4BAB825A26C9E /* UserTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6DAF402D1A2FDE9C3A0FB6 /* UserTableViewController.swift */; };
 		B22A48BFFD6A7616F92A4258 /* OrderHistoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B0F93ED68F35D01199C72F2 /* OrderHistoryItem.swift */; };
 		B23D08AB91F8BE5C6200B14D /* MatricKitAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6B01B3518098005642B7AF3 /* MatricKitAppDelegate.swift */; };
@@ -184,6 +185,13 @@
 		C9C7D88F2939029C00950C55 /* LineItemRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7D88E2939029C00950C55 /* LineItemRow.swift */; };
 		C9C7D8932939315D00950C55 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9C7D8922939315D00950C55 /* RemoteImage.swift */; };
 		C9E1141A291421F00031E874 /* IdentifiedCollections in Frameworks */ = {isa = PBXBuildFile; productRef = C9E11419291421F00031E874 /* IdentifiedCollections */; };
+		E77A0B01000000000000A00A /* MetricKitDiagnosticView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A009 /* MetricKitDiagnosticView.swift */; };
+		E77A0B01000000000000A010 /* ErrorRcvLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A002 /* ErrorRcvLog.swift */; };
+		E77A0B01000000000000A011 /* CrashSimulators.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A006 /* CrashSimulators.swift */; };
+		E77A0B01000000000000A013 /* ErrorMailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A012 /* ErrorMailRequest.swift */; };
+		E77A0B01000000000000A014 /* ErrorMailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A012 /* ErrorMailRequest.swift */; };
+		E77A0B01000000000000A016 /* ErrorLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A015 /* ErrorLogViewController.swift */; };
+		E77A0B01000000000000A018 /* GenerateCrashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77A0B01000000000000A017 /* GenerateCrashViewController.swift */; };
 		C9F4A4162900DB6100BCDF3E /* ExampleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9F4A4152900DB6100BCDF3E /* ExampleApp.swift */; };
 		C9F4A41A2900DB6200BCDF3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F4A4192900DB6200BCDF3E /* Assets.xcassets */; };
 		C9F4A41D2900DB6200BCDF3E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C9F4A41C2900DB6200BCDF3E /* Preview Assets.xcassets */; };
@@ -348,6 +356,10 @@
 		C9C7D8922939315D00950C55 /* RemoteImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
 		C9D83EA5294FEA9C00330F33 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C9F4A4122900DB6100BCDF3E /* Example-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Example-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E77A0B01000000000000A009 /* MetricKitDiagnosticView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricKitDiagnosticView.swift; sourceTree = "<group>"; };
+		E77A0B01000000000000A012 /* ErrorMailRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMailRequest.swift; sourceTree = "<group>"; };
+		E77A0B01000000000000A015 /* ErrorLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogViewController.swift; sourceTree = "<group>"; };
+		E77A0B01000000000000A017 /* GenerateCrashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerateCrashViewController.swift; sourceTree = "<group>"; };
 		C9F4A4152900DB6100BCDF3E /* ExampleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleApp.swift; sourceTree = "<group>"; };
 		C9F4A4192900DB6200BCDF3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C9F4A41C2900DB6200BCDF3E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -364,6 +376,7 @@
 		E77A0B01000000000000A004 /* ErrorLogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorLogView.swift; sourceTree = "<group>"; };
 		E77A0B01000000000000A006 /* CrashSimulators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashSimulators.swift; sourceTree = "<group>"; };
 		E77A0B01000000000000A008 /* CrashTypesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CrashTypesView.swift; sourceTree = "<group>"; };
+		E77A0B01000000000000A00C /* MetricKitDiagnosticViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetricKitDiagnosticViewController.swift; sourceTree = "<group>"; };
 		EA6DAF402D1A2FDE9C3A0FB6 /* UserTableViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = UserTableViewController.swift; sourceTree = "<group>"; };
 		ED576F25C48B4C6A07FEF683 /* HitchRateMonitor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = HitchRateMonitor.swift; sourceTree = "<group>"; };
 		F55D3D189F1E1F76CD511821 /* FavoriteItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FavoriteItem.swift; path = Models/FavoriteItem.swift; sourceTree = "<group>"; };
@@ -584,6 +597,9 @@
 				51A7C4E52CB5641700EAA81E /* LoginViewController.swift */,
 				517A02C42EF2B6A400E0E4B5 /* SignupViewController.swift */,
 				EA6DAF402D1A2FDE9C3A0FB6 /* UserTableViewController.swift */,
+				E77A0B01000000000000A015 /* ErrorLogViewController.swift */,
+				E77A0B01000000000000A017 /* GenerateCrashViewController.swift */,
+				E77A0B01000000000000A00C /* MetricKitDiagnosticViewController.swift */,
 				025E6D9736877283FB379B21 /* OrderHistoryViewController.swift */,
 				E4BB5B7C446FA622E9319855 /* FavouriteViewController.swift */,
 			);
@@ -652,6 +668,7 @@
 				7ED5759484613988140CB5D8 /* UserTabView.swift */,
 				E77A0B01000000000000A004 /* ErrorLogView.swift */,
 				E77A0B01000000000000A008 /* CrashTypesView.swift */,
+				E77A0B01000000000000A009 /* MetricKitDiagnosticView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -714,6 +731,7 @@
 				514AA99E2E44AA9400F4A364 /* AppCoordinator.swift */,
 				C9F4A4152900DB6100BCDF3E /* ExampleApp.swift */,
 				E77A0B01000000000000A002 /* ErrorRcvLog.swift */,
+				E77A0B01000000000000A012 /* ErrorMailRequest.swift */,
 				E77A0B01000000000000A006 /* CrashSimulators.swift */,
 				51F61C9E2A4AD6980071F957 /* BTTConfigModel.swift */,
 				51F61C9A2A4AD3490071F957 /* BTTRootContrainerView.swift */,
@@ -1088,6 +1106,12 @@
 				B22A48BFFD6A7616F92A4258 /* OrderHistoryItem.swift in Sources */,
 				40D41FD8D2E4299C8131B351 /* FavoriteItem.swift in Sources */,
 				B0B97AB122E4BAB825A26C9E /* UserTableViewController.swift in Sources */,
+				E77A0B01000000000000A010 /* ErrorRcvLog.swift in Sources */,
+				E77A0B01000000000000A011 /* CrashSimulators.swift in Sources */,
+				E77A0B01000000000000A014 /* ErrorMailRequest.swift in Sources */,
+				E77A0B01000000000000A016 /* ErrorLogViewController.swift in Sources */,
+				E77A0B01000000000000A018 /* GenerateCrashViewController.swift in Sources */,
+				E77A0B01000000000000A00D /* MetricKitDiagnosticViewController.swift in Sources */,
 				09BB2B31D58035BB9F7B0446 /* OrderHistoryViewController.swift in Sources */,
 				EFF24A662AEC667DBD6544AB /* FavouriteViewController.swift in Sources */,
 				B3847C176B0BCC8FC54B415B /* DelayMarker.m in Sources */,
@@ -1139,8 +1163,10 @@
 				C9F4A4162900DB6100BCDF3E /* ExampleApp.swift in Sources */,
 				E77A0B01000000000000A001 /* ErrorRcvLog.swift in Sources */,
 				E77A0B01000000000000A003 /* ErrorLogView.swift in Sources */,
+				E77A0B01000000000000A013 /* ErrorMailRequest.swift in Sources */,
 				E77A0B01000000000000A005 /* CrashSimulators.swift in Sources */,
 				E77A0B01000000000000A007 /* CrashTypesView.swift in Sources */,
+				E77A0B01000000000000A00A /* MetricKitDiagnosticView.swift in Sources */,
 				51A7C4DD2CB5204A00EAA81E /* UserViewModel.swift in Sources */,
 				8419BD2A2A49CFEC009429C9 /* SettingsViewModel.swift in Sources */,
 				5170A8BF2AA1E82D0091B65A /* MemoryTestView.swift in Sources */,
@@ -1266,7 +1292,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.15.10;
+				MARKETING_VERSION = 3.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.UIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1304,7 +1330,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.15.10;
+				MARKETING_VERSION = 3.16.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.bluetriangle.bluetriangledemo.UIKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1441,7 +1467,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;
@@ -1480,7 +1506,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_ASSET_PATHS = "\"Example-SwiftUI/Preview Content\"";
 				DEVELOPMENT_TEAM = RFX6NF2RC6;
 				ENABLE_PREVIEWS = YES;

@@ -13,6 +13,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     override init() {
         super.init()
+        // Capture err.rcv payloads for User → Error Logs; must run before
+        // BlueTriangle.configure creates its upload session.
+        ErrorRcvLog.install()
         _ = MetricKitManager.shared
         if let armed = StressSimulators.slowLaunchDelayIfArmed(at: .appInit) {
             StressSimulators.applySlowLaunchDelay(armed.delay, method: armed.method)
